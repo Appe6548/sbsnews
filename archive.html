@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>往期内容 - SBS News</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro SC", "SF Pro Text", "SF Pro Icons", PingFang SC, Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+nav {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.nav-container {
+  max-width: 1024px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  height: 44px;
+  padding: 0 20px;
+}
+
+.brand {
+  font-weight: 600;
+  font-size: 16px;
+  color: #333;
+  text-decoration: none;
+  margin-right: 40px;
+}
+
+.nav-items {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+  margin-left: auto;
+}
+
+.nav-items li a {
+  color: #333;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.nav-items li a:hover {
+  color: #0071e3;
+}
+
+.nav-items li a.active {
+  color: #0071e3;
+  font-weight: 500;
+}
+
+.main-content {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fff6e5 0%, #ffe4ba 100%);
+  padding: 84px 20px 40px;
+}
+
+.archive-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.category-section {
+  margin-bottom: 60px;
+}
+
+.category-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.category-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #1d1d1f;
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.video-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.video-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.video-thumbnail {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 比例 */
+  background: #f5f5f5;
+  overflow: hidden;
+}
+
+.video-thumbnail img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-duration {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.video-info {
+  padding: 16px;
+}
+
+.video-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: #1d1d1f;
+  margin-bottom: 8px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.video-meta {
+  font-size: 13px;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .video-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-container">
+    <a href="/" class="brand">SBS News</a>
+    <ul class="nav-items">
+      <li><a href="/news.html">News</a></li>
+      <li><a href="/archive.html" class="active">往期内容</a></li>
+      <li><a href="/about.html">关于我们</a></li>
+    </ul>
+  </div>
+</nav>
+<main class="main-content">
+  <div class="archive-container">
+    <section class="category-section">
+      <div class="category-header">
+        <h2 class="category-title">阳光纪录片系列</h2>
+      </div>
+      <div class="video-grid">
+        <article class="video-card">
+          <a href="#" style="text-decoration: none; color: inherit;">
+            <div class="video-thumbnail">
+              <img src="images/documentary2-preview.jpg" alt="阳光纪录片2">
+              <span class="video-duration">15:30</span>
+            </div>
+            <div class="video-info">
+              <h3 class="video-title">阳光纪录片2：青春印记</h3>
+              <div class="video-meta">
+                <span>2024年4月</span>
+              </div>
+            </div>
+          </a>
+        </article>
+        <article class="video-card">
+          <a href="#" style="text-decoration: none; color: inherit;">
+            <div class="video-thumbnail">
+              <img src="images/documentary1.jpg" alt="阳光纪录片1">
+              <span class="video-duration">12:45</span>
+            </div>
+            <div class="video-info">
+              <h3 class="video-title">阳光纪录片1：启程</h3>
+              <div class="video-meta">
+                <span>2024年1月</span>
+              </div>
+            </div>
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <section class="category-section">
+      <div class="category-header">
+        <h2 class="category-title">水王系列作品</h2>
+      </div>
+      <div class="video-grid">
+        <article class="video-card">
+          <a href="#" style="text-decoration: none; color: inherit;">
+            <div class="video-thumbnail">
+              <img src="images/water-king-new.jpg" alt="水王新作品">
+              <span class="video-duration">08:20</span>
+            </div>
+            <div class="video-info">
+              <h3 class="video-title">水王与英语的奇妙邂逅</h3>
+              <div class="video-meta">
+                <span>2024年8月</span>
+              </div>
+            </div>
+          </a>
+        </article>
+      </div>
+    </section>
+  </div>
+</main>
+</body>
+</html>

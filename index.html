@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SBS News</title>
+<style>
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+body {
+font-family: -apple-system, BlinkMacSystemFont, "SF Pro SC", "SF Pro Text", "SF Pro Icons", PingFang SC, Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+nav {
+background: rgba(255, 255, 255, 0.8);
+backdrop-filter: blur(20px);
+position: fixed;
+width: 100%;
+top: 0;
+z-index: 100;
+border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.nav-container {
+max-width: 1024px;
+margin: 0 auto;
+display: flex;
+align-items: center;
+height: 44px;
+padding: 0 20px;
+}
+
+.brand {
+font-weight: 600;
+font-size: 16px;
+color: #333;
+text-decoration: none;
+margin-right: 40px;
+}
+
+.nav-items {
+display: flex;
+list-style: none;
+gap: 30px;
+margin-left: auto;
+}
+
+.nav-items li a {
+color: #333;
+text-decoration: none;
+font-size: 14px;
+transition: color 0.3s ease;
+}
+
+.nav-items li a:hover {
+color: #0071e3;
+}
+
+.main-content {
+min-height: 100vh;
+background: linear-gradient(135deg, #fff6e5 0%, #ffe4ba 100%);
+padding-top: 44px;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+text-align: center;
+position: relative;
+overflow: hidden;
+}
+
+.background-pattern {
+position: absolute;
+width: 100%;
+height: 100%;
+background-image: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+transform: scale(1.5);
+}
+
+.content {
+position: relative;
+z-index: 1;
+padding: 20px;
+}
+
+h1 {
+font-size: 48px;
+color: #1d1d1f;
+margin-bottom: 20px;
+font-weight: 600;
+}
+
+p {
+font-size: 24px;
+color: #1d1d1f;
+margin-bottom: 30px;
+}
+
+.cta-button {
+background: #0071e3;
+color: white;
+padding: 12px 24px;
+border-radius: 980px;
+text-decoration: none;
+font-size: 17px;
+transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+background: #0077ed;
+}
+
+@media (max-width: 768px) {
+h1 {
+font-size: 32px;
+}
+
+p {
+font-size: 19px;
+}
+
+.brand {
+font-size: 14px;
+margin-right: 20px;
+}
+
+.nav-items {
+gap: 15px;
+}
+
+.nav-items li a {
+font-size: 12px;
+}
+}
+</style>
+</head>
+<body>
+<nav>
+<div class="nav-container">
+<a href="/" class="brand">SBS News</a>
+<ul class="nav-items">
+<li><a href="/news.html">News</a></li>
+<li><a href="/archive.html">往期内容</a></li>
+<li><a href="/about.html">关于我们</a></li>
+</ul>
+</div>
+</nav>
+<main class="main-content">
+<div class="background-pattern"></div>
+<div class="content">
+<h1>左右都叱咤</h1>
+<p>祝你蛇年智慧满满、好运随行。</p>
+<a href="#" class="cta-button">参与特别活动</a>
+</div>
+</main>
+</body>
+</html>
