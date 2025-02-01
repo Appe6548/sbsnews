@@ -103,15 +103,19 @@ nav {
 }
 
 .video-card {
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 12px;
+  display: inline-block;
+  width: 300px;
+  margin: 10px;
+  background: #fff;
+  border-radius: 8px;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.video-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+.video-card a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
 }
 
 .video-thumbnail {
@@ -163,10 +167,92 @@ nav {
   color: #666;
 }
 
+.thumbnail-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.card-info {
+  padding: 12px;
+}
+
+.card-info .video-title {
+  font-size: 18px;
+  margin: 0 0 8px;
+}
+
+.card-info .video-date,
+.card-info .video-duration {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+
 @media (max-width: 768px) {
   .video-grid {
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   }
+}
+
+/* 宽屏视频卡片整体样式 */
+.video-card.widescreen {
+  display: flex;
+  flex-direction: row;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 链接保持整块点击区域 */
+.video-card.widescreen a {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* 缩略图容器 */
+.thumbnail-container {
+  position: relative;
+  flex-shrink: 0;
+  width: 40%; /* 缩略图占宽度的40% */
+  overflow: hidden;
+}
+
+.thumbnail-container .thumbnail {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 视频时长显示样式 */
+.thumbnail-container .video-duration {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  font-size: 12px;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+/* 右侧卡片信息 */
+.card-info {
+  width: 60%;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+}
+
+.card-info .video-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
 }
 </style>
 </head>
@@ -368,6 +454,20 @@ nav {
               <h3 class="video-title">特别新闻报道</h3>
               <div class="video-meta">
                 <span>2024年1月1日</span>
+              </div>
+            </div>
+          </a>
+        </article>
+        <article class="video-card">
+          <a href="./video/water-not-sleep.html" style="text-decoration: none; color: inherit;">
+            <div class="video-thumbnail">
+              <img src="https://cdn.jsdelivr.net/gh/Appe6548/sbsnews/images/水王睡觉.png" alt="水王不让你睡觉你睡不睡" style="width: 100%; height: auto; object-fit: cover;">
+              <span class="video-duration">2:25</span>
+            </div>
+            <div class="video-info">
+              <h3 class="video-title">水王不让你睡觉你睡不睡</h3>
+              <div class="video-meta">
+                <span>2025年02月01日</span>
               </div>
             </div>
           </a>

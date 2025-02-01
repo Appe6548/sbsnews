@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>水王不让你睡觉你睡不睡 - SBS News</title>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <style>
+        /* 基础重置及通用样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro SC", "SF Pro Text", "SF Pro Icons", PingFang SC, Helvetica Neue, Helvetica, Arial, sans-serif;
+            background: #f5f5f7;
+        }
+        nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        .nav-container {
+            max-width: 1024px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            height: 44px;
+            padding: 0 20px;
+        }
+        .brand {
+            font-weight: 600;
+            font-size: 16px;
+            color: #333;
+            text-decoration: none;
+            margin-right: 40px;
+        }
+        .nav-items {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            margin-left: auto;
+        }
+        .nav-items li a {
+            color: #333;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+        .nav-items li a:hover {
+            color: #0071e3;
+        }
+        .nav-items li a.active {
+            color: #0071e3;
+            font-weight: 500;
+        }
+        .main-content {
+            max-width: 1024px;
+            margin: 0 auto;
+            padding: 84px 20px 40px;
+        }
+        .video-info {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        .video-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 12px;
+        }
+        .video-meta {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 16px;
+        }
+        .video-description {
+            font-size: 16px;
+            color: #666;
+            position: relative;
+            line-height: 24px;
+        }
+        /* 第一行始终显示，无须折叠 */
+        .always-show {
+            display: inline;
+        }
+        /* 其余内容默认折叠，不显示 */
+        .expandable {
+            display: inline;
+            overflow: hidden;
+        }
+        .expandable.collapsed {
+            max-height: 0;
+            vertical-align: bottom;
+        }
+        .toggle-button {
+            color: #0071e3;
+            font-size: 14px;
+            cursor: pointer;
+            user-select: none;
+            margin-left: 4px;
+        }
+        .toggle-button:hover {
+            text-decoration: underline;
+        }
+        .video-container {
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 24px;
+            position: relative;
+            padding-top: 56.25%; /* 16:9 视频比例 */
+        }
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="brand">SBS News</a>
+            <ul class="nav-items">
+                <li><a href="/news.html">News</a></li>
+                <li><a href="/archive.html">往期内容</a></li>
+                <li><a href="/about.html">关于我们</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <main class="main-content">
+        <div class="video-info">
+            <h1 class="video-title">水王不让你睡觉你睡不睡</h1>
+            <div class="video-meta">
+                <span>发布于：2025年02月01日</span>
+                <span style="margin-left: 16px;">时长：2:25</span>
+            </div>
+            <div class="video-description">
+                <span class="always-show">温馨提示：寒假已不足120H！水王威胁步步逼近！</span><br>
+                <span class="expandable collapsed">为保证您在阳光的生存，请观看以下阳光小技巧。</span>
+                <span class="toggle-button expand">展开</span>
+                <span class="toggle-button collapse" style="display: none;">收起</span>
+            </div>
+        </div>
+        
+        <div class="video-container">
+            <video id="video" controls poster="https://via.placeholder.com/800x450?text=水王不让你睡觉你睡不睡">
+                您的浏览器不支持视频播放，请更新至最新版本。
+            </video>
+        </div>
+    </main>
+    <footer style="text-align: center; padding: 20px 0; color: #666; font-size: 14px;">
+        <a href="https://icp.gov.moe/?keyword=20250941" target="_blank" style="color: #666; text-decoration: none;">萌ICP备20250941号</a>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.getElementById('video');
+            const videoSrc = 'https://cdn.jsdelivr.net/gh/Appe6548/SBSm3u8/水王不让你睡觉你睡不睡/stream.m3u8';
+            if (Hls.isSupported()) {
+                const hls = new Hls();
+                hls.loadSource(videoSrc);
+                hls.attachMedia(video);
+            } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                video.src = videoSrc;
+            }
+            
+            const expandable = document.querySelector('.expandable');
+            const expandBtn = document.querySelector('.toggle-button.expand');
+            const collapseBtn = document.querySelector('.toggle-button.collapse');
+
+            // 判断是否有额外内容
+            function checkExpandable() {
+                // 如果额外内容高度大于0，显示"展开"按钮
+                if (expandable.scrollHeight > 0) {
+                    expandBtn.style.display = expandable.classList.contains('collapsed') ? 'inline-block' : 'none';
+                } else {
+                    expandBtn.style.display = 'none';
+                }
+            }
+
+            expandBtn.addEventListener('click', () => {
+                expandable.classList.remove('collapsed');
+                expandBtn.style.display = 'none';
+                collapseBtn.style.display = 'inline-block';
+            });
+
+            collapseBtn.addEventListener('click', () => {
+                expandable.classList.add('collapsed');
+                collapseBtn.style.display = 'none';
+                expandBtn.style.display = 'inline-block';
+            });
+
+            window.addEventListener('load', checkExpandable);
+            window.addEventListener('resize', checkExpandable);
+        });
+    </script>
+</body>
+</html> 
