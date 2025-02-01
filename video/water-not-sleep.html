@@ -64,11 +64,25 @@
             margin: 0 auto;
             padding: 84px 20px 40px;
         }
+        .video-container {
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            padding-top: 56.25%; /* 16:9 视频比例 */
+            margin-bottom: 24px;
+        }
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
         .video-info {
             background: white;
             border-radius: 12px;
             padding: 24px;
-            margin-bottom: 24px;
         }
         .video-title {
             font-size: 24px;
@@ -84,7 +98,6 @@
         .video-description {
             font-size: 16px;
             color: #666;
-            position: relative;
             line-height: 24px;
         }
         /* 第一行始终显示，无须折叠 */
@@ -95,10 +108,11 @@
         .expandable {
             display: inline;
             overflow: hidden;
+            vertical-align: bottom;
+            transition: max-height 0.3s ease;
         }
         .expandable.collapsed {
             max-height: 0;
-            vertical-align: bottom;
         }
         .toggle-button {
             color: #0071e3;
@@ -109,21 +123,6 @@
         }
         .toggle-button:hover {
             text-decoration: underline;
-        }
-        .video-container {
-            background: #000;
-            border-radius: 12px;
-            overflow: hidden;
-            margin-bottom: 24px;
-            position: relative;
-            padding-top: 56.25%; /* 16:9 视频比例 */
-        }
-        .video-container video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
         }
     </style>
 </head>
@@ -140,6 +139,12 @@
     </nav>
     
     <main class="main-content">
+        <div class="video-container">
+            <video id="video" controls poster="https://via.placeholder.com/800x450?text=水王不让你睡觉你睡不睡" autoplay muted playsinline>
+                您的浏览器不支持视频播放，请更新至最新版本。
+            </video>
+        </div>
+        
         <div class="video-info">
             <h1 class="video-title">水王不让你睡觉你睡不睡</h1>
             <div class="video-meta">
@@ -152,12 +157,6 @@
                 <span class="toggle-button expand">展开</span>
                 <span class="toggle-button collapse" style="display: none;">收起</span>
             </div>
-        </div>
-        
-        <div class="video-container">
-            <video id="video" controls poster="https://via.placeholder.com/800x450?text=水王不让你睡觉你睡不睡">
-                您的浏览器不支持视频播放，请更新至最新版本。
-            </video>
         </div>
     </main>
     <footer style="text-align: center; padding: 20px 0; color: #666; font-size: 14px;">
@@ -180,9 +179,7 @@
             const expandBtn = document.querySelector('.toggle-button.expand');
             const collapseBtn = document.querySelector('.toggle-button.collapse');
 
-            // 判断是否有额外内容
             function checkExpandable() {
-                // 如果额外内容高度大于0，显示"展开"按钮
                 if (expandable.scrollHeight > 0) {
                     expandBtn.style.display = expandable.classList.contains('collapsed') ? 'inline-block' : 'none';
                 } else {
