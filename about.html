@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>关于我们 - SBS News</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro SC", "SF Pro Text", "SF Pro Icons", PingFang SC, Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+nav {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.nav-container {
+  max-width: 1024px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  height: 44px;
+  padding: 0 20px;
+}
+
+.brand {
+  font-weight: 600;
+  font-size: 16px;
+  color: #333;
+  text-decoration: none;
+  margin-right: 40px;
+}
+
+.nav-items {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+  margin-left: auto;
+}
+
+.nav-items li a {
+  color: #333;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.nav-items li a:hover {
+  color: #0071e3;
+}
+
+.nav-items li a.active {
+  color: #0071e3;
+  font-weight: 500;
+}
+
+.main-content {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fff6e5 0%, #ffe4ba 100%);
+  padding: 84px 20px 40px;
+}
+
+.about-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.about-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.about-title {
+  font-size: 32px;
+  font-weight: 600;
+  color: #1d1d1f;
+  margin-bottom: 16px;
+}
+
+.about-subtitle {
+  font-size: 18px;
+  color: #666;
+  line-height: 1.5;
+}
+
+.about-content {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #333;
+}
+
+.about-content p {
+  margin-bottom: 20px;
+}
+
+.about-section {
+  margin-bottom: 40px;
+}
+
+.section-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #1d1d1f;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .about-container {
+    padding: 24px;
+  }
+
+  .about-title {
+    font-size: 24px;
+  }
+
+  .about-subtitle {
+    font-size: 16px;
+  }
+
+  .section-title {
+    font-size: 20px;
+  }
+
+  .brand {
+    font-size: 14px;
+    margin-right: 20px;
+  }
+
+  .nav-items {
+    gap: 15px;
+  }
+
+  .nav-items li a {
+    font-size: 12px;
+  }
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-container">
+    <a href="/" class="brand">SBS News</a>
+    <ul class="nav-items">
+      <li><a href="/news.html">News</a></li>
+      <li><a href="/archive.html">往期内容</a></li>
+      <li><a href="/about.html" class="active">关于我们</a></li>
+    </ul>
+  </div>
+</nav>
+<main class="main-content">
+  <div class="about-container">
+    <header class="about-header">
+      <h1 class="about-title">关于 SBS News</h1>
+      <p class="about-subtitle">专注报道，传递价值</p>
+    </header>
+    <div class="about-content">
+      <div class="about-section">
+        <h2 class="section-title">我们的故事</h2>
+        <p>SBS News 诞生于对真实的追求。作为阳光博思高级中学的官方新闻平台，我们用独特的视角，记录每一个值得被铭记的瞬间。在这里，新闻不仅仅是信息的传递，更是故事的讲述，是成长的见证。</p>
+      </div>
+      <div class="about-section">
+        <h2 class="section-title">我们的信念</h2>
+        <p>我们相信新闻的力量。每一篇报道，都是一次对真相的探寻；每一个故事，都是一段值得分享的历程。在这里，我们：</p>
+        <ul style="margin-left: 20px; margin-bottom: 20px; line-height: 1.8;">
+          <li>用心讲述每一个打动人心的故事</li>
+          <li>细致记录每一刻值得铭记的时光</li>
+          <li>永远保持对新闻的热爱与敬畏</li>
+        </ul>
+      </div>
+      <div class="about-section">
+        <h2 class="section-title">创新与突破</h2>
+        <p>新闻，应该是一场美好的体验。我们不断探索新的可能，让每一篇报道都成为一次心灵的对话。在这里，创新不只是一个词，更是对我们的承诺。</p>
+      </div>
+      <div class="about-section">
+        <h2 class="section-title">加入我们</h2>
+        <p>如果你也相信新闻的力量，如果你也对真实怀有热爱，如果你也想用文字和影像讲述精彩的故事，那么，这里就是你的舞台。</p>
+      </div>
+      <div class="about-section">
+        <h2 class="section-title">联系方式</h2>
+        <p>让我们一起创造精彩: contact@sbsnews.us.kg</p>
+      </div>
+      <div class="about-section" style="border-top: 1px solid rgba(0, 0, 0, 0.1); padding-top: 40px;">
+        <h2 class="section-title">致谢</h2>
+        <p style="margin-bottom: 30px;">感谢所有帮助 SBS News 成长的伙伴们。正是你们的支持，才让我们能够不断前行。</p>
+        
+        <div class="acknowledgment-group">
+          <h3 style="font-size: 18px; color: #1d1d1f; margin-bottom: 12px;">创意与内容支持</h3>
+          <p style="margin-bottom: 20px; color: #666;">OpenAI · Claude · Runway · PiKa · 海螺 · 可灵 · Adobe · Spotify · CapCut</p>
+        </div>
+        
+        <div class="acknowledgment-group">
+          <h3 style="font-size: 18px; color: #1d1d1f; margin-bottom: 12px;">技术与灵感之源</h3>
+          <p style="margin-bottom: 20px; color: #666;">Microsoft · Apple · Google · GitHub · Cloudflare · DigitalPlat · Cursor · Trae · jsDelivr</p>
+        </div>
+        
+        <p style="font-size: 14px; color: #999; margin-top: 30px; font-style: italic;">感谢有以上以及所有关心、支持 SBS News 的你们，此项目得以完成。<br>感谢123云盘，没有你，此项目将更快完成。</p>
+      </div>
+    </div>
+  </div>
+</main>
+<footer style="text-align: center; padding: 20px 0; color: #666; font-size: 14px;">
+    <a href="https://icp.gov.moe/?keyword=20250941" target="_blank" style="color: #666; text-decoration: none;">萌ICP备20250941号</a>
+</footer>
+</body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阳光纪录片 - SBS News</title>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro SC", "SF Pro Text", "SF Pro Icons", PingFang SC, Helvetica Neue, Helvetica, Arial, sans-serif;
+            background: #f5f5f7;
+        }
+
+        nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1024px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            height: 44px;
+            padding: 0 20px;
+        }
+
+        .brand {
+            font-weight: 600;
+            font-size: 16px;
+            color: #333;
+            text-decoration: none;
+            margin-right: 40px;
+        }
+
+        .nav-items {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            margin-left: auto;
+        }
+
+        .nav-items li a {
+            color: #333;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-items li a:hover {
+            color: #0071e3;
+        }
+
+        .main-content {
+            max-width: 1024px;
+            margin: 0 auto;
+            padding: 84px 20px 40px;
+        }
+
+        .video-container {
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 24px;
+            position: relative;
+            padding-top: 56.25%;
+        }
+
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .video-info {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        .video-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 12px;
+        }
+
+        .video-meta {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 16px;
+        }
+
+        .video-description {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #666;
+            position: relative;
+        }
+
+        .description-content {
+            white-space: pre-line;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .description-content.collapsed {
+            max-height: 24px; /* 1行高度 */
+        }
+
+        .description-content.collapsed::after {
+            content: "...";
+            position: absolute;
+            right: 40px;
+            bottom: 0;
+            background: white;
+            padding-left: 4px;
+        }
+
+        .toggle-button {
+            color: #0071e3;
+            font-size: 14px;
+            cursor: pointer;
+            user-select: none;
+            display: inline-block;
+            margin-left: 4px;
+        }
+
+        .toggle-button:hover {
+            text-decoration: underline;
+        }
+
+        .toggle-button.expand {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            background: white;
+        }
+
+        .toggle-button.collapse {
+            display: block;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="brand">SBS News</a>
+            <ul class="nav-items">
+                <li><a href="/news.html">News</a></li>
+                <li><a href="/archive.html">往期内容</a></li>
+                <li><a href="/about.html">关于我们</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="video-info">
+            <h1 class="video-title">阳光纪录片</h1>
+            <div class="video-meta">
+                <span>发布于：2024年2月18日</span>
+                <span style="margin-left: 16px;">时长：2:02</span>
+            </div>
+            <div class="video-description">
+                <div class="description-content collapsed">SBS首部纪录片！</div>
+                <span class="toggle-button expand">展开</span>
+                <span class="toggle-button collapse" style="display: none;">收起</span>
+            </div>
+        </div>
+
+        <div class="video-container">
+            <video id="video" controls></video>
+        </div>
+    </main>
+    <footer style="text-align: center; padding: 20px 0; color: #666; font-size: 14px;">
+        <a href="https://icp.gov.moe/?keyword=20250941" target="_blank" style="color: #666; text-decoration: none;">萌ICP备20250941号</a>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.getElementById('video');
+            const videoSrc = 'https://cdn.jsdelivr.net/gh/Appe6548/SBSm3u8/1080p 阳光纪录片/stream.m3u8';
+            
+            if (Hls.isSupported()) {
+                const hls = new Hls();
+                hls.loadSource(videoSrc);
+                hls.attachMedia(video);
+            }
+            else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                video.src = videoSrc;
+            }
+
+            // 简介展开/收起功能
+            const content = document.querySelector('.description-content');
+            const expandBtn = document.querySelector('.toggle-button.expand');
+            const collapseBtn = document.querySelector('.toggle-button.collapse');
+
+            // 检查内容是否需要展开按钮
+            function checkOverflow() {
+                const isOverflowing = content.scrollHeight > 24;
+                expandBtn.style.display = isOverflowing && content.classList.contains('collapsed') ? 'inline-block' : 'none';
+            }
+
+            // 展开内容
+            expandBtn.addEventListener('click', () => {
+                content.classList.remove('collapsed');
+                expandBtn.style.display = 'none';
+                collapseBtn.style.display = 'block';
+            });
+
+            // 收起内容
+            collapseBtn.addEventListener('click', () => {
+                content.classList.add('collapsed');
+                collapseBtn.style.display = 'none';
+                expandBtn.style.display = 'inline-block';
+            });
+
+            // 页面加载后检查是否需要展开按钮
+            window.addEventListener('load', checkOverflow);
+            // 窗口大小改变时重新检查
+            window.addEventListener('resize', checkOverflow);
+        });
+    </script>
+</body>
+</html> 
