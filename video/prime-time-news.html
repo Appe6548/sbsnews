@@ -189,16 +189,10 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const video = document.getElementById('video');
-            const videoSrc = 'https://cdn.jsdelivr.net/gh/Appe6548/SBSm3u8/1080p水王新闻播报/stream.m3u8';
-            
-            if (Hls.isSupported()) {
-                const hls = new Hls();
-                hls.loadSource(videoSrc);
-                hls.attachMedia(video);
-            }
-            else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-                video.src = videoSrc;
-            }
+            // 修改后的视频链接（非 m3u8 资源，直接使用 video.src 播放 MP4）
+            const videoSrc = 'https://r2.sbsnews.me/Prime-Time-News.mp4';
+            video.src = videoSrc;
+            video.load();
 
             // 简介展开/收起功能
             const content = document.querySelector('.description-content');
@@ -221,4 +215,4 @@
         });
     </script>
 </body>
-</html> 
+</html>
