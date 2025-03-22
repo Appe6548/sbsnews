@@ -1,9 +1,11 @@
+
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SBS News</title>
+<script src="/js/lang.js"></script>
 <style>
 * {
     margin: 0;
@@ -13,16 +15,18 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro SC", "SF Pro Text", "SF Pro Icons", PingFang SC, Helvetica Neue, Helvetica, Arial, sans-serif;
+    background-color: #000;
+    color: #fff;
 }
 
 nav {
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(20px);
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 100;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .nav-container {
@@ -37,7 +41,7 @@ nav {
 .brand {
     font-weight: 600;
     font-size: 16px;
-    color: #333;
+    color: #fff;
     text-decoration: none;
     margin-right: 40px;
 }
@@ -50,7 +54,7 @@ nav {
 }
 
 .nav-items li a {
-    color: #333;
+    color: #fff;
     text-decoration: none;
     font-size: 14px;
     transition: color 0.3s ease;
@@ -62,7 +66,7 @@ nav {
 
 .main-content {
     min-height: 100vh;
-    background: linear-gradient(135deg, #e5f7ff 0%, #bae4ff 100%);
+    background-color: #000;
     padding-top: 44px;
     display: flex;
     flex-direction: column;
@@ -74,11 +78,36 @@ nav {
 }
 
 .background-pattern {
+    display: none;
     position: absolute;
     width: 100%;
     height: 100%;
     background-image: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
     transform: scale(1.5);
+}
+
+.memorial-image {
+    position: relative;
+    max-width: 600px;
+    width: 100%;
+    margin: 30px auto 0;
+    padding: 0 20px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.content h1, .content p {
+    animation: slideUp 1.5s ease-out;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes slideUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
 }
 
 .content {
@@ -89,15 +118,17 @@ nav {
 
 h1 {
     font-size: 48px;
-    color: #1d1d1f;
+    color: #fff;
     margin-bottom: 20px;
     font-weight: 600;
+    font-family: SimSun, "宋体", serif;
 }
 
 p {
     font-size: 24px;
-    color: #1d1d1f;
+    color: #fff;
     margin-bottom: 30px;
+    font-family: SimSun, "宋体", serif;
 }
 
 .cta-button {
@@ -189,6 +220,10 @@ p {
     .countdown {
         font-size: 16px;
     }
+    .memorial-image {
+        max-width: 100%;
+        padding: 0 15px;
+    }
 }
 </style>
 </head>
@@ -206,28 +241,59 @@ p {
 <main class="main-content">
     <div class="background-pattern"></div>
     <div class="content">
-        <h1>开学季来临</h1>
-        <p>祝你在新学期中取得优异成绩，迎接新的挑战！</p>
-        <!-- 每个倒计时区域 -->
-        <div class="countdown">
-            <span>距离一模还有</span>
-            <div class="flip-clock" id="countdown1"></div>
-        </div>
-        <div class="countdown">
-            <span>距离单招报考还有</span>
-            <div class="flip-clock" id="countdown2"></div>
-        </div>
-        <div class="countdown">
-            <span>距离高考还有</span>
-            <div class="flip-clock" id="countdown3"></div>
+        <h1>斯人已逝 乐音不绝</h1>
+        <p>纪念坂本龙一先生 (1952-2023)</p>
+        <div class="memorial-image">
+            <img src="skmt.jpg" alt="坂本龙一" style="max-width: 100%; height: auto; opacity: 0.9; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.3);">
         </div>
     </div>
 </main>
-<footer style="text-align: center; padding: 20px 0; color: #666; font-size: 14px;">
+<footer style="text-align: center; padding: 20px 0; color: #999; font-size: 14px;">
     <a href="https://icp.gov.moe/?keyword=20250941" target="_blank" style="color: #666; text-decoration: none;">萌ICP备20250941号</a>
 </footer>
 
 <script>
+// 获取浏览器语言
+function getBrowserLanguage() {
+  // 获取浏览器语言设置
+  let language = navigator.language || navigator.userLanguage;
+  
+  // 简化语言代码（如果是形如 zh-TW 的格式，只取主要部分）
+  if (language.startsWith('zh')) {
+    return 'zh-CN'; // 所有中文变体都使用简体中文
+  } else if (language.startsWith('ja')) {
+    return 'ja';
+  } else {
+    return 'en'; // 默认使用英文
+  }
+}
+
+// 获取当前语言
+const currentLang = getBrowserLanguage();
+
+// 更新页面内容
+function updatePageContent() {
+  const lang = translations[currentLang] || translations['en'];
+  
+  // 更新导航栏
+  document.querySelector('.nav-items li:nth-child(1) a').textContent = lang.navNews;
+  document.querySelector('.nav-items li:nth-child(2) a').textContent = lang.navArchive;
+  document.querySelector('.nav-items li:nth-child(3) a').textContent = lang.navAbout;
+  
+  // 更新主页内容
+  document.querySelector('.content h1').textContent = lang.homeTitle;
+  document.querySelector('.content p').textContent = lang.homeSubtitle;
+  
+  // 更新页脚
+  document.querySelector('footer a').textContent = lang.footer;
+  
+  // 设置HTML语言属性
+  document.documentElement.lang = currentLang;
+}
+
+// 页面加载完成后执行
+window.addEventListener('DOMContentLoaded', updatePageContent);
+
 // 更新单个倒计时，显示4组数字和对应的标签（天、时、分、秒），数值发生变化时加上翻页动画
 function updateCountdown(elementId, eventDate) {
     const now = new Date();
