@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SBS News</title>
+<title>高考大捷 - 为梦想而战</title>
 <script src="/js/lang.js"></script>
 <style>
 * {
@@ -14,19 +13,21 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro SC", "SF Pro Text", "SF Pro Icons", PingFang SC, Helvetica Neue, Helvetica, Arial, sans-serif;
-    background-color: #000;
-    color: #fff;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #1d1d1f;
+    overflow-x: hidden;
 }
 
+/* Apple风格导航栏 */
 nav {
-    background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: saturate(180%) blur(20px);
     position: fixed;
     width: 100%;
     top: 0;
-    z-index: 100;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .nav-container {
@@ -35,195 +36,341 @@ nav {
     display: flex;
     align-items: center;
     height: 44px;
-    padding: 0 20px;
+    padding: 0 22px;
+    justify-content: space-between;
 }
 
 .brand {
     font-weight: 600;
-    font-size: 16px;
-    color: #fff;
+    font-size: 17px;
+    color: #1d1d1f;
     text-decoration: none;
-    margin-right: 40px;
+    letter-spacing: -0.022em;
 }
 
 .nav-items {
     display: flex;
     list-style: none;
-    gap: 30px;
-    margin-left: auto;
+    gap: 32px;
 }
 
 .nav-items li a {
-    color: #fff;
+    color: #1d1d1f;
     text-decoration: none;
     font-size: 14px;
+    font-weight: 400;
     transition: color 0.3s ease;
+    letter-spacing: -0.016em;
 }
 
 .nav-items li a:hover {
     color: #0071e3;
 }
 
-.main-content {
+/* 主要内容区域 */
+.hero-section {
     min-height: 100vh;
-    background-color: #000;
-    padding-top: 44px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
+    padding: 88px 40px 40px;
     position: relative;
-    overflow: hidden;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
-.background-pattern {
-    display: none;
-    position: absolute;
+.hero-content {
+    max-width: 980px;
     width: 100%;
-    height: 100%;
-    background-image: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
-    transform: scale(1.5);
+    z-index: 10;
 }
 
-.memorial-image {
-    position: relative;
-    max-width: 600px;
-    width: 100%;
-    margin: 30px auto 0;
-    padding: 0 20px;
-    animation: fadeIn 2s ease-in-out;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-.content h1, .content p {
-    animation: slideUp 1.5s ease-out;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-@keyframes slideUp {
-    from { transform: translateY(30px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-}
-
-.content {
-    position: relative;
-    z-index: 1;
-    padding: 20px;
-}
-
-h1 {
-    font-size: 48px;
-    color: #fff;
-    margin-bottom: 20px;
+.hero-title {
+    font-size: 64px;
     font-weight: 600;
-    font-family: SimSun, "宋体", serif;
+    color: #ffffff;
+    margin-bottom: 24px;
+    letter-spacing: -0.009em;
+    line-height: 1.0625;
+    animation: fadeInUp 1s ease-out;
 }
 
-p {
+.motivational-text {
     font-size: 24px;
-    color: #fff;
-    margin-bottom: 30px;
-    font-family: SimSun, "宋体", serif;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 16px;
+    letter-spacing: 0.011em;
+    line-height: 1.4762;
+    animation: fadeInUp 1s ease-out 0.2s both;
 }
 
+.blessing-text {
+    font-size: 18px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 48px;
+    letter-spacing: 0.011em;
+    line-height: 1.4762;
+    animation: fadeInUp 1s ease-out 0.4s both;
+}
+
+/* Apple风格的倒计时显示 */
+.countdown-container {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    border-radius: 18px;
+    padding: 32px;
+    margin-bottom: 48px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    animation: fadeInUp 1s ease-out 0.6s both;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.countdown-label {
+    font-size: 17px;
+    font-weight: 500;
+    color: #ffffff;
+    margin-bottom: 24px;
+    letter-spacing: -0.022em;
+}
+
+.countdown-display {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+.time-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.time-value {
+    background: rgba(255, 255, 255, 0.95);
+    color: #1d1d1f;
+    font-size: 48px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    padding: 16px 12px;
+    border-radius: 12px;
+    min-width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: -0.003em;
+    line-height: 1;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.time-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+    margin-top: 12px;
+    letter-spacing: -0.016em;
+}
+
+/* Apple风格按钮 */
 .cta-button {
+    display: inline-block;
     background: #0071e3;
-    color: white;
+    color: #ffffff;
     padding: 12px 24px;
     border-radius: 980px;
     text-decoration: none;
     font-size: 17px;
+    font-weight: 400;
     transition: all 0.3s ease;
+    letter-spacing: -0.022em;
+    border: none;
+    cursor: pointer;
+    animation: fadeInUp 1s ease-out 0.8s both;
 }
 
 .cta-button:hover {
     background: #0077ed;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(0, 113, 227, 0.3);
 }
 
-.countdown {
-    font-size: 24px;
-    color: #1d1d1f;
-    margin-bottom: 15px;
-    padding: 15px 30px;
-    background: rgba(255, 255, 255, 0.6);
-    border-radius: 16px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+/* 背景装饰 */
+.background-decoration {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    z-index: 1;
 }
 
-.countdown:hover {
-    transform: translateY(-2px);
+.floating-elements {
+    position: absolute;
+    width: 100%;
+    height: 100%;
 }
 
-/* 翻页时钟样式 */
-.flip-clock {
-    display: flex;
-    gap: 10px;
+.floating-element {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
 }
-.digit-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+
+.floating-element:nth-child(1) {
+    width: 60px;
+    height: 60px;
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
 }
-.flip-card {
-    position: relative;
-    background: #fff;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+
+.floating-element:nth-child(2) {
     width: 80px;
-    height: 96px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    font-family: monospace;
-    color: #2563eb;
-    transition: transform 0.5s;
-    transform-style: preserve-3d;
-}
-.flip-card.flip {
-    transform: rotateX(180deg);
-}
-.flip-label {
-    margin-top: 8px;
-    font-size: 1rem;
-    color: #333;
+    height: 80px;
+    top: 60%;
+    right: 15%;
+    animation-delay: 2s;
 }
 
+.floating-element:nth-child(3) {
+    width: 40px;
+    height: 40px;
+    top: 80%;
+    left: 20%;
+    animation-delay: 4s;
+}
+
+.floating-element:nth-child(4) {
+    width: 100px;
+    height: 100px;
+    top: 30%;
+    right: 10%;
+    animation-delay: 1s;
+}
+
+/* 动画效果 */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(180deg);
+    }
+}
+
+.time-value.flip {
+    animation: flipNumber 0.6s ease-in-out;
+}
+
+@keyframes flipNumber {
+    0% {
+        transform: rotateX(0);
+    }
+    50% {
+        transform: rotateX(90deg);
+    }
+    100% {
+        transform: rotateX(0);
+    }
+}
+
+/* 响应式设计 */
 @media (max-width: 768px) {
-    h1 {
+    .hero-title {
+        font-size: 40px;
+    }
+    
+    .motivational-text {
+        font-size: 18px;
+    }
+    
+    .blessing-text {
+        font-size: 15px;
+    }
+    
+    .countdown-display {
+        gap: 16px;
+    }
+    
+    .time-value {
         font-size: 32px;
+        min-width: 60px;
+        padding: 12px 8px;
     }
-    p {
-        font-size: 19px;
-    }
-    .brand {
-        font-size: 14px;
-        margin-right: 20px;
-    }
+    
     .nav-items {
-        gap: 15px;
+        gap: 20px;
     }
+    
     .nav-items li a {
         font-size: 12px;
     }
-    .countdown {
-        font-size: 16px;
+    
+    .nav-container {
+        padding: 0 16px;
     }
-    .memorial-image {
-        max-width: 100%;
-        padding: 0 15px;
+    
+    .hero-section {
+        padding: 88px 20px 40px;
     }
+    
+    .countdown-container {
+        padding: 24px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .countdown-display {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    
+    .time-value {
+        font-size: 24px;
+        min-width: 50px;
+        padding: 8px 6px;
+    }
+    
+    .time-label {
+        font-size: 12px;
+    }
+}
+
+footer {
+    text-align: center;
+    padding: 32px 0;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+footer a {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: rgba(255, 255, 255, 0.8);
 }
 </style>
 </head>
@@ -232,40 +379,67 @@ p {
 <div class="nav-container">
     <a href="/" class="brand">SBS News</a>
     <ul class="nav-items">
-        <li><a href="/news.html">News</a></li>
-        <li><a href="/archive.html">往期内容</a></li>
-        <li><a href="/about.html">关于我们</a></li>
+        <li><a href="/news.html" id="nav-news">News</a></li>
+        <li><a href="/archive.html" id="nav-archive">往期内容</a></li>
+        <li><a href="/about.html" id="nav-about">关于我们</a></li>
     </ul>
 </div>
 </nav>
-<main class="main-content">
-    <div class="background-pattern"></div>
-    <div class="content">
-        <h1>斯人已逝 乐音不绝</h1>
-        <p>纪念坂本龙一先生 (1952-2023)</p>
-        <div class="memorial-image">
-            <img src="skmt.jpg" alt="坂本龙一" style="max-width: 100%; height: auto; opacity: 0.9; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.3);">
+
+<section class="hero-section">
+    <div class="background-decoration">
+        <div class="floating-elements">
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
         </div>
     </div>
-</main>
-<footer style="text-align: center; padding: 20px 0; color: #999; font-size: 14px;">
-    <a href="https://icp.gov.moe/?keyword=20250941" target="_blank" style="color: #666; text-decoration: none;">萌ICP备20250941号</a>
+    
+    <div class="hero-content">
+        <h1 class="hero-title" id="hero-title">高考大捷</h1>
+        <p class="motivational-text" id="motivational-text">十年寒窗苦读，一朝金榜题名</p>
+        <p class="blessing-text" id="blessing-text">愿所有考生都能发挥出最好的水平，收获理想的成绩！</p>
+        
+        <div class="countdown-container">
+            <div class="countdown-label" id="countdown-label">距离高考还有</div>
+            <div class="countdown-display" id="countdown">
+                <div class="time-unit">
+                    <div class="time-value" id="days">0</div>
+                    <div class="time-label" id="days-label">天</div>
+                </div>
+                <div class="time-unit">
+                    <div class="time-value" id="hours">0</div>
+                    <div class="time-label" id="hours-label">小时</div>
+                </div>
+                <div class="time-unit">
+                    <div class="time-value" id="minutes">0</div>
+                    <div class="time-label" id="minutes-label">分钟</div>
+                </div>
+                <div class="time-unit">
+                    <div class="time-value" id="seconds">0</div>
+                    <div class="time-label" id="seconds-label">秒</div>
+                </div>
+            </div>
+        </div>
+        
+        <a href="/news.html" class="cta-button" id="cta-button">查看备考资料</a>
+    </div>
+</section>
+
+<footer>
+    <a href="https://icp.gov.moe/?keyword=20250941" target="_blank" id="footer-link">萌ICP备20250941号</a>
 </footer>
 
 <script>
 // 获取浏览器语言
 function getBrowserLanguage() {
-  // 获取浏览器语言设置
-  let language = navigator.language || navigator.userLanguage;
-  
-  // 简化语言代码（如果是形如 zh-TW 的格式，只取主要部分）
-  if (language.startsWith('zh')) {
-    return 'zh-CN'; // 所有中文变体都使用简体中文
-  } else if (language.startsWith('ja')) {
-    return 'ja';
-  } else {
-    return 'en'; // 默认使用英文
-  }
+    let language = navigator.language || navigator.userLanguage;
+    if (language.startsWith('zh')) {
+        return 'zh-CN';
+    } else {
+        return 'en';
+    }
 }
 
 // 获取当前语言
@@ -273,91 +447,82 @@ const currentLang = getBrowserLanguage();
 
 // 更新页面内容
 function updatePageContent() {
-  const lang = translations[currentLang] || translations['en'];
-  
-  // 更新导航栏
-  document.querySelector('.nav-items li:nth-child(1) a').textContent = lang.navNews;
-  document.querySelector('.nav-items li:nth-child(2) a').textContent = lang.navArchive;
-  document.querySelector('.nav-items li:nth-child(3) a').textContent = lang.navAbout;
-  
-  // 更新主页内容
-  document.querySelector('.content h1').textContent = lang.homeTitle;
-  document.querySelector('.content p').textContent = lang.homeSubtitle;
-  
-  // 更新页脚
-  document.querySelector('footer a').textContent = lang.footer;
-  
-  // 设置HTML语言属性
-  document.documentElement.lang = currentLang;
+    const lang = translations[currentLang] || translations['zh-CN'];
+    
+    // 更新页面标题
+    document.title = lang.title;
+    
+    // 更新导航栏
+    document.getElementById('nav-news').textContent = lang.navNews;
+    document.getElementById('nav-archive').textContent = lang.navArchive;
+    document.getElementById('nav-about').textContent = lang.navAbout;
+    
+    // 更新主页内容
+    document.getElementById('hero-title').textContent = lang.homeTitle;
+    document.getElementById('motivational-text').textContent = lang.motivationalText;
+    document.getElementById('blessing-text').textContent = lang.blessingText;
+    document.getElementById('countdown-label').textContent = lang.countdownLabel;
+    document.getElementById('cta-button').textContent = lang.ctaText;
+    
+    // 更新倒计时标签
+    document.getElementById('days-label').textContent = lang.days;
+    document.getElementById('hours-label').textContent = lang.hours;
+    document.getElementById('minutes-label').textContent = lang.minutes;
+    document.getElementById('seconds-label').textContent = lang.seconds;
+    
+    // 更新页脚
+    document.getElementById('footer-link').textContent = lang.footer;
+    
+    // 设置HTML语言属性
+    document.documentElement.lang = currentLang;
 }
 
-// 页面加载完成后执行
-window.addEventListener('DOMContentLoaded', updatePageContent);
-
-// 更新单个倒计时，显示4组数字和对应的标签（天、时、分、秒），数值发生变化时加上翻页动画
-function updateCountdown(elementId, eventDate) {
+// 高考倒计时功能
+function updateCountdown() {
+    const examDate = new Date('2025-06-07T08:00:00+08:00'); // 2025年6月7日上午8点
     const now = new Date();
-    const timeDifference = eventDate - now;
-    const totalSec = Math.max(0, Math.floor(timeDifference / 1000));
-    const days = Math.floor(totalSec / (3600 * 24));
-    const hours = Math.floor((totalSec % (3600 * 24)) / 3600);
-    const minutes = Math.floor((totalSec % 3600) / 60);
-    const seconds = totalSec % 60;
-  
-    const values = [days, hours, minutes, seconds].map(num => num.toString().padStart(2, "0"));
-    // 对应的标签
-    const labels = ["天", "时", "分", "秒"];
-  
-    const container = document.getElementById(elementId);
-    // 初始创建时，生成4个包含翻页卡片和对应标签的 wrapper
-    if (container.children.length === 0) {
-        values.forEach((val, index) => {
-            const wrapper = document.createElement("div");
-            wrapper.className = "digit-wrapper";
-      
-            const card = document.createElement("div");
-            card.className = "flip-card";
-            card.dataset.value = val;
-            card.textContent = val;
-      
-            const label = document.createElement("div");
-            label.className = "flip-label";
-            label.textContent = labels[index];
-      
-            wrapper.appendChild(card);
-            wrapper.appendChild(label);
-            container.appendChild(wrapper);
-        });
+    const timeDifference = examDate - now;
+    
+    if (timeDifference > 0) {
+        const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+        
+        // 更新显示，去掉前导0
+        updateTimeValue('days', days.toString());
+        updateTimeValue('hours', hours.toString());
+        updateTimeValue('minutes', minutes.toString());
+        updateTimeValue('seconds', seconds.toString());
     } else {
-        // 更新每个 wrapper 内的翻页卡片的数值
-        for (let i = 0; i < 4; i++) {
-            const wrapper = container.children[i];
-            const card = wrapper.querySelector(".flip-card");
-            if (card.dataset.value !== values[i]) {
-                card.classList.add("flip");
-                setTimeout(((c, newVal) => {
-                    return () => {
-                        c.classList.remove("flip");
-                        c.dataset.value = newVal;
-                        c.textContent = newVal;
-                    }
-                })(card, values[i]), 500);
-            }
-        }
+        // 考试已开始
+        document.getElementById('days').textContent = '0';
+        document.getElementById('hours').textContent = '0';
+        document.getElementById('minutes').textContent = '0';
+        document.getElementById('seconds').textContent = '0';
+        document.getElementById('countdown-label').textContent = '高考已开始！';
     }
 }
 
-const countdown1Date = new Date("2025-02-20T00:00:00");
-const countdown2Date = new Date("2025-03-03T00:00:00");
-const countdown3Date = new Date("2025-06-07T00:00:00");
-
-function updateAllCountdowns() {
-    updateCountdown("countdown1", countdown1Date);
-    updateCountdown("countdown2", countdown2Date);
-    updateCountdown("countdown3", countdown3Date);
+function updateTimeValue(elementId, newValue) {
+    const element = document.getElementById(elementId);
+    if (element.textContent !== newValue) {
+        element.classList.add('flip');
+        setTimeout(() => {
+            element.textContent = newValue;
+            element.classList.remove('flip');
+        }, 300);
+    }
 }
-updateAllCountdowns();
-setInterval(updateAllCountdowns, 1000);
+
+// 页面加载完成后执行
+window.addEventListener('DOMContentLoaded', () => {
+    updatePageContent();
+    updateCountdown();
+    
+    // 每秒更新倒计时
+    setInterval(updateCountdown, 1000);
+});
 </script>
 </body>
-</html>
+</html> 
