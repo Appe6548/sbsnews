@@ -41,7 +41,7 @@ nav {
 }
 
 .brand {
-    font-weight: 600;
+    font-weight: 800;
     font-size: 17px;
     color: #1d1d1f;
     text-decoration: none;
@@ -88,7 +88,7 @@ nav {
 
 .hero-title {
     font-size: 64px;
-    font-weight: 600;
+    font-weight: 800;
     color: #ffffff;
     margin-bottom: 24px;
     letter-spacing: -0.009em;
@@ -116,87 +116,223 @@ nav {
     animation: fadeInUp 1s ease-out 0.4s both;
 }
 
-/* Apple风格的倒计时显示 */
+/* Apple风格的翻页时钟显示 */
 .countdown-container {
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(20px);
-    border-radius: 18px;
-    padding: 32px;
+    border-radius: 24px;
+    padding: 40px;
     margin-bottom: 48px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.1);
     animation: fadeInUp 1s ease-out 0.6s both;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    box-shadow: 
+        0 0 40px rgba(0, 255, 255, 0.3),
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.countdown-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
 }
 
 .countdown-label {
-    font-size: 17px;
-    font-weight: 500;
+    font-size: 20px;
+    font-weight: 600;
     color: #ffffff;
-    margin-bottom: 24px;
-    letter-spacing: -0.022em;
+    margin-bottom: 32px;
+    letter-spacing: 0.5px;
+    text-align: center;
+    text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 20px rgba(0, 255, 255, 0.5); }
+    to { text-shadow: 0 0 30px rgba(0, 255, 255, 0.8), 0 0 40px rgba(0, 255, 255, 0.3); }
 }
 
 .countdown-display {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
-    max-width: 480px;
-    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    flex-wrap: wrap;
 }
 
 .time-unit {
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
 }
 
-.time-value {
-    background: rgba(255, 255, 255, 0.95);
-    color: #1d1d1f;
-    font-size: 48px;
-    font-weight: 600;
-    font-variant-numeric: tabular-nums;
-    padding: 16px 12px;
-    border-radius: 12px;
-    min-width: 80px;
+/* 新的数字显示容器 */
+.digital-display {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 16px;
+    perspective: 1000px;
+}
+
+/* 数字卡片 */
+.digit-card {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(145deg, #1a1a2e, #16213e);
+    border-radius: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
-    letter-spacing: -0.003em;
-    line-height: 1;
+    font-size: 48px;
+    font-weight: 800;
+    color: #00ffff;
+    font-family: 'Courier New', monospace;
+    border: 2px solid rgba(0, 255, 255, 0.3);
+    box-shadow: 
+        0 0 30px rgba(0, 255, 255, 0.4),
+        inset 0 0 20px rgba(0, 255, 255, 0.1),
+        0 8px 16px rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    animation: pulse 2s ease-in-out infinite;
 }
 
+@keyframes pulse {
+    0%, 100% { 
+        transform: scale(1);
+        box-shadow: 
+            0 0 30px rgba(0, 255, 255, 0.4),
+            inset 0 0 20px rgba(0, 255, 255, 0.1),
+            0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+    50% { 
+        transform: scale(1.05);
+        box-shadow: 
+            0 0 40px rgba(0, 255, 255, 0.6),
+            inset 0 0 30px rgba(0, 255, 255, 0.2),
+            0 12px 24px rgba(0, 0, 0, 0.4);
+    }
+}
+
+/* 数字文本效果 */
+.digit-number {
+    position: relative;
+    z-index: 2;
+    text-shadow: 
+        0 0 10px currentColor,
+        0 0 20px currentColor,
+        0 0 30px currentColor;
+    animation: textGlow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes textGlow {
+    from { 
+        text-shadow: 
+            0 0 10px currentColor,
+            0 0 20px currentColor,
+            0 0 30px currentColor;
+    }
+    to { 
+        text-shadow: 
+            0 0 15px currentColor,
+            0 0 25px currentColor,
+            0 0 35px currentColor,
+            0 0 45px currentColor;
+    }
+}
+
+/* 背景粒子效果 */
+.digit-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 20%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 0, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 60%, rgba(255, 255, 0, 0.1) 0%, transparent 50%);
+    border-radius: 16px;
+    animation: particleMove 4s ease-in-out infinite;
+}
+
+@keyframes particleMove {
+    0%, 100% { opacity: 0.3; transform: scale(1) rotate(0deg); }
+    50% { opacity: 0.6; transform: scale(1.1) rotate(180deg); }
+}
+
+/* 时间标签 */
 .time-label {
-    font-size: 14px;
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.9);
-    margin-top: 12px;
-    letter-spacing: -0.016em;
-}
-
-/* Apple风格按钮 */
-.cta-button {
-    display: inline-block;
-    background: #0071e3;
+    font-size: 16px;
+    font-weight: 600;
     color: #ffffff;
-    padding: 12px 24px;
-    border-radius: 980px;
-    text-decoration: none;
-    font-size: 17px;
-    font-weight: 400;
-    transition: all 0.3s ease;
-    letter-spacing: -0.022em;
-    border: none;
-    cursor: pointer;
-    animation: fadeInUp 1s ease-out 0.8s both;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    position: relative;
 }
 
-.cta-button:hover {
-    background: #0077ed;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 16px rgba(0, 113, 227, 0.3);
+.time-label::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #00ffff, transparent);
+    animation: underlineGlow 2s ease-in-out infinite;
+}
+
+@keyframes underlineGlow {
+    0%, 100% { opacity: 0.5; width: 60%; }
+    50% { opacity: 1; width: 80%; }
+}
+
+/* 连接线效果 */
+.time-unit:not(:last-child)::after {
+    content: ':';
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 32px;
+    font-weight: bold;
+    color: #00ffff;
+    text-shadow: 0 0 15px currentColor;
+    animation: colonBlink 1s ease-in-out infinite;
+}
+
+@keyframes colonBlink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0.3; }
+}
+
+/* 翻转动画效果 */
+.digit-flip {
+    animation: flipAnimation 0.6s ease-in-out;
+}
+
+@keyframes flipAnimation {
+    0% { transform: rotateY(0deg) scale(1); }
+    50% { transform: rotateY(90deg) scale(0.8); }
+    100% { transform: rotateY(0deg) scale(1); }
 }
 
 /* 背景装饰 */
@@ -232,7 +368,7 @@ nav {
 }
 
 .floating-element:nth-child(2) {
-    width: 80px;
+    width: 100px;
     height: 80px;
     top: 60%;
     right: 15%;
@@ -276,23 +412,7 @@ nav {
     }
 }
 
-.time-value.flip {
-    animation: flipNumber 0.6s ease-in-out;
-}
-
-@keyframes flipNumber {
-    0% {
-        transform: rotateX(0);
-    }
-    50% {
-        transform: rotateX(90deg);
-    }
-    100% {
-        transform: rotateX(0);
-    }
-}
-
-/* 响应式设计 */
+/* 响应式设计优化 */
 @media (max-width: 768px) {
     .hero-title {
         font-size: 40px;
@@ -307,13 +427,29 @@ nav {
     }
     
     .countdown-display {
-        gap: 16px;
+        gap: 20px;
     }
     
-    .time-value {
+    .digital-display {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .digit-card {
         font-size: 32px;
-        min-width: 60px;
-        padding: 12px 8px;
+    }
+    
+    .time-label {
+        font-size: 14px;
+    }
+    
+    .countdown-container {
+        padding: 24px 16px;
+    }
+    
+    .time-unit:not(:last-child)::after {
+        right: -12px;
+        font-size: 24px;
     }
     
     .nav-items {
@@ -331,22 +467,31 @@ nav {
     .hero-section {
         padding: 88px 20px 40px;
     }
-    
-    .countdown-container {
-        padding: 24px 16px;
-    }
 }
 
 @media (max-width: 480px) {
     .countdown-display {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
+        gap: 16px;
+        flex-direction: column;
     }
     
-    .time-value {
-        font-size: 24px;
-        min-width: 50px;
-        padding: 8px 6px;
+    .digital-display {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .digit-card {
+        font-size: 36px;
+    }
+    
+    .time-unit:not(:last-child)::after {
+        display: none;
+    }
+    
+    .countdown-display {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
     }
     
     .time-label {
@@ -405,25 +550,32 @@ footer a:hover {
             <div class="countdown-label" id="countdown-label">距离高考还有</div>
             <div class="countdown-display" id="countdown">
                 <div class="time-unit">
-                    <div class="time-value" id="days">0</div>
+                    <div class="digital-display">
+                        <div class="digit-card" id="days-card">0</div>
+                    </div>
                     <div class="time-label" id="days-label">天</div>
                 </div>
                 <div class="time-unit">
-                    <div class="time-value" id="hours">0</div>
+                    <div class="digital-display">
+                        <div class="digit-card" id="hours-card">0</div>
+                    </div>
                     <div class="time-label" id="hours-label">小时</div>
                 </div>
                 <div class="time-unit">
-                    <div class="time-value" id="minutes">0</div>
+                    <div class="digital-display">
+                        <div class="digit-card" id="minutes-card">0</div>
+                    </div>
                     <div class="time-label" id="minutes-label">分钟</div>
                 </div>
                 <div class="time-unit">
-                    <div class="time-value" id="seconds">0</div>
+                    <div class="digital-display">
+                        <div class="digit-card" id="seconds-card">0</div>
+                    </div>
                     <div class="time-label" id="seconds-label">秒</div>
                 </div>
             </div>
         </div>
         
-        <a href="/news.html" class="cta-button" id="cta-button">查看备考资料</a>
     </div>
 </section>
 
@@ -462,7 +614,6 @@ function updatePageContent() {
     document.getElementById('motivational-text').textContent = lang.motivationalText;
     document.getElementById('blessing-text').textContent = lang.blessingText;
     document.getElementById('countdown-label').textContent = lang.countdownLabel;
-    document.getElementById('cta-button').textContent = lang.ctaText;
     
     // 更新倒计时标签
     document.getElementById('days-label').textContent = lang.days;
@@ -477,6 +628,33 @@ function updatePageContent() {
     document.documentElement.lang = currentLang;
 }
 
+// 翻页时钟动画函数
+function flipTimeValue(unit, newValue) {
+    const currentCard = document.getElementById(`${unit}-card`);
+    
+    // 如果数值没有变化，直接返回
+    if (currentCard.textContent === newValue) return;
+    
+    // 添加翻转动画类
+    currentCard.classList.add('digit-flip');
+    
+    // 设置新数值
+    currentCard.textContent = newValue;
+    
+    // 动画完成后清理类
+    setTimeout(() => {
+        currentCard.classList.remove('digit-flip');
+    }, 600);
+}
+
+// 初始化倒计时显示
+function initializeCountdown() {
+    const units = ['days', 'hours', 'minutes', 'seconds'];
+    units.forEach(unit => {
+        document.getElementById(`${unit}-card`).textContent = '0';
+    });
+}
+
 // 高考倒计时功能
 function updateCountdown() {
     const examDate = new Date('2025-06-07T08:00:00+08:00'); // 2025年6月7日上午8点
@@ -489,34 +667,24 @@ function updateCountdown() {
         const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
         
-        // 更新显示，去掉前导0
-        updateTimeValue('days', days.toString());
-        updateTimeValue('hours', hours.toString());
-        updateTimeValue('minutes', minutes.toString());
-        updateTimeValue('seconds', seconds.toString());
+        // 使用翻页动画更新显示
+        flipTimeValue('days', days.toString());
+        flipTimeValue('hours', hours.toString());
+        flipTimeValue('minutes', minutes.toString());
+        flipTimeValue('seconds', seconds.toString());
     } else {
         // 考试已开始
-        document.getElementById('days').textContent = '0';
-        document.getElementById('hours').textContent = '0';
-        document.getElementById('minutes').textContent = '0';
-        document.getElementById('seconds').textContent = '0';
+        flipTimeValue('days', '0');
+        flipTimeValue('hours', '0');
+        flipTimeValue('minutes', '0');
+        flipTimeValue('seconds', '0');
         document.getElementById('countdown-label').textContent = '高考已开始！';
-    }
-}
-
-function updateTimeValue(elementId, newValue) {
-    const element = document.getElementById(elementId);
-    if (element.textContent !== newValue) {
-        element.classList.add('flip');
-        setTimeout(() => {
-            element.textContent = newValue;
-            element.classList.remove('flip');
-        }, 300);
     }
 }
 
 // 页面加载完成后执行
 window.addEventListener('DOMContentLoaded', () => {
+    initializeCountdown();
     updatePageContent();
     updateCountdown();
     
