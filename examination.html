@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>If not me, who? If not now, when?</title>
+<script src="/js/lang.js"></script>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #000000;
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+/* Apple风格导航栏 */
+nav {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: saturate(180%) blur(20px);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-container {
+    max-width: 1024px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    height: 44px;
+    padding: 0 22px;
+    justify-content: space-between;
+}
+
+.brand {
+    font-weight: 800;
+    font-size: 17px;
+    color: #ffffff;
+    text-decoration: none;
+    letter-spacing: -0.022em;
+}
+
+.nav-items {
+    display: flex;
+    list-style: none;
+    gap: 32px;
+}
+
+.nav-items li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+    transition: color 0.3s ease;
+    letter-spacing: -0.016em;
+}
+
+.nav-items li a:hover {
+    color: #0071e3;
+}
+
+/* 主要内容区域 */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 88px 40px 40px;
+    position: relative;
+    background: #000000;
+}
+
+.hero-content {
+    max-width: 1200px;
+    width: 100%;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero-title {
+    font-size: 56px;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 24px;
+    letter-spacing: -0.005em;
+    line-height: 1.1;
+    animation: fadeInUp 1s ease-out;
+}
+
+.motivational-text {
+    font-size: 28px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 16px;
+    letter-spacing: 0.011em;
+    line-height: 1.4762;
+    animation: fadeInUp 1s ease-out 0.2s both;
+    max-width: 900px;
+}
+
+.blessing-text {
+    font-size: 20px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 48px;
+    letter-spacing: 0.011em;
+    line-height: 1.4762;
+    animation: fadeInUp 1s ease-out 0.4s both;
+    max-width: 900px;
+}
+
+.image-container {
+    margin-top: 40px;
+    width: 100%;
+    max-width: 1200px;
+    animation: fadeInUp 1s ease-out 0.6s both;
+    display: flex;
+    justify-content: center;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 12px 42px rgba(0, 0, 0, 0.5);
+    max-width: 1200px;
+    min-width: 80vw;
+}
+
+/* 背景装饰 */
+.background-decoration {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.floating-elements {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.floating-element {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
+}
+
+.floating-element:nth-child(1) {
+    width: 60px;
+    height: 60px;
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.floating-element:nth-child(2) {
+    width: 100px;
+    height: 80px;
+    top: 60%;
+    right: 15%;
+    animation-delay: 2s;
+}
+
+.floating-element:nth-child(3) {
+    width: 40px;
+    height: 40px;
+    top: 80%;
+    left: 20%;
+    animation-delay: 4s;
+}
+
+.floating-element:nth-child(4) {
+    width: 100px;
+    height: 100px;
+    top: 30%;
+    right: 10%;
+    animation-delay: 1s;
+}
+
+/* 动画效果 */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(180deg);
+    }
+}
+
+/* 响应式设计优化 */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 36px;
+    }
+    
+    .motivational-text {
+        font-size: 20px;
+    }
+    
+    .blessing-text {
+        font-size: 16px;
+    }
+    
+    .nav-items {
+        gap: 20px;
+    }
+    
+    .nav-items li a {
+        font-size: 12px;
+    }
+    
+    .nav-container {
+        padding: 0 16px;
+    }
+    
+    .hero-section {
+        padding: 88px 20px 40px;
+    }
+    
+    .image-container img {
+        min-width: 95vw;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 28px;
+    }
+    
+    .time-label {
+        font-size: 12px;
+    }
+}
+
+footer {
+    text-align: center;
+    padding: 32px 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+footer a {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: rgba(255, 255, 255, 0.8);
+}
+</style>
+</head>
+<body>
+<nav>
+<div class="nav-container">
+    <a href="/" class="brand">SBS News</a>
+    <ul class="nav-items">
+        <li><a href="/news.html" id="nav-news">News</a></li>
+        <li><a href="/archive.html" id="nav-archive">往期内容</a></li>
+        <li><a href="/about.html" id="nav-about">关于我们</a></li>
+    </ul>
+</div>
+</nav>
+
+<section class="hero-section">
+    <div class="background-decoration">
+        <div class="floating-elements">
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+        </div>
+    </div>
+    
+    <div class="hero-content">
+        <h1 class="hero-title">If not me, who?<br>If not now, when?</h1>
+        <p class="motivational-text">十载寒窗为今朝，舍我其谁敢争锋？</p>
+        <p class="blessing-text">青春无悔赴考场，此时不搏更何时？</p>
+        
+        <div class="image-container">
+            <img src="/skmtopus_top_release.webp" alt="Liberation and Freedom">
+        </div>
+    </div>
+</section>
+
+<footer>
+    <a href="https://icp.gov.moe/?keyword=20250941" target="_blank" id="footer-link">萌ICP备20250941号</a>
+</footer>
+
+<script>
+// 获取浏览器语言
+function getBrowserLanguage() {
+    let language = navigator.language || navigator.userLanguage;
+    if (language.startsWith('zh')) {
+        return 'zh-CN';
+    } else {
+        return 'en';
+    }
+}
+
+// 获取当前语言
+const currentLang = getBrowserLanguage();
+
+// 更新页面内容
+function updatePageContent() {
+    const lang = translations[currentLang] || translations['zh-CN'];
+    
+    // 更新导航栏
+    document.getElementById('nav-news').textContent = lang.navNews;
+    document.getElementById('nav-archive').textContent = lang.navArchive;
+    document.getElementById('nav-about').textContent = lang.navAbout;
+    
+    // 更新页脚
+    document.getElementById('footer-link').textContent = lang.footer;
+    
+    // 设置HTML语言属性
+    document.documentElement.lang = currentLang;
+}
+
+// 页面加载完成后执行
+window.addEventListener('DOMContentLoaded', () => {
+    updatePageContent();
+});
+</script>
+</body>
+</html> 

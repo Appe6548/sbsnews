@@ -657,7 +657,7 @@ function initializeCountdown() {
 
 // 高考倒计时功能
 function updateCountdown() {
-    const examDate = new Date('2025-06-07T08:00:00+08:00'); // 2025年6月7日上午8点
+    const examDate = new Date('2025-06-07T00:00:00+08:00'); // 2025年6月7日0点
     const now = new Date();
     const timeDifference = examDate - now;
     
@@ -679,6 +679,11 @@ function updateCountdown() {
         flipTimeValue('minutes', '0');
         flipTimeValue('seconds', '0');
         document.getElementById('countdown-label').textContent = '高考已开始！';
+        
+        // 倒计时结束后添加短暂延迟，然后跳转到新页面
+        setTimeout(() => {
+            window.location.href = '/examination.html'; // 替换为您希望跳转的页面
+        }, 3000); // 3秒后跳转，给用户时间看到"高考已开始"的提示
     }
 }
 
