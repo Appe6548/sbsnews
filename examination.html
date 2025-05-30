@@ -280,6 +280,24 @@ footer a:hover {
     color: rgba(255, 255, 255, 0.8);
 }
 </style>
+<script>
+// 页面加载时检查是否到达指定时间
+window.addEventListener('DOMContentLoaded', () => {
+    checkExamTime();
+    updatePageContent();
+});
+
+// 检查是否已到高考时间
+function checkExamTime() {
+    const examDate = new Date('2025-06-07T00:00:00+08:00'); // 2025年6月7日0点
+    const now = new Date();
+    
+    // 如果当前时间早于高考时间，则重定向到首页
+    if (now < examDate) {
+        window.location.href = '/'; // 重定向到首页
+    }
+}
+</script>
 </head>
 <body>
 <nav>
@@ -309,7 +327,7 @@ footer a:hover {
         <p class="blessing-text">青春无悔赴考场，此时不搏更何时？</p>
         
         <div class="image-container">
-            <img src="/skmtopus_top_release.webp" alt="Liberation and Freedom">
+            <img src="skmtopus_top_release.webp" alt="Liberation and Freedom">
         </div>
     </div>
 </section>
@@ -347,11 +365,6 @@ function updatePageContent() {
     // 设置HTML语言属性
     document.documentElement.lang = currentLang;
 }
-
-// 页面加载完成后执行
-window.addEventListener('DOMContentLoaded', () => {
-    updatePageContent();
-});
 </script>
 </body>
 </html> 
