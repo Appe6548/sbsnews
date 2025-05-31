@@ -16,7 +16,10 @@ const translations = {
     days: '天',
     hours: '小时', 
     minutes: '分钟',
-    seconds: '秒'
+    seconds: '秒',
+    publishDate: '发布时间：2024年8月21日',
+    announcement: '我们很高兴地宣布，SBS最新作品「水语」已经正式发表。欢迎大家查看和下载。',
+    downloadButton: '点击下载PDF'
   },
   'en': {
     title: 'Gaokao Success - Fight for Your Dreams',
@@ -33,7 +36,10 @@ const translations = {
     examDate: 'June 7, 2025 8:00 AM',
     days: 'Days',
     hours: 'Hours',
-    minutes: 'Minutes', 
-    seconds: 'Seconds'
+    minutes: 'Minutes',
+    seconds: 'Seconds',
+    publishDate: 'Published on August 21, 2024',
+    announcement: 'We are excited to announce that SBS\'s latest work, "Water Language", has officially been released. Feel free to check it out and download.',
+    downloadButton: 'Download PDF'
   }
-}; 
+};
