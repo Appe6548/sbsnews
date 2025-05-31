@@ -660,6 +660,7 @@ function updateCountdown() {
     const examDate = new Date('2025-06-07T00:00:00+08:00'); // 2025年6月7日0点
     const now = new Date();
     const timeDifference = examDate - now;
+    const lang = translations[currentLang] || translations['zh-CN'];
     
     if (timeDifference > 0) {
         const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
@@ -678,7 +679,7 @@ function updateCountdown() {
         flipTimeValue('hours', '0');
         flipTimeValue('minutes', '0');
         flipTimeValue('seconds', '0');
-        document.getElementById('countdown-label').textContent = '高考已开始！';
+        document.getElementById('countdown-label').textContent = lang.examStarted;
         
         // 倒计时结束后添加短暂延迟，然后跳转到新页面
         setTimeout(() => {
