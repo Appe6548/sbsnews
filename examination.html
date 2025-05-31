@@ -124,19 +124,22 @@ nav {
 .image-container {
     margin-top: 40px;
     width: 100%;
-    max-width: 1200px;
+    max-width: 100%;
     animation: fadeInUp 1s ease-out 0.6s both;
     display: flex;
     justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 
 .image-container img {
-    width: 100%;
+    width: auto;
+    max-width: 100%;
     height: auto;
+    max-height: 80vh;
     border-radius: 12px;
     box-shadow: 0 12px 42px rgba(0, 0, 0, 0.5);
-    max-width: 1200px;
-    min-width: 80vw;
+    object-fit: contain;
 }
 
 /* 背景装饰 */
@@ -281,10 +284,11 @@ footer a:hover {
 }
 </style>
 <script>
-// 页面加载时检查是否到达指定时间
+// 页面加载完成后执行
 window.addEventListener('DOMContentLoaded', () => {
     checkExamTime();
     updatePageContent();
+    checkImageLoad();
 });
 
 // 检查是否已到高考时间
@@ -296,6 +300,27 @@ function checkExamTime() {
     if (now < examDate) {
         window.location.href = '/'; // 重定向到首页
     }
+}
+
+// 检查图片加载状态
+function checkImageLoad() {
+    const img = document.querySelector('.image-container img');
+    
+    // 添加图片加载成功的事件处理
+    img.addEventListener('load', function() {
+        console.log('图片加载成功');
+    });
+    
+    // 添加图片加载失败的备用处理
+    img.addEventListener('error', function() {
+        console.error('图片加载失败');
+        // 尝试其他格式
+        if (this.src.endsWith('.png')) {
+            this.src = 'skmtopus_top_release.webp';
+        } else if (this.src.endsWith('.webp')) {
+            this.src = 'skmt.jpg';
+        }
+    });
 }
 </script>
 </head>
@@ -327,7 +352,7 @@ function checkExamTime() {
         <p class="blessing-text">青春无悔赴考场，此时不搏更何时？</p>
         
         <div class="image-container">
-            <img src="skmtopus_top_release.png" alt="Liberation and Freedom">
+            <img src="skmtopus_top_release.png" alt="Liberation and Freedom" loading="lazy" onerror="this.onerror=null; this.src='skmt.jpg';">
         </div>
     </div>
 </section>
