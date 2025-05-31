@@ -135,44 +135,110 @@ nav {
 <script>
 // 获取浏览器语言
 function getBrowserLanguage() {
-  // 获取浏览器语言设置
-  let language = navigator.language || navigator.userLanguage;
-  
-  // 简化语言代码（如果是形如 zh-TW 的格式，只取主要部分）
-  if (language.startsWith('zh')) {
-    return 'zh-CN'; // 所有中文变体都使用简体中文
-  } else if (language.startsWith('ja')) {
-    return 'ja';
+  const language = (navigator.language || navigator.userLanguage || "").toLowerCase();
+  if (language.startsWith("zh-tw") || language.startsWith("zh-hk") || language.startsWith("zh-hant")) {
+    return "zh-TW";
+  } else if (language.startsWith("zh")) {
+    return "zh-CN";
+  } else if (language.startsWith("ja")) {
+    return "ja";
+  } else if (language.startsWith("ru")) {
+    return "ru";
+  } else if (language.startsWith("th")) {
+    return "th";
+  } else if (language.startsWith("de")) {
+    return "de";
+  } else if (language.startsWith("fr")) {
+    return "fr";
+  } else if (language.startsWith("es")) {
+    return "es";
   } else {
-    return 'en'; // 默认使用英文
+    return "en";
   }
 }
-
 // 获取当前语言
 const currentLang = getBrowserLanguage();
+
+const articleTranslations = {
+  'zh-CN': {
+    title: 'SBS News最新作品「水语」现已发表！',
+    publishDate: '发布时间：2024年8月21日',
+    announcement: '我们很高兴地宣布，SBS最新作品「水语」已经正式发表。欢迎大家查看和下载。',
+    downloadButton: '点击下载PDF'
+  },
+  'zh-TW': {
+    title: 'SBS News最新作品「水語」現已發表！',
+    publishDate: '發布時間：2024年8月21日',
+    announcement: '我們很高興地宣布，SBS最新作品「水語」已經正式發表。歡迎大家查看和下載。',
+    downloadButton: '點擊下載PDF'
+  },
+  'en': {
+    title: "SBS News' latest work "Water Language" released!",
+    publishDate: 'Published: August 21, 2024',
+    announcement: 'We are pleased to announce that the latest SBS work, "Water Language", has been officially released. Feel free to view and download.',
+    downloadButton: 'Download PDF'
+  },
+  'ja': {
+    title: 'SBSの最新作「水語」が公開されました！',
+    publishDate: '公開日：2024年8月21日',
+    announcement: 'SBSの最新作「水語」が正式に公開されました。ぜひご覧ください。',
+    downloadButton: 'PDFをダウンロード'
+  },
+  'ru': {
+    title: 'Новое произведение SBS "Язык воды" уже опубликовано!',
+    publishDate: 'Дата публикации: 21 августа 2024',
+    announcement: 'Мы рады объявить, что новое произведение SBS "Язык воды" официально опубликовано. Приглашаем к просмотру и загрузке.',
+    downloadButton: 'Скачать PDF'
+  },
+  'th': {
+    title: 'ผลงานล่าสุดของ SBS "ภาษาน้ำ" เผยแพร่แล้ว!',
+    publishDate: 'เผยแพร่เมื่อ: 21 สิงหาคม 2024',
+    announcement: 'เรายินดีประกาศว่าผลงานล่าสุดของ SBS "ภาษาน้ำ" ได้เผยแพร่อย่างเป็นทางการแล้ว เชิญชมและดาวน์โหลด',
+    downloadButton: 'ดาวน์โหลด PDF'
+  },
+  'de': {
+    title: 'SBS News neuestes Werk "Wassersprache" ist jetzt veröffentlicht!',
+    publishDate: 'Veröffentlichungsdatum: 21. August 2024',
+    announcement: 'Wir freuen uns bekannt zu geben, dass das neueste Werk von SBS, "Wassersprache", offiziell veröffentlicht wurde. Viel Spaß beim Ansehen und Herunterladen.',
+    downloadButton: 'PDF herunterladen'
+  },
+  'fr': {
+    title: 'La dernière œuvre de SBS "Langage de l'eau" est publiée !',
+    publishDate: 'Date de publication : 21 août 2024',
+    announcement: 'Nous sommes heureux d'annoncer que la dernière œuvre de SBS, "Langage de l'eau", est officiellement publiée. N'hésitez pas à consulter et télécharger.',
+    downloadButton: 'Télécharger le PDF'
+  },
+  'es': {
+    title: '¡La última obra de SBS "Lenguaje del Agua" ha sido publicada!',
+    publishDate: 'Fecha de publicación: 21 de agosto de 2024',
+    announcement: 'Nos complace anunciar que la última obra de SBS, "Lenguaje del Agua", se ha publicado oficialmente. Te invitamos a verla y descargarla.',
+    downloadButton: 'Descargar PDF'
+  }
+};
 
 // 更新页面内容
 function updatePageContent() {
   const lang = translations[currentLang] || translations['en'];
+  const article = articleTranslations[currentLang] || articleTranslations['zh-CN'];
   
   // 更新标题
-  document.title = lang.title + ' - SBS News';
+  document.title = article.title + ' - SBS News';
   
   // 更新导航栏
-  document.querySelector('.nav-items li:nth-child(1) a').textContent = lang.navNews;
-  document.querySelector('.nav-items li:nth-child(2) a').textContent = lang.navArchive;
-  document.querySelector('.nav-items li:nth-child(3) a').textContent = lang.navAbout;
+  document.getElementById('nav-news').textContent = lang.navNews;
+  document.getElementById('nav-archive').textContent = lang.navArchive;
+  document.getElementById('nav-about').textContent = lang.navAbout;
   
   // 更新文章内容
-  document.querySelector('.article-title').textContent = lang.title;
-  document.querySelector('.article-meta').textContent = lang.publishDate;
-  document.querySelector('.article-content p').textContent = lang.announcement;
+  document.querySelector('.article-title').textContent = article.title;
+  document.querySelector('.article-meta').textContent = article.publishDate;
+  document.querySelector('.article-content p').textContent = article.announcement;
   
   // 更新下载按钮
-  document.querySelector('.download-section a').textContent = lang.downloadButton;
+  document.querySelector('.download-section a').textContent = article.downloadButton;
   
   // 更新页脚
-  document.querySelector('footer a').textContent = lang.footer;
+  document.getElementById('footer-link').textContent = lang.footer;
   
   // 设置HTML语言属性
   document.documentElement.lang = currentLang;
@@ -185,9 +251,9 @@ window.addEventListener('DOMContentLoaded', updatePageContent);
   <div class="nav-container">
     <a href="/" class="brand">SBS News</a>
     <ul class="nav-items">
-      <li><a href="/news.html" class="active">News</a></li>
-      <li><a href="/archive.html">往期内容</a></li>
-      <li><a href="/about.html">关于我们</a></li>
+      <li><a href="/news.html" id="nav-news" class="active">News</a></li>
+      <li><a href="/archive.html" id="nav-archive">往期内容</a></li>
+      <li><a href="/about.html" id="nav-about">关于我们</a></li>
     </ul>
   </div>
 </nav>
@@ -226,7 +292,7 @@ window.addEventListener('DOMContentLoaded', updatePageContent);
   </article>
 </main>
 <footer style="text-align: center; padding: 20px 0; color: #666; font-size: 14px;">
-    <a href="https://icp.gov.moe/?keyword=20250941" target="_blank" style="color: #666; text-decoration: none;">萌ICP备20250941号</a>
+    <a href="https://icp.gov.moe/?keyword=20250941" id="footer-link" target="_blank" style="color: #666; text-decoration: none;">萌ICP备20250941号</a>
 </footer>
 </body>
 </html>

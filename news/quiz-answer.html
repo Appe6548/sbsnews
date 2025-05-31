@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>2024年春季校园知识竞赛答案公布 - SBS News</title>
+<script src=\"/js/lang.js\"></script>
 <style>
 * {
   margin: 0;
@@ -156,9 +157,9 @@ nav {
   <div class="nav-container">
     <a href="/" class="brand">SBS News</a>
     <ul class="nav-items">
-      <li><a href="/news.html" class="active">News</a></li>
-      <li><a href="/archive.html">往期内容</a></li>
-      <li><a href="/about.html">关于我们</a></li>
+      <li><a href="/news.html" id="nav-news" class="active">News</a></li>
+      <li><a href="/archive.html" id="nav-archive">往期内容</a></li>
+      <li><a href="/about.html" id="nav-about">关于我们</a></li>
     </ul>
   </div>
 </nav>
@@ -182,7 +183,42 @@ nav {
   </article>
 </main>
 <footer style="text-align: center; padding: 20px 0; color: #666; font-size: 14px;">
-    <a href="https://icp.gov.moe/?keyword=20250941" target="_blank" style="color: #666; text-decoration: none;">萌ICP备20250941号</a>
+    <a href="https://icp.gov.moe/?keyword=20250941" id="footer-link" target="_blank" style="color: #666; text-decoration: none;">萌ICP备20250941号</a>
 </footer>
+<script>
+// 获取浏览器语言
+function getBrowserLanguage() {
+  const language = (navigator.language || navigator.userLanguage || "").toLowerCase();
+  if (language.startsWith("zh-tw") || language.startsWith("zh-hk") || language.startsWith("zh-hant")) {
+    return "zh-TW";
+  } else if (language.startsWith("zh")) {
+    return "zh-CN";
+  } else if (language.startsWith("ja")) {
+    return "ja";
+  } else if (language.startsWith("ru")) {
+    return "ru";
+  } else if (language.startsWith("th")) {
+    return "th";
+  } else if (language.startsWith("de")) {
+    return "de";
+  } else if (language.startsWith("fr")) {
+    return "fr";
+  } else if (language.startsWith("es")) {
+    return "es";
+  } else {
+    return "en";
+  }
+}
+const currentLang = getBrowserLanguage();
+function updatePageContent() {
+  const lang = translations[currentLang] || translations['zh-CN'];
+  document.getElementById('nav-news').textContent = lang.navNews;
+  document.getElementById('nav-archive').textContent = lang.navArchive;
+  document.getElementById('nav-about').textContent = lang.navAbout;
+  document.getElementById('footer-link').textContent = lang.footer;
+  document.documentElement.lang = currentLang;
+}
+window.addEventListener('DOMContentLoaded', updatePageContent);
+</script>
 </body>
 </html>

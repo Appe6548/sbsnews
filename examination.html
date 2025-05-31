@@ -339,11 +339,25 @@ function checkExamTime() {
 <script>
 // 获取浏览器语言
 function getBrowserLanguage() {
-    let language = navigator.language || navigator.userLanguage;
-    if (language.startsWith('zh')) {
-        return 'zh-CN';
+    const language = (navigator.language || navigator.userLanguage || "").toLowerCase();
+    if (language.startsWith("zh-tw") || language.startsWith("zh-hk") || language.startsWith("zh-hant")) {
+        return "zh-TW";
+    } else if (language.startsWith("zh")) {
+        return "zh-CN";
+    } else if (language.startsWith("ja")) {
+        return "ja";
+    } else if (language.startsWith("ru")) {
+        return "ru";
+    } else if (language.startsWith("th")) {
+        return "th";
+    } else if (language.startsWith("de")) {
+        return "de";
+    } else if (language.startsWith("fr")) {
+        return "fr";
+    } else if (language.startsWith("es")) {
+        return "es";
     } else {
-        return 'en';
+        return "en";
     }
 }
 
