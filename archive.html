@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>往期内容 - SBS News</title>
+<script src="/js/lang.js"></script>
 <style>
 * {
   margin: 0;
@@ -261,9 +262,9 @@ nav {
   <div class="nav-container">
     <a href="/" class="brand">SBS News</a>
     <ul class="nav-items">
-      <li><a href="/news.html">News</a></li>
-      <li><a href="/archive.html" class="active">往期内容</a></li>
-      <li><a href="/about.html">关于我们</a></li>
+      <li><a href="/news.html" id="nav-news">News</a></li>
+      <li><a href="/archive.html" id="nav-archive" class="active">往期内容</a></li>
+      <li><a href="/about.html" id="nav-about">关于我们</a></li>
     </ul>
   </div>
 </nav>
@@ -477,7 +478,32 @@ nav {
   </div>
 </main>
 <footer style="text-align: center; padding: 20px 0; color: #666; font-size: 14px;">
-    <a href="https://icp.gov.moe/?keyword=20250941" target="_blank" style="color: #666; text-decoration: none;">萌ICP备20250941号</a>
+    <a href="https://icp.gov.moe/?keyword=20250941" target="_blank" id="footer-link" style="color: #666; text-decoration: none;">萌ICP备20250941号</a>
 </footer>
+<script>
+function getBrowserLanguage() {
+  let language = navigator.language || navigator.userLanguage;
+  if (language.startsWith('zh')) {
+    return 'zh-CN';
+  } else {
+    return 'en';
+  }
+}
+
+const currentLang = getBrowserLanguage();
+
+function updatePageContent() {
+  const lang = translations[currentLang] || translations['zh-CN'];
+  document.getElementById('nav-news').textContent = lang.navNews;
+  document.getElementById('nav-archive').textContent = lang.navArchive;
+  document.getElementById('nav-about').textContent = lang.navAbout;
+  document.getElementById('footer-link').textContent = lang.footer;
+  document.documentElement.lang = currentLang;
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  updatePageContent();
+});
+</script>
 </body>
 </html>
