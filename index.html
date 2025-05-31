@@ -678,7 +678,8 @@ function updateCountdown() {
         flipTimeValue('hours', '0');
         flipTimeValue('minutes', '0');
         flipTimeValue('seconds', '0');
-        document.getElementById('countdown-label').textContent = '高考已开始！';
+        const lang = translations[currentLang] || translations['zh-CN'];
+        document.getElementById('countdown-label').textContent = lang.examStarted;
     }
 }
 

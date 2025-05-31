@@ -16,7 +16,8 @@ const translations = {
     days: '天',
     hours: '小时', 
     minutes: '分钟',
-    seconds: '秒'
+    seconds: '秒',
+    examStarted: '高考已开始！'
   },
   'en': {
     title: 'Gaokao Success - Fight for Your Dreams',
@@ -33,7 +34,8 @@ const translations = {
     examDate: 'June 7, 2025 8:00 AM',
     days: 'Days',
     hours: 'Hours',
-    minutes: 'Minutes', 
-    seconds: 'Seconds'
+    minutes: 'Minutes',
+    seconds: 'Seconds',
+    examStarted: 'Gaokao has begun!'
   }
-}; 
+};
