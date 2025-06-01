@@ -131,6 +131,7 @@ nav {
         inset 0 1px 0 rgba(255, 255, 255, 0.1);
     position: relative;
     overflow: hidden;
+    max-width: 100%;
 }
 
 .countdown-container::before {
@@ -427,29 +428,30 @@ nav {
     }
     
     .countdown-display {
-        gap: 20px;
+        gap: 16px;
     }
     
     .digital-display {
-        width: 80px;
-        height: 80px;
+        width: 70px;
+        height: 70px;
     }
     
     .digit-card {
-        font-size: 32px;
+        font-size: 28px;
     }
     
     .time-label {
-        font-size: 14px;
+        font-size: 12px;
     }
     
     .countdown-container {
         padding: 24px 16px;
+        width: 100%;
     }
     
     .time-unit:not(:last-child)::after {
-        right: -12px;
-        font-size: 24px;
+        right: -10px;
+        font-size: 20px;
     }
     
     .nav-items {
@@ -471,32 +473,70 @@ nav {
 
 @media (max-width: 480px) {
     .countdown-display {
-        gap: 16px;
-        flex-direction: column;
+        gap: 8px;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        width: 100%;
+        justify-content: center;
     }
     
     .digital-display {
-        width: 100px;
-        height: 100px;
+        width: 60px;
+        height: 60px;
     }
     
     .digit-card {
-        font-size: 36px;
+        font-size: 24px;
     }
     
     .time-unit:not(:last-child)::after {
-        display: none;
-    }
-    
-    .countdown-display {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
+        right: -8px;
+        font-size: 18px;
+        display: block;
     }
     
     .time-label {
-        font-size: 12px;
+        font-size: 10px;
     }
+    
+    .hero-title {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 380px) {
+    .countdown-display {
+        gap: 4px;
+    }
+    
+    .digital-display {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .digit-card {
+        font-size: 20px;
+    }
+    
+    .time-unit:not(:last-child)::after {
+        right: -5px;
+        font-size: 16px;
+    }
+    
+    .time-label {
+        font-size: 8px;
+    }
+    
+    .countdown-container {
+        padding: 16px 8px;
+    }
+}
+
+/* 确保在任何屏幕尺寸下都禁用倒计时的列布局 */
+.countdown-display {
+    display: flex !important;
+    flex-direction: row !important;
+    grid-template-columns: none !important;
 }
 
 footer {
