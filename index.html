@@ -471,29 +471,29 @@ nav {
 
 @media (max-width: 480px) {
     .countdown-display {
-        gap: 16px;
-        flex-direction: column;
+        gap: 8px;
+        flex-direction: row;
+        flex-wrap: nowrap;
     }
-    
+
     .digital-display {
-        width: 100px;
-        height: 100px;
+        width: 64px;
+        height: 64px;
     }
-    
+
     .digit-card {
-        font-size: 36px;
+        font-size: 28px;
     }
-    
+
     .time-unit:not(:last-child)::after {
-        display: none;
+        right: -8px;
+        font-size: 20px;
     }
-    
-    .countdown-display {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
+
+    .countdown-container {
+        padding: 16px 8px;
     }
-    
+
     .time-label {
         font-size: 12px;
     }
