@@ -13,8 +13,11 @@ const translations = {
     blessingText: '愿所有考生都能发挥出最好的水平，收获理想的成绩！',
     ctaText: '查看备考资料',
     examDate: '2025年6月7日 上午8:00',
+    publishDate: '发布时间：2024年8月21日',
+    announcement: '我们很高兴地宣布，SBS最新作品「水语」已经正式发表。欢迎大家查看和下载。',
+    downloadButton: '点击下载PDF',
     days: '天',
-    hours: '小时', 
+    hours: '小时',
     minutes: '分钟',
     seconds: '秒'
   },
@@ -31,9 +34,12 @@ const translations = {
     blessingText: 'May all students perform their best and achieve their dreams!',
     ctaText: 'View Study Materials',
     examDate: 'June 7, 2025 8:00 AM',
+    publishDate: 'Published on August 21, 2024',
+    announcement: 'We are excited to announce that SBS\' latest work "Water Language" has officially been released. Feel free to check it out and download it.',
+    downloadButton: 'Download PDF',
     days: 'Days',
     hours: 'Hours',
-    minutes: 'Minutes', 
+    minutes: 'Minutes',
     seconds: 'Seconds'
   }
 }; 
