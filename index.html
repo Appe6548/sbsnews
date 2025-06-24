@@ -85,6 +85,45 @@ nav {
     font-size: 24px;
     line-height: 1.6;
     max-width: 800px;
+    margin-bottom: 40px;
+}
+
+.music-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 980px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 400;
+    letter-spacing: -0.022em;
+    transition: all 0.3s ease;
+    backdrop-filter: saturate(180%) blur(20px);
+    min-width: 120px;
+}
+
+.music-button:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.music-button:active {
+    transform: translateY(0);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+@media (max-width: 768px) {
+    .music-button {
+        font-size: 16px;
+        padding: 10px 20px;
+        min-width: 100px;
+    }
 }
 </style>
 </head>
@@ -103,6 +142,7 @@ nav {
 <section class="main-section">
     <h1>恭喜</h1>
     <p>干得漂亮，你实现了这个伟大壮举。<br>愿你心怀梦想，步履不停，青春的旅程才刚刚开始。我们很快就会在前方的道路上再次相遇。</p>
+    <a href="https://music.sbsnews.me" class="music-button" target="_blank">Music</a>
 </section>
 </body>
 </html>
