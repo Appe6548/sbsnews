@@ -4,163 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>News - MMC News</title>
-<style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro SC", "SF Pro Text", "SF Pro Icons", PingFang SC, Helvetica Neue, Helvetica, Arial, sans-serif;
-}
-
-nav {
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(20px);
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 100;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.nav-container {
-  max-width: 1024px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  height: 44px;
-  padding: 0 20px;
-}
-
-.brand {
-  font-weight: 600;
-  font-size: 16px;
-  color: #333;
-  text-decoration: none;
-  margin-right: 40px;
-}
-
-.nav-items {
-  display: flex;
-  list-style: none;
-  gap: 30px;
-  margin-left: auto;
-}
-
-.nav-items li a {
-  color: #333;
-  text-decoration: none;
-  font-size: 14px;
-  transition: color 0.3s ease;
-}
-
-.nav-items li a:hover {
-  color: #0071e3;
-}
-
-.nav-items li a.active {
-  color: #0071e3;
-  font-weight: 500;
-}
-
-.main-content {
-  min-height: 100vh;
-  background: linear-gradient(135deg, #fff6e5 0%, #ffe4ba 100%);
-  padding: 84px 20px 40px;
-}
-
-.news-container {
-  max-width: 1024px;
-  margin: 0 auto;
-}
-
-.news-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 24px;
-  margin-bottom: 40px;
-}
-
-.news-card {
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 12px;
-  padding: 24px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  padding-bottom: 60px;  /* 为日期预留空间 */
-}
-
-.news-card p {
-  font-size: 14px;
-  color: #666;
-  line-height: 1.5;
-  margin-bottom: 16px;  /* 减小段落的下边距 */
-}
-
-.news-card .date {
-  font-size: 12px;
-  color: #999;
-  position: absolute;
-  bottom: 24px;
-  left: 24px;
-}
-
-.news-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
-}
-
-.news-card h2 {
-  font-size: 20px;
-  font-weight: 600;
-  color: #1d1d1f;
-  margin-bottom: 12px;
-}
-
-.news-card p {
-  font-size: 14px;
-  color: #666;
-  line-height: 1.5;
-  margin-bottom: 16px;
-}
-
-.news-card .date {
-  font-size: 12px;
-  color: #999;
-}
-
-@media (max-width: 768px) {
-  .news-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .brand {
-    font-size: 14px;
-    margin-right: 20px;
-  }
-  
-  .nav-items {
-    gap: 15px;
-  }
-  
-  .nav-items li a {
-    font-size: 12px;
-  }
-}
-</style>
+<link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 <nav>
   <div class="nav-container">
     <a href="/" class="brand">MMC News</a>
     <ul class="nav-items">
-      <li><a href="/news.html" class="active">News</a></li>
+      <li><a href="/news.html">News</a></li>
       <li><a href="/archive.html">往期内容</a></li>
       <li><a href="/about.html">关于我们</a></li>
     </ul>
@@ -225,5 +76,6 @@ nav {
 <footer style="text-align: center; padding: 20px 0; color: #666; font-size: 14px;">
     <a href="https://icp.gov.moe/?keyword=20250941" target="_blank" style="color: #666; text-decoration: none;">萌ICP备20250941号</a>
 </footer>
+<script src="/js/main.js"></script>
 </body>
 </html>
