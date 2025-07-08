@@ -1,3 +1,4 @@
+/* --- Base Styles --- */
 * {
   margin: 0;
   padding: 0;
@@ -5,17 +6,21 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro SC", "SF Pro Text", "SF Pro Icons", PingFang SC, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background: #000;
+  color: #fff;
+  overflow-x: hidden;
 }
 
+/* --- Navigation --- */
 nav {
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(20px);
+  background: rgba(29, 29, 31, 0.7);
+  backdrop-filter: saturate(180%) blur(20px);
   position: fixed;
   width: 100%;
   top: 0;
-  z-index: 100;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .nav-container {
@@ -23,30 +28,33 @@ nav {
   margin: 0 auto;
   display: flex;
   align-items: center;
-  height: 44px;
-  padding: 0 20px;
+  height: 48px;
+  padding: 0 22px;
 }
 
 .brand {
   font-weight: 600;
-  font-size: 16px;
-  color: #333;
+  font-size: 17px;
+  color: #f5f5f7;
   text-decoration: none;
+  letter-spacing: -0.022em;
   margin-right: 40px;
 }
 
 .nav-items {
   display: flex;
   list-style: none;
-  gap: 30px;
+  gap: 32px;
   margin-left: auto;
 }
 
 .nav-items li a {
-  color: #333;
+  color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
   font-size: 14px;
+  font-weight: 400;
   transition: color 0.3s ease;
+  letter-spacing: -0.01em;
 }
 
 .nav-items li a:hover {
@@ -54,114 +62,35 @@ nav {
 }
 
 .nav-items li a.active {
-  color: #0071e3;
+  color: #fff;
   font-weight: 500;
 }
 
+/* --- Page-specific Body Backgrounds --- */
+body.light-theme {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    color: #1d1d1f;
+}
+
+body.light-theme nav {
+    background: rgba(255, 255, 255, 0.7);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+body.light-theme .brand,
+body.light-theme .nav-items li a {
+    color: #1d1d1f;
+}
+
+body.light-theme .nav-items li a.active {
+    color: #0071e3;
+}
+
+
+/* --- Main Content Sections --- */
 .main-content {
   min-height: 100vh;
-  background: linear-gradient(135deg, #fff6e5 0%, #ffe4ba 100%);
-  padding: 84px 20px 40px;
-}
-
-.about-container {
-  max-width: 800px;
-  margin: 0 auto;
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 12px;
-  padding: 40px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-}
-
-.about-header {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.about-title {
-  font-size: 32px;
-  font-weight: 600;
-  color: #1d1d1f;
-  margin-bottom: 16px;
-}
-
-.about-subtitle {
-  font-size: 18px;
-  color: #666;
-  line-height: 1.5;
-}
-
-.about-content {
-  font-size: 16px;
-  line-height: 1.8;
-  color: #333;
-}
-
-.about-content p {
-  margin-bottom: 20px;
-}
-
-.about-section {
-  margin-bottom: 40px;
-}
-
-.section-title {
-  font-size: 24px;
-  font-weight: 600;
-  color: #1d1d1f;
-  margin-bottom: 20px;
-}
-
-.news-container {
-  max-width: 1024px;
-  margin: 0 auto;
-}
-
-.news-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 24px;
-  margin-bottom: 40px;
-}
-
-.news-card {
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 12px;
-  padding: 24px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  padding-bottom: 60px;
-}
-
-.news-card p {
-  font-size: 14px;
-  color: #666;
-  line-height: 1.5;
-  margin-bottom: 16px;
-}
-
-.news-card .date {
-  font-size: 12px;
-  color: #999;
-  position: absolute;
-  bottom: 24px;
-  left: 24px;
-}
-
-.news-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
-}
-
-.news-card h2 {
-  font-size: 20px;
-  font-weight: 600;
-  color: #1d1d1f;
-  margin-bottom: 12px;
+  padding: 88px 20px 40px;
 }
 
 .main-section {
@@ -175,85 +104,169 @@ nav {
 }
 
 .main-section h1 {
-    font-size: 64px;
-    font-weight: 800;
+    font-size: 56px;
+    font-weight: 700;
     margin-bottom: 24px;
+    letter-spacing: -0.02em;
 }
 
 .main-section p {
-    font-size: 24px;
+    font-size: 22px;
     line-height: 1.6;
-    max-width: 800px;
+    max-width: 720px;
     margin-bottom: 40px;
+    color: rgba(255, 255, 255, 0.85);
 }
 
+/* --- Glass UI Components --- */
+.glass-card, .news-card, .about-container {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: saturate(180%) blur(15px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover, .news-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.45);
+}
+
+/* --- News Page --- */
+.news-container {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 28px;
+  margin-bottom: 40px;
+}
+
+.news-card {
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding-bottom: 70px; /* Space for date */
+  position: relative;
+}
+
+.news-card h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #f5f5f7;
+  margin-bottom: 12px;
+}
+
+.news-card p {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.news-card .date {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  position: absolute;
+  bottom: 28px;
+  left: 28px;
+}
+
+/* --- About Page --- */
+.about-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px;
+}
+
+.about-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.about-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: #f5f5f7;
+  margin-bottom: 16px;
+}
+
+.about-subtitle {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.5;
+}
+
+.about-content {
+  font-size: 16px;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.about-content p {
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #f5f5f7;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 10px;
+}
+
+/* --- Music Button --- */
 .music-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 12px 24px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 12px 28px;
+    background: rgba(0, 113, 227, 0.8);
+    border: 1px solid transparent;
     border-radius: 980px;
     color: #ffffff;
     text-decoration: none;
     font-size: 17px;
-    font-weight: 400;
-    letter-spacing: -0.022em;
+    font-weight: 500;
+    letter-spacing: -0.02em;
     transition: all 0.3s ease;
-    backdrop-filter: saturate(180%) blur(20px);
-    min-width: 120px;
+    backdrop-filter: saturate(180%) blur(10px);
 }
 
 .music-button:hover {
-    background: rgba(255, 255, 255, 0.15);
-    border-color: rgba(255, 255, 255, 0.3);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    background: rgba(0, 123, 255, 1);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 6px 25px rgba(0, 123, 255, 0.4);
 }
 
 .music-button:active {
-    transform: translateY(0);
-    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(0) scale(1);
+    background: rgba(0, 100, 200, 1);
 }
 
+/* --- Responsive Design --- */
 @media (max-width: 768px) {
-  .about-container {
-    padding: 24px;
-  }
+  .nav-container { height: 44px; }
+  .brand { font-size: 15px; margin-right: 20px; }
+  .nav-items { gap: 20px; }
+  .nav-items li a { font-size: 12px; }
 
-  .about-title {
-    font-size: 24px;
-  }
-
-  .about-subtitle {
-    font-size: 16px;
-  }
-
-  .section-title {
-    font-size: 20px;
-  }
-
-  .brand {
-    font-size: 14px;
-    margin-right: 20px;
-  }
-
-  .nav-items {
-    gap: 15px;
-  }
-
-  .nav-items li a {
-    font-size: 12px;
-  }
+  .main-section h1 { font-size: 40px; }
+  .main-section p { font-size: 18px; }
   
-  .news-grid {
-    grid-template-columns: 1fr;
-  }
+  .news-grid { grid-template-columns: 1fr; gap: 20px; }
+  .news-card, .about-container { padding: 24px; }
+  
+  .about-title { font-size: 28px; }
+  .about-subtitle { font-size: 16px; }
+  .section-title { font-size: 20px; }
 
-  .music-button {
-      font-size: 16px;
-      padding: 10px 20px;
-      min-width: 100px;
-  }
+  .music-button { font-size: 16px; padding: 10px 24px; }
 }
+
