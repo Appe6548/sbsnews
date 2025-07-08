@@ -1,25 +1,45 @@
-/* --- Base Styles --- */
-* {
+/**
+ * Copyright (c) 2025 zdb, Gemini
+ * 
+ * This software is released under the MIT License.
+ * https://opensource.org/licenses/MIT
+ */
+
+/* --- Base & Background --- */
+body {
   margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  overflow-x: hidden;
+  background-color: #1a1a1a; /* Fallback background */
+  color: #fff;
 }
 
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background: #000;
-  color: #fff;
-  overflow-x: hidden;
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.background-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.7) saturate(1.2);
 }
 
 /* --- Navigation --- */
 nav {
-  background: rgba(29, 29, 31, 0.7);
-  backdrop-filter: saturate(180%) blur(20px);
   position: fixed;
   width: 100%;
   top: 0;
   z-index: 1000;
+  background-color: rgba(20, 20, 20, 0.3);
+  backdrop-filter: blur(25px) saturate(180%);
+  -webkit-backdrop-filter: blur(25px) saturate(180%);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -37,7 +57,7 @@ nav {
   font-size: 17px;
   color: #f5f5f7;
   text-decoration: none;
-  letter-spacing: -0.022em;
+  letter-spacing: -0.02em;
   margin-right: 40px;
 }
 
@@ -49,50 +69,48 @@ nav {
 }
 
 .nav-items li a {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.75);
   text-decoration: none;
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 500;
   transition: color 0.3s ease;
   letter-spacing: -0.01em;
 }
 
 .nav-items li a:hover {
-  color: #0071e3;
+  color: #fff;
 }
 
 .nav-items li a.active {
   color: #fff;
-  font-weight: 500;
+  font-weight: 600;
 }
 
-/* --- Page-specific Body Backgrounds --- */
-body.light-theme {
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-    color: #1d1d1f;
-}
-
-body.light-theme nav {
-    background: rgba(255, 255, 255, 0.7);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-body.light-theme .brand,
-body.light-theme .nav-items li a {
-    color: #1d1d1f;
-}
-
-body.light-theme .nav-items li a.active {
-    color: #0071e3;
-}
-
-
-/* --- Main Content Sections --- */
+/* --- Main Content --- */
 .main-content {
-  min-height: 100vh;
   padding: 88px 20px 40px;
+  min-height: 100vh;
 }
 
+/* --- Glass Card Base Style --- */
+.glass-card {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.glass-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.35);
+}
+
+/* --- Index Page --- */
 .main-section {
     min-height: 100vh;
     display: flex;
@@ -118,19 +136,24 @@ body.light-theme .nav-items li a.active {
     color: rgba(255, 255, 255, 0.85);
 }
 
-/* --- Glass UI Components --- */
-.glass-card, .news-card, .about-container {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: saturate(180%) blur(15px);
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.music-button {
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 12px 28px;
+  border-radius: 980px;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  text-decoration: none;
 }
 
-.glass-card:hover, .news-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.45);
+.music-button:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px) scale(1.02);
 }
 
 /* --- News Page --- */
@@ -143,7 +166,6 @@ body.light-theme .nav-items li a.active {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 28px;
-  margin-bottom: 40px;
 }
 
 .news-card {
@@ -151,7 +173,7 @@ body.light-theme .nav-items li a.active {
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding-bottom: 70px; /* Space for date */
+  padding-bottom: 70px;
   position: relative;
 }
 
@@ -164,7 +186,7 @@ body.light-theme .nav-items li a.active {
 
 .news-card p {
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.75);
   line-height: 1.5;
   margin-bottom: 20px;
 }
@@ -208,10 +230,6 @@ body.light-theme .nav-items li a.active {
   color: rgba(255, 255, 255, 0.85);
 }
 
-.about-content p {
-  margin-bottom: 20px;
-}
-
 .section-title {
   font-size: 24px;
   font-weight: 600;
@@ -219,35 +237,6 @@ body.light-theme .nav-items li a.active {
   margin-bottom: 20px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   padding-bottom: 10px;
-}
-
-/* --- Music Button --- */
-.music-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 12px 28px;
-    background: rgba(0, 113, 227, 0.8);
-    border: 1px solid transparent;
-    border-radius: 980px;
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 17px;
-    font-weight: 500;
-    letter-spacing: -0.02em;
-    transition: all 0.3s ease;
-    backdrop-filter: saturate(180%) blur(10px);
-}
-
-.music-button:hover {
-    background: rgba(0, 123, 255, 1);
-    transform: translateY(-2px) scale(1.02);
-    box-shadow: 0 6px 25px rgba(0, 123, 255, 0.4);
-}
-
-.music-button:active {
-    transform: translateY(0) scale(1);
-    background: rgba(0, 100, 200, 1);
 }
 
 /* --- Responsive Design --- */
@@ -269,4 +258,3 @@ body.light-theme .nav-items li a.active {
 
   .music-button { font-size: 16px; padding: 10px 24px; }
 }
-
