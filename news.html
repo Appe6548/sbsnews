@@ -7,9 +7,6 @@
 <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-<div class="background">
-    <img src="https://picsum.photos/1920/1080?random=2" alt="背景图片" class="background-img">
-</div>
 <nav>
   <div class="nav-container">
     <a href="/" class="brand">MMC News</a>
@@ -17,6 +14,23 @@
       <li><a href="/news.html">News</a></li>
       <li><a href="/archive.html">往期内容</a></li>
       <li><a href="/about.html">关于我们</a></li>
+      <li class="theme-toggle">
+        <button class="theme-toggle-btn">💻 根据系统选择</button>
+        <div class="theme-dropdown">
+          <div class="theme-option" data-theme="light">
+            <span class="theme-icon">☀️</span>
+            <span>白天模式</span>
+          </div>
+          <div class="theme-option" data-theme="dark">
+            <span class="theme-icon">🌙</span>
+            <span>夜间模式</span>
+          </div>
+          <div class="theme-option active" data-theme="system">
+            <span class="theme-icon">💻</span>
+            <span>根据系统选择</span>
+          </div>
+        </div>
+      </li>
     </ul>
   </div>
 </nav>

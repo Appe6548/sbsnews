@@ -1,94 +1,504 @@
+/* --- CSS Variables for Themes --- */
+:root {
+  /* Dark theme (default) */
+  --bg-primary: #1a1a1a;
+  --bg-secondary: rgba(45, 45, 47, 0.8);
+  --bg-nav: rgba(40, 40, 42, 0.95);
+  --bg-button: rgba(70, 70, 72, 0.8);
+  --bg-button-hover: rgba(85, 85, 87, 0.9);
+  --text-primary: #f5f5f7;
+  --text-secondary: #ccc;
+  --text-muted: #999;
+  --text-footer: #666;
+  --border-color: rgba(255, 255, 255, 0.15);
+  --border-nav: rgba(255, 255, 255, 0.1);
+  --shadow-color: rgba(0, 0, 0, 0.5);
+  --shadow-hover: rgba(0, 0, 0, 0.6);
+}
+
+[data-theme="light"] {
+  /* Light theme */
+  --bg-primary: #f5f5f7;
+  --bg-secondary: rgba(255, 255, 255, 0.8);
+  --bg-nav: rgba(255, 255, 255, 0.95);
+  --bg-button: rgba(230, 230, 232, 0.8);
+  --bg-button-hover: rgba(210, 210, 212, 0.9);
+  --text-primary: #1d1d1f;
+  --text-secondary: #333;
+  --text-muted: #666;
+  --text-footer: #999;
+  --border-color: rgba(0, 0, 0, 0.15);
+  --border-nav: rgba(0, 0, 0, 0.1);
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --shadow-hover: rgba(0, 0, 0, 0.15);
+}
+
+/* --- Base Styles --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    overflow: hidden; /* Prevent background scrolling */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh; /* Ensure content is centered */
-    background-color: #f0f2f5; /* Fallback background color */
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  line-height: 1.6;
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Background container */
-.background {
-    position: fixed; /* Fixed background */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1; /* Ensure background is at the bottom */
-    overflow: hidden;
+/* --- Navigation --- */
+nav {
+  background: var(--bg-nav);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid var(--border-nav);
+  transition: background-color 0.3s ease;
 }
 
-.background-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ensure image covers the entire background */
-    filter: brightness(0.8); /* Slightly darken the background to make the glass effect stand out */
+.nav-container {
+  max-width: 1024px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  height: 48px;
+  padding: 0 22px;
 }
 
-/* Glass effect container */
+.brand {
+  font-weight: 600;
+  font-size: 17px;
+  color: var(--text-primary);
+  text-decoration: none;
+  letter-spacing: -0.022em;
+  margin-right: 40px;
+  transition: color 0.3s ease;
+}
+
+.nav-items {
+  display: flex;
+  list-style: none;
+  gap: 32px;
+  margin-left: auto;
+}
+
+.nav-items a {
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 400;
+  opacity: 0.8;
+  transition: opacity 0.3s ease, color 0.3s ease;
+}
+
+.nav-items a:hover {
+  opacity: 1;
+}
+
+/* --- Main Content --- */
+main {
+  margin-top: 48px;
+  min-height: calc(100vh - 48px);
+  padding: 40px 0;
+}
+
 .glass-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    position: relative; /* Ensure glass card is on top of it */
-    z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 48px);
+  padding: 40px 20px;
 }
 
-.glass-card {
-    /* Glass card size */
-    width: 350px;
-    height: 250px;
-    padding: 20px;
-    border-radius: 20px; /* Rounded corners */
-
-    /* ------ Core frosted glass effect ------ */
-    background-color: rgba(255, 255, 255, 0.15); /* Translucent background */
-    backdrop-filter: blur(20px) saturate(180%); /* Blur and saturation */
-    -webkit-backdrop-filter: blur(20px) saturate(180%); /* Safari compatibility */
-
-    /* Border and shadow for depth */
-    border: 1px solid rgba(255, 255, 255, 0.2); /* Inner border, adds texture */
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2); /* Outer shadow, adds floating feel */
-
-    /* Text style */
-    color: #fff;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    text-align: center;
-}
-
-.glass-card h2 {
-    font-size: 2em;
-    margin-bottom: 10px;
+/* --- Home Page Styles --- */
+.glass-card h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 700;
 }
 
 .glass-card p {
-    font-size: 0.9em;
-    line-height: 1.5;
-    margin-bottom: 20px;
+  font-size: 1.1em;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  text-align: center;
 }
 
-.glass-card button {
-    background-color: rgba(255, 255, 255, 0.3);
-    border: none;
-    padding: 10px 20px;
-    border-radius: 15px;
-    color: #fff;
-    font-size: 1em;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    backdrop-filter: blur(5px); /* Button itself is slightly blurred */
-    -webkit-backdrop-filter: blur(5px);
+.glass-card {
+  background: var(--bg-secondary);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 20px;
+  color: var(--text-primary);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 32px 0 var(--shadow-color);
+  transition: all 0.3s ease;
 }
 
-.glass-card button:hover {
-    background-color: rgba(255, 255, 255, 0.4);
-    transform: translateY(-2px); /* Slightly float up on hover */
+.glass-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px 0 var(--shadow-hover);
+}
+
+.glass-container .glass-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.music-button {
+  display: inline-block;
+  background: var(--bg-button);
+  border: 1px solid var(--border-color);
+  padding: 12px 24px;
+  border-radius: 12px;
+  color: var(--text-primary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  text-align: center;
+  margin: 0 auto;
+}
+
+.music-button:hover {
+  background: var(--bg-button-hover);
+  transform: translateY(-2px);
+}
+
+/* --- Archive Page Styles --- */
+.archive-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.category-section {
+  margin-bottom: 60px;
+}
+
+.category-header {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.category-title {
+  font-size: 2.2em;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+  transition: color 0.3s ease;
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.video-grid .glass-card {
+  padding: 0;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.video-thumbnail {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+}
+
+.video-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 0;
+}
+
+.video-duration {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.video-info {
+  padding: 16px;
+}
+
+.video-title {
+  font-size: 1.1em;
+  font-weight: 600;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.video-meta {
+  font-size: 0.9em;
+  opacity: 0.8;
+}
+
+/* --- News Page Styles --- */
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.news-grid .glass-card {
+  padding: 24px;
+  cursor: pointer;
+}
+
+.news-grid .glass-card h2 {
+  font-size: 1.4em;
+  font-weight: 600;
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+
+.news-grid .glass-card p {
+  font-size: 0.95em;
+  line-height: 1.6;
+  margin-bottom: 16px;
+  opacity: 0.9;
+  text-align: left;
+}
+
+.news-grid .glass-card .date {
+  font-size: 0.85em;
+  opacity: 0.7;
+  font-weight: 500;
+}
+
+/* --- About Page Styles --- */
+.about-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.about-title {
+  font-size: 2.5em;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.about-subtitle {
+  font-size: 1.2em;
+  opacity: 0.8;
+  font-weight: 300;
+}
+
+.about-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.about-section {
+  margin-bottom: 40px;
+}
+
+.section-title {
+  font-size: 1.5em;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+.about-section p {
+  font-size: 1em;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.about-section ul {
+  margin-left: 20px;
+  margin-bottom: 20px;
+  line-height: 1.8;
+}
+
+.acknowledgment-group {
+  margin-bottom: 24px;
+}
+
+.acknowledgment-group h3 {
+  font-size: 1.1em;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.acknowledgment-group p {
+  color: var(--text-secondary);
+  font-size: 0.9em;
+  transition: color 0.3s ease;
+}
+
+/* --- Footer Styles --- */
+footer {
+  text-align: center;
+  padding: 40px 0;
+  color: var(--text-footer);
+  font-size: 14px;
+  margin-top: 60px;
+  transition: color 0.3s ease;
+}
+
+footer a {
+  color: var(--text-footer);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: var(--text-muted);
+}
+
+/* --- Theme Toggle Styles --- */
+.theme-toggle {
+  position: relative;
+  margin-left: 20px;
+}
+
+.theme-toggle-btn {
+  background: none;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 6px 12px;
+  color: var(--text-primary);
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.theme-toggle-btn:hover {
+  background: var(--bg-button);
+}
+
+.theme-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 8px;
+  background: var(--bg-nav);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 8px 0;
+  min-width: 120px;
+  display: none;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px 0 var(--shadow-color);
+  z-index: 1001;
+}
+
+.theme-dropdown.show {
+  display: block;
+}
+
+.theme-option {
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 12px;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.theme-option:hover {
+  background: var(--bg-button);
+}
+
+.theme-option.active {
+  background: var(--bg-button);
+  font-weight: 500;
+}
+
+.theme-icon {
+  font-size: 14px;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+  .nav-container {
+    padding: 0 16px;
+  }
+  
+  .nav-items {
+    gap: 20px;
+  }
+  
+  .glass-container {
+    padding: 20px 16px;
+  }
+  
+  .glass-card h1 {
+    font-size: 2em;
+  }
+  
+  .video-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .archive-container {
+    padding: 0 16px;
+  }
+  
+  .category-title {
+    font-size: 1.8em;
+  }
+  
+  .news-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 0 16px;
+  }
+  
+  .about-title {
+    font-size: 2em;
+  }
+  
+  .about-subtitle {
+    font-size: 1.1em;
+  }
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+  .video-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

@@ -7,9 +7,6 @@
 <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-<div class="background">
-    <img src="https://picsum.photos/1920/1080?random=3" alt="背景图片" class="background-img">
-</div>
 <nav>
   <div class="nav-container">
     <a href="/" class="brand">MMC News</a>
@@ -17,6 +14,23 @@
       <li><a href="/news.html">News</a></li>
       <li><a href="/archive.html">往期内容</a></li>
       <li><a href="/about.html">关于我们</a></li>
+      <li class="theme-toggle">
+        <button class="theme-toggle-btn">💻 根据系统选择</button>
+        <div class="theme-dropdown">
+          <div class="theme-option" data-theme="light">
+            <span class="theme-icon">☀️</span>
+            <span>白天模式</span>
+          </div>
+          <div class="theme-option" data-theme="dark">
+            <span class="theme-icon">🌙</span>
+            <span>夜间模式</span>
+          </div>
+          <div class="theme-option active" data-theme="system">
+            <span class="theme-icon">💻</span>
+            <span>根据系统选择</span>
+          </div>
+        </div>
+      </li>
     </ul>
   </div>
 </nav>
@@ -50,20 +64,20 @@
       </div>
       <div class="about-section">
         <h2 class="section-title">联系方式</h2>
-        <p>让我们一起创造精彩: contact@sbsnews.us.kg</p>
+        <p>让我们一起创造精彩: contact@mmc.edu.kg</p>
       </div>
       <div class="about-section" style="border-top: 1px solid rgba(0, 0, 0, 0.1); padding-top: 40px;">
         <h2 class="section-title">致谢</h2>
         <p style="margin-bottom: 30px;">感谢所有帮助 MMC News 成长的伙伴们。正是你们的支持，才让我们能够不断前行。</p>
         
         <div class="acknowledgment-group">
-          <h3 style="font-size: 18px; color: #1d1d1f; margin-bottom: 12px;">创意与内容支持</h3>
-          <p style="margin-bottom: 20px; color: #666;">OpenAI · Claude · Runway · PiKa · 海螺 · 可灵 · Adobe · Spotify · CapCut</p>
+          <h3 style="font-size: 18px; margin-bottom: 12px;">创意与内容支持</h3>
+          <p style="margin-bottom: 20px;">OpenAI · Claude · Runway · PiKa · 海螺 · 可灵 · Adobe · Spotify · CapCut</p>
         </div>
         
         <div class="acknowledgment-group">
-          <h3 style="font-size: 18px; color: #1d1d1f; margin-bottom: 12px;">技术与灵感之源</h3>
-          <p style="margin-bottom: 20px; color: #666;">Microsoft · Apple · Google · GitHub · Cloudflare · DigitalPlat · Cursor · Trae · jsDelivr</p>
+          <h3 style="font-size: 18px; margin-bottom: 12px;">技术与灵感之源</h3>
+          <p style="margin-bottom: 20px;">Microsoft · Apple · Google · GitHub · Cloudflare · DigitalPlat · Cursor · Trae · jsDelivr</p>
         </div>
         
         <p style="font-size: 14px; color: #999; margin-top: 30px; font-style: italic;">感谢有以上以及所有关心、支持 MMC News 的你们，此项目得以完成。<br>感谢123云盘，没有你，此项目将更快完成。</p>
