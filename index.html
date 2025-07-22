@@ -1,47 +1,60 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>恭喜 - 青春的旅程</title>
-<link rel="stylesheet" href="/css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MMC News - 真实的力量</title>
+    <link rel="stylesheet" href="/css/apple-style.css">
 </head>
 <body>
-<nav>
-    <div class="nav-container">
-        <a href="/" class="brand">MMC News</a>
-        <ul class="nav-items">
-            <li><a href="/news.html">News</a></li>
-            <li><a href="/archive.html">往期内容</a></li>
-            <li><a href="/about.html">关于我们</a></li>
-            <li class="theme-toggle">
-                <button class="theme-toggle-btn">💻 根据系统选择</button>
-                <div class="theme-dropdown">
-                    <div class="theme-option" data-theme="light">
-                        <span class="theme-icon">☀️</span>
-                        <span>白天模式</span>
-                    </div>
-                    <div class="theme-option" data-theme="dark">
-                        <span class="theme-icon">🌙</span>
-                        <span>夜间模式</span>
-                    </div>
-                    <div class="theme-option active" data-theme="system">
-                        <span class="theme-icon">💻</span>
-                        <span>根据系统选择</span>
-                    </div>
-                </div>
-            </li>
-        </ul>
-    </div>
-</nav>
+    <nav class="nav-global">
+        <div class="nav-container">
+            <a href="/" class="nav-brand">MMC News</a>
+            <ul class="nav-menu">
+                <li><a href="/news.html" class="nav-link">新闻</a></li>
+                <li><a href="/archive.html" class="nav-link">往期内容</a></li>
+                <li><a href="/about.html" class="nav-link">关于我们</a></li>
+        <li class="theme-toggle">
+          <button class="theme-toggle-button">💻</button>
+          <div class="theme-menu">
+            <div class="theme-option" data-theme="light">
+              <span class="theme-icon">☀️</span>
+              <span>浅色模式</span>
+            </div>
+            <div class="theme-option" data-theme="dark">
+              <span class="theme-icon">🌙</span>
+              <span>深色模式</span>
+            </div>
+            <div class="theme-option active" data-theme="system">
+              <span class="theme-icon">💻</span>
+              <span>跟随系统</span>
+            </div>
+          </div>
+        </li>
+            </ul>
+        </div>
+    </nav>
 
-<section class="glass-container">
-    <div class="glass-card">
-        <h1>恭喜</h1>
-        <p>干得漂亮，你实现了这个伟大壮举。<br>愿你心怀梦想，步履不停，青春的旅程才刚刚开始。我们很快就会在前方的道路上再次相遇。</p>
-        <a href="https://music.sbs.edu.deal" class="music-button" target="_blank">Music</a>
-    </div>
-</section>
-<script src="/js/main.js"></script>
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">恭喜</h1>
+                <p class="hero-description">
+                    干得漂亮，你实现了这个伟大壮举。<br>
+                    愿你心怀梦想，步履不停，青春的旅程才刚刚开始。<br>
+                    我们很快就会在前方的道路上再次相遇。
+                </p>
+                <a href="https://music.sbs.edu.deal" class="button" target="_blank">探索音乐</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p class="footer-text">© 2024 MMC News. 保留所有权利。</p>
+        </div>
+    </footer>
+
+    <script src="/js/apple-theme.js"></script>
 </body>
 </html>

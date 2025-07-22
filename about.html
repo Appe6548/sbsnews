@@ -1,59 +1,60 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>关于我们 - MMC News</title>
-<link rel="stylesheet" href="/css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>关于我们 - MMC News</title>
+  <link rel="stylesheet" href="/css/apple-style.css">
 </head>
 <body>
-<nav>
-  <div class="nav-container">
-    <a href="/" class="brand">MMC News</a>
-    <ul class="nav-items">
-      <li><a href="/news.html">News</a></li>
-      <li><a href="/archive.html">往期内容</a></li>
-      <li><a href="/about.html">关于我们</a></li>
-      <li class="theme-toggle">
-        <button class="theme-toggle-btn">💻 根据系统选择</button>
-        <div class="theme-dropdown">
-          <div class="theme-option" data-theme="light">
-            <span class="theme-icon">☀️</span>
-            <span>白天模式</span>
+  <nav class="nav-global">
+    <div class="nav-container">
+      <a href="/" class="nav-brand">MMC News</a>
+      <ul class="nav-menu">
+        <li><a href="/news.html" class="nav-link">新闻</a></li>
+        <li><a href="/archive.html" class="nav-link">往期内容</a></li>
+        <li><a href="/about.html" class="nav-link">关于我们</a></li>
+        <li class="theme-toggle">
+          <button class="theme-toggle-button">💻</button>
+          <div class="theme-menu">
+            <div class="theme-option" data-theme="light">
+              <span class="theme-icon">☀️</span>
+              <span>浅色模式</span>
+            </div>
+            <div class="theme-option" data-theme="dark">
+              <span class="theme-icon">🌙</span>
+              <span>深色模式</span>
+            </div>
+            <div class="theme-option active" data-theme="system">
+              <span class="theme-icon">💻</span>
+              <span>跟随系统</span>
+            </div>
           </div>
-          <div class="theme-option" data-theme="dark">
-            <span class="theme-icon">🌙</span>
-            <span>夜间模式</span>
-          </div>
-          <div class="theme-option active" data-theme="system">
-            <span class="theme-icon">💻</span>
-            <span>根据系统选择</span>
-          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+<main>
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h1 class="section-title">关于 MMC News</h1>
+          <p class="section-description">专注报道，传递价值</p>
         </div>
-      </li>
-    </ul>
-  </div>
-</nav>
-<main class="glass-container">
-  <div class="glass-card">
-    <header class="about-header">
-      <h1 class="about-title">关于 MMC News</h1>
-      <p class="about-subtitle">专注报道，传递价值</p>
-    </header>
-    <div class="about-content">
-      <div class="about-section">
-        <h2 class="section-title">我们的故事</h2>
-        <p>MMC News 诞生于对真实的追求。作为阳光博思高级中学的官方新闻平台，我们用独特的视角，记录每一个值得被铭记的瞬间。在这里，新闻不仅仅是信息的传递，更是故事的讲述，是成长的见证。</p>
-      </div>
-      <div class="about-section">
-        <h2 class="section-title">我们的信念</h2>
-        <p>我们相信新闻的力量。每一篇报道，都是一次对真相的探寻；每一个故事，都是一段值得分享的历程。在这里，我们：</p>
-        <ul style="margin-left: 20px; margin-bottom: 20px; line-height: 1.8;">
-          <li>用心讲述每一个打动人心的故事</li>
-          <li>细致记录每一刻值得铭记的时光</li>
-          <li>永远保持对新闻的热爱与敬畏</li>
-        </ul>
-      </div>
+        
+        <div class="about-section">
+          <h2 class="section-title">我们的故事</h2>
+          <p>MMC News 诞生于对真实的追求。作为阳光博思高级中学的官方新闻平台，我们用独特的视角，记录每一个值得被铭记的瞬间。在这里，新闻不仅仅是信息的传递，更是故事的讲述，是成长的见证。</p>
+        </div>
+        <div class="about-section">
+          <h2>我们的信念</h2>
+          <p>我们相信新闻的力量。每一篇报道，都是一次对真相的探寻；每一个故事，都是一段值得分享的历程。在这里，我们：</p>
+          <ul>
+            <li>用心讲述每一个打动人心的故事</li>
+            <li>细致记录每一刻值得铭记的时光</li>
+            <li>永远保持对新闻的热爱与敬畏</li>
+          </ul>
+        </div>
       <div class="about-section">
         <h2 class="section-title">创新与突破</h2>
         <p>新闻，应该是一场美好的体验。我们不断探索新的可能，让每一篇报道都成为一次心灵的对话。在这里，创新不只是一个词，更是对我们的承诺。</p>
@@ -71,23 +72,26 @@
         <p style="margin-bottom: 30px;">感谢所有帮助 MMC News 成长的伙伴们。正是你们的支持，才让我们能够不断前行。</p>
         
         <div class="acknowledgment-group">
-          <h3 style="font-size: 18px; margin-bottom: 12px;">创意与内容支持</h3>
-          <p style="margin-bottom: 20px;">OpenAI · Claude · Runway · PiKa · 海螺 · 可灵 · Adobe · Spotify · CapCut</p>
+          <h3>创意与内容支持</h3>
+          <p>OpenAI · Claude · Runway · PiKa · 海螺 · 可灵 · Adobe · Spotify · CapCut</p>
         </div>
         
         <div class="acknowledgment-group">
-          <h3 style="font-size: 18px; margin-bottom: 12px;">技术与灵感之源</h3>
-          <p style="margin-bottom: 20px;">Microsoft · Apple · Google · GitHub · Cloudflare · DigitalPlat · Cursor · Trae · jsDelivr</p>
+          <h3>技术与灵感之源</h3>
+          <p>Microsoft · Apple · Google · GitHub · Cloudflare · DigitalPlat · Cursor · Trae · jsDelivr</p>
         </div>
         
-        <p style="font-size: 14px; color: #999; margin-top: 30px; font-style: italic;">感谢有以上以及所有关心、支持 MMC News 的你们，此项目得以完成。<br>感谢123云盘，没有你，此项目将更快完成。</p>
+        <p style="font-size: 0.875rem; color: var(--color-text-secondary); margin-top: var(--spacing-xl); font-style: italic;">感谢有以上以及所有关心、支持 MMC News 的你们，此项目得以完成。<br>感谢123云盘，没有你，此项目将更快完成。</p>
+        </div>
       </div>
+    </section>
+  </main>
+  
+  <footer>
+    <div class="footer-content">
+      <p class="footer-text"><a href="https://icp.gov.moe/?keyword=20250941" target="_blank">萌ICP备20250941号</a></p>
     </div>
-  </div>
-</main>
-<footer style="text-align: center; padding: 20px 0; color: #666; font-size: 14px;">
-    <a href="https://icp.gov.moe/?keyword=20250941" target="_blank" style="color: #666; text-decoration: none;">萌ICP备20250941号</a>
-</footer>
-<script src="/js/main.js"></script>
+  </footer>
+  <script src="/js/apple-theme.js"></script>
 </body>
 </html>
