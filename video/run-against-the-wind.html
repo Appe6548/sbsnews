@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>昌景黄の舞 - MMC News</title>
+    <title>逆風を走れ、雲の彼方へ - MMC News</title>
     <style>
-        /* ... 与之前相同的基础样式 ... */
         * {
             margin: 0;
             padding: 0;
@@ -15,59 +14,6 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, "SF Pro SC", "SF Pro Text", "SF Pro Icons", PingFang SC, Helvetica Neue, Helvetica, Arial, sans-serif;
             background: #f5f5f7;
-        }
-
-        /* ... 其他样式保持不变 ... */
-
-        .video-description {
-            font-size: 16px;
-            line-height: 1.5;
-            color: #666;
-            position: relative;
-        }
-
-        .description-content {
-            white-space: pre-line;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .description-content.collapsed {
-            max-height: 24px; /* 1行高度 */
-        }
-
-        .description-content.collapsed::after {
-            content: "...";
-            position: absolute;
-            right: 40px;
-            bottom: 0;
-            background: white;
-            padding-left: 4px;
-        }
-
-        .toggle-button {
-            color: #0071e3;
-            font-size: 14px;
-            cursor: pointer;
-            user-select: none;
-            display: inline-block;
-            margin-left: 4px;
-        }
-
-        .toggle-button:hover {
-            text-decoration: underline;
-        }
-
-        .toggle-button.expand {
-            position: absolute;
-            right: 0;
-            bottom: 0;
-            background: white;
-        }
-
-        .toggle-button.collapse {
-            display: block;
-            margin-top: 8px;
         }
 
         nav {
@@ -157,6 +103,57 @@
             color: #666;
             margin-bottom: 16px;
         }
+
+        .video-description {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #666;
+            position: relative;
+        }
+
+        .description-content {
+            white-space: pre-line;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .description-content.collapsed {
+            max-height: 24px;
+        }
+
+        .description-content.collapsed::after {
+            content: "...";
+            position: absolute;
+            right: 40px;
+            bottom: 0;
+            background: white;
+            padding-left: 4px;
+        }
+
+        .toggle-button {
+            color: #0071e3;
+            font-size: 14px;
+            cursor: pointer;
+            user-select: none;
+            display: inline-block;
+            margin-left: 4px;
+        }
+
+        .toggle-button:hover {
+            text-decoration: underline;
+        }
+
+        .toggle-button.expand {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            background: white;
+        }
+
+        .toggle-button.collapse {
+            display: block;
+            margin-top: 8px;
+        }
     </style>
 </head>
 <body>
@@ -173,22 +170,25 @@
 
     <main class="main-content">
         <div class="video-info">
-            <h1 class="video-title">昌景黄の舞</h1>
+            <h1 class="video-title">逆風を走れ、雲の彼方へ</h1>
             <div class="video-meta">
-                <span>发布于：2024年2月20日</span>
-                <span style="margin-left: 16px;">时长：0:38</span>
+                <span>发布于：待补充</span>
+                <span style="margin-left: 16px;">时长：--:--</span>
             </div>
             <div class="video-description">
-                <div class="description-content collapsed">非常感谢昌景黄老师的友情出演，来欣赏由昌景黄老师呈现的舞蹈。</div>
+                <div class="description-content collapsed">简介待补充</div>
                 <span class="toggle-button expand">展开</span>
                 <span class="toggle-button collapse" style="display: none;">收起</span>
             </div>
         </div>
 
         <div class="video-container">
-            <video id="video" controls></video>
+            <video id="video" controls playsinline webkit-playsinline>
+                您的浏览器不支持视频播放，请更新至最新版本。
+            </video>
         </div>
     </main>
+
     <footer style="text-align: center; padding: 20px 0; color: #666; font-size: 14px;">
         <a href="https://icp.gov.moe/?keyword=20250941" target="_blank" style="color: #666; text-decoration: none;">萌ICP备20250941号</a>
     </footer>
@@ -196,40 +196,34 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const video = document.getElementById('video');
-            const videoSrc = 'https://r2.sbsnews.me/%E6%98%8C%E6%99%AF%E9%BB%84%E3%81%AE%E8%88%9E.mp4';
+            const videoSrc = 'https://r2.sbsnews.me/%E9%80%86%E9%A2%A8%E3%82%92%E8%B5%B0%E3%82%8C%E3%80%81%E9%9B%B2%E3%81%AE%E5%BD%BC%E6%96%B9%E3%81%B8.mp4';
             video.src = videoSrc;
             video.load();
 
-            // 简介展开/收起功能
             const content = document.querySelector('.description-content');
             const expandBtn = document.querySelector('.toggle-button.expand');
             const collapseBtn = document.querySelector('.toggle-button.collapse');
 
-            // 检查内容是否需要展开按钮
             function checkOverflow() {
                 const isOverflowing = content.scrollHeight > 24;
                 expandBtn.style.display = isOverflowing && content.classList.contains('collapsed') ? 'inline-block' : 'none';
             }
 
-            // 展开内容
             expandBtn.addEventListener('click', () => {
                 content.classList.remove('collapsed');
                 expandBtn.style.display = 'none';
                 collapseBtn.style.display = 'block';
             });
 
-            // 收起内容
             collapseBtn.addEventListener('click', () => {
                 content.classList.add('collapsed');
                 collapseBtn.style.display = 'none';
                 expandBtn.style.display = 'inline-block';
             });
 
-            // 页面加载后检查是否需要展开按钮
             window.addEventListener('load', checkOverflow);
-            // 窗口大小改变时重新检查
             window.addEventListener('resize', checkOverflow);
         });
     </script>
 </body>
-</html> 
+</html>

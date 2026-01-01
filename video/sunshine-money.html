@@ -194,8 +194,7 @@
 
         <div class="video-container">
             <video id="video" controls playsinline webkit-playsinline>
-                <source src="https://r2.sbsnews.me/%E3%80%8A%E9%98%B3%E5%85%89%E5%8F%91%E8%B4%A2%E8%AE%B0%E2%80%94%E5%A6%82%E4%BD%95%E4%BB%8E%E7%A0%94%E5%AD%A6%E4%B8%AD%E7%89%9F%E5%8F%96%E6%9A%B4%E5%88%A9%E3%80%8B.mov" type="video/quicktime">
-                您的设备不支持 MOV 视频播放，请使用支持 HTML5 视频播放的浏览器或下载视频。
+                您的浏览器不支持视频播放，请更新至最新版本。
             </video>
         </div>
     </main>
@@ -203,39 +202,12 @@
         <a href="https://icp.gov.moe/?keyword=20250941" target="_blank" style="color: #666; text-decoration: none;">萌ICP备20250941号</a>
     </footer>
 
-    <script src="https://unpkg.com/mux.js@5.12.1/dist/mux.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const video = document.getElementById('video');
-            const videoSrc = 'https://r2.sbsnews.me/%E3%80%8A%E9%98%B3%E5%85%89%E5%8F%91%E8%B4%A2%E8%AE%B0%E2%80%94%E5%A6%82%E4%BD%95%E4%BB%8E%E7%A0%94%E5%AD%A6%E4%B8%AD%E7%89%9F%E5%8F%96%E6%9A%B4%E5%88%A9%E3%80%8B.mov';
-
-            // 检查浏览器是否支持原生 MOV 播放
-            if (video.canPlayType('video/quicktime')) {
-                video.src = videoSrc;
-            } else {
-                // 使用 mux.js 处理
-                fetch(videoSrc)
-                    .then(response => response.arrayBuffer())
-                    .then(buffer => {
-                        const uint8Array = new Uint8Array(buffer);
-                        const mp4Data = muxjs.mp4.transmux(uint8Array);
-
-                        // 创建 MediaSource
-                        const mediaSource = new MediaSource();
-                        video.src = URL.createObjectURL(mediaSource);
-
-                        mediaSource.addEventListener('sourceopen', () => {
-                            const sourceBuffer = mediaSource.addSourceBuffer('video/mp4; codecs="avc1.42E01E, mp4a.40.2"');
-
-                            sourceBuffer.addEventListener('updateend', () => {
-                                mediaSource.endOfStream();
-                            });
-
-                            sourceBuffer.appendBuffer(mp4Data.buffer);
-                        });
-                    })
-                    .catch(error => console.error('Error:', error));
-            }
+            const videoSrc = 'https://r2.sbsnews.me/%E3%80%8A%E9%98%B3%E5%85%89%E5%8F%91%E8%B4%A2%E8%AE%B0%E2%80%94%E5%A6%82%E4%BD%95%E4%BB%8E%E7%A0%94%E5%AD%A6%E4%B8%AD%E7%89%9F%E5%8F%96%E6%9A%B4%E5%88%A9%E3%80%8B.mp4';
+            video.src = videoSrc;
+            video.load();
 
             // 简介展开/收起功能
             const content = document.querySelector('.description-content');

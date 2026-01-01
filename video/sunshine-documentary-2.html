@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>阳光纪录片2 - MMC News</title>
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <style>
         * {
             margin: 0;
@@ -234,8 +233,8 @@
             const languageSwitch = document.querySelector('.language-switch');
             
             const videoSources = {
-                english: 'https://cdn.jsdelivr.net/gh/Appe6548/SBSm3u8/1080p阳光纪录片2-英文-中英双语字幕副本/stream.m3u8',
-                nanchang: 'https://cdn.jsdelivr.net/gh/Appe6548/SBSm3u8/720p_480p_阳光纪录片2-南昌话-中英双语字幕-last.MOV/720p/stream.m3u8'
+                english: 'https://r2.sbsnews.me/%E9%98%B3%E5%85%89%E7%BA%AA%E5%BD%95%E7%89%872-%E8%8B%B1%E6%96%87-%E4%B8%AD%E8%8B%B1%E5%8F%8C%E8%AF%AD%E5%AD%97%E5%B9%95-last.mp4',
+                nanchang: 'https://r2.sbsnews.me/%E9%98%B3%E5%85%89%E7%BA%AA%E5%BD%95%E7%89%872-%E5%8D%97%E6%98%8C%E8%AF%9D-%E4%B8%AD%E8%8B%B1%E5%8F%8C%E8%AF%AD%E5%AD%97%E5%B9%95-last.MOV'
             };
 
             let currentLanguage = 'english';
@@ -271,14 +270,8 @@
             });
 
             function loadVideo(src) {
-                if (Hls.isSupported()) {
-                    const hls = new Hls();
-                    hls.loadSource(src);
-                    hls.attachMedia(video);
-                }
-                else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-                    video.src = src;
-                }
+                video.src = src;
+                video.load();
             }
 
             // 初始加载英语版本

@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>当十年后你的孩子问你的高中是怎样度过的 - MMC News</title>
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <style>
         /* ... 与 prison.html 相同的基础样式 ... */
         * {
@@ -150,16 +149,9 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const video = document.getElementById('video');
-            const videoSrc = 'https://cdn.jsdelivr.net/gh/Appe6548/SBSm3u8/1080p 【当十年后你的孩子问你的高中是怎样度过的】/stream.m3u8';
-            
-            if (Hls.isSupported()) {
-                const hls = new Hls();
-                hls.loadSource(videoSrc);
-                hls.attachMedia(video);
-            }
-            else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-                video.src = videoSrc;
-            }
+            const videoSrc = 'https://r2.sbsnews.me/%E3%80%90%E5%BD%93%E5%8D%81%E5%B9%B4%E5%90%8E%E4%BD%A0%E7%9A%84%E5%AD%A9%E5%AD%90%E9%97%AE%E4%BD%A0%E7%9A%84%E9%AB%98%E4%B8%AD%E6%98%AF%E6%80%8E%E6%A0%B7%E5%BA%A6%E8%BF%87%E7%9A%84%E3%80%91.mp4';
+            video.src = videoSrc;
+            video.load();
         });
     </script>
 </body>

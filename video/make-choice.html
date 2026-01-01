@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>选择你的零模配置 - MMC News</title>
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <style>
         /* ... 与之前相同的基础样式 ... */
         * {
@@ -195,16 +194,9 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const video = document.getElementById('video');
-            const videoSrc = 'https://cdn.jsdelivr.net/gh/Appe6548/SBSm3u8/720p_480p_选择你的零模配置.MOV/720p/stream.m3u8';
-            
-            if (Hls.isSupported()) {
-                const hls = new Hls();
-                hls.loadSource(videoSrc);
-                hls.attachMedia(video);
-            }
-            else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-                video.src = videoSrc;
-            }
+            const videoSrc = 'https://r2.sbsnews.me/%E9%80%89%E6%8B%A9%E4%BD%A0%E7%9A%84%E9%9B%B6%E6%A8%A1%E9%85%8D%E7%BD%AE.mp4';
+            video.src = videoSrc;
+            video.load();
 
             // 简介展开/收起功能
             const content = document.querySelector('.description-content');

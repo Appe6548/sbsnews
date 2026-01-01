@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>水王不让你睡觉你睡不睡 - MMC News</title>
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <style>
         /* 基础重置及通用样式 */
         * {
@@ -156,7 +155,7 @@
         </div>
         
         <div class="video-container">
-            <video id="video" controls poster="https://via.placeholder.com/800x450?text=水王不让你睡觉你睡不睡">
+            <video id="video" controls poster="https://r2.sbsnews.me/images/video-images/%E6%B0%B4%E7%8E%8B%E7%9D%A1%E8%A7%89.png">
                 您的浏览器不支持视频播放，请更新至最新版本。
             </video>
         </div>
@@ -168,14 +167,9 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const video = document.getElementById('video');
-            const videoSrc = 'https://cdn.jsdelivr.net/gh/Appe6548/SBSm3u8/水王不让你睡觉你睡不睡/stream.m3u8';
-            if (Hls.isSupported()) {
-                const hls = new Hls();
-                hls.loadSource(videoSrc);
-                hls.attachMedia(video);
-            } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-                video.src = videoSrc;
-            }
+            const videoSrc = 'https://r2.sbsnews.me/%E6%B0%B4%E7%8E%8B%E4%B8%8D%E8%AE%A9%E4%BD%A0%E7%9D%A1%E8%A7%89%E4%BD%A0%E7%9D%A1%E4%B8%8D%E7%9D%A1.mp4';
+            video.src = videoSrc;
+            video.load();
             
             const expandable = document.querySelector('.expandable');
             const expandBtn = document.querySelector('.toggle-button.expand');
