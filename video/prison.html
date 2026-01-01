@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>阳光监狱 - MMC News</title>
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <style>
         /* ... 与 escape-sunshine.html 相同的样式 ... */
         * {
@@ -145,16 +144,9 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const video = document.getElementById('video');
-            const videoSrc = 'https://cdn.jsdelivr.net/gh/Appe6548/SBSm3u8/1080p_720p_480p_阳光监狱(1).MOV/1080p/stream.m3u8';
-            
-            if (Hls.isSupported()) {
-                const hls = new Hls();
-                hls.loadSource(videoSrc);
-                hls.attachMedia(video);
-            }
-            else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-                video.src = videoSrc;
-            }
+            const videoSrc = 'https://r2.sbsnews.me/images/video-images/%E9%98%B3%E5%85%89%E7%9B%91%E7%8B%B1.mp4';
+            video.src = videoSrc;
+            video.load();
         });
     </script>
 </body>
