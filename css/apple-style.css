@@ -468,6 +468,8 @@ main {
   height: 100%;
   object-fit: cover;
   transition: transform var(--transition-medium);
+  position: relative;
+  z-index: 1;
 }
 
 .video-card:hover .video-thumbnail img {
@@ -478,6 +480,7 @@ main {
   position: absolute;
   bottom: 8px;
   right: 8px;
+  z-index: 2;
   background: rgba(0, 0, 0, 0.8);
   color: white;
   padding: 4px 8px;
@@ -490,6 +493,7 @@ main {
   position: absolute;
   top: 8px;
   left: 8px;
+  z-index: 2;
   display: inline-flex;
   align-items: center;
   padding: 4px 10px;
@@ -502,6 +506,7 @@ main {
   color: var(--color-text-primary);
   backdrop-filter: saturate(180%) blur(12px);
   -webkit-backdrop-filter: saturate(180%) blur(12px);
+  pointer-events: none;
 }
 
 [data-theme="dark"] .video-badge {
