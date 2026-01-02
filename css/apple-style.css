@@ -486,6 +486,49 @@ main {
   font-weight: 500;
 }
 
+.video-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  border: 1px solid var(--color-border);
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--color-text-primary);
+  backdrop-filter: saturate(180%) blur(12px);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+}
+
+[data-theme="dark"] .video-badge {
+  background: rgba(29, 29, 31, 0.75);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.video-badge--featured {
+  background: rgba(0, 113, 227, 0.95);
+  border-color: rgba(0, 113, 227, 0.95);
+  color: white;
+}
+
+.video-badge--low-quality {
+  background: rgba(134, 134, 139, 0.9);
+  border-color: rgba(134, 134, 139, 0.9);
+  color: white;
+}
+
+.video-card.is-low-quality {
+  opacity: 0.75;
+}
+
+.video-card.is-low-quality .video-thumbnail img {
+  filter: grayscale(40%);
+}
+
 /* About page styles */
 .about-section {
   margin-bottom: var(--spacing-3xl);
