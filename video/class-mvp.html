@@ -1,243 +1,104 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>全班得了MVP！（PG16） - MMC News</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro SC", "SF Pro Text", "SF Pro Icons", PingFang SC, Helvetica Neue, Helvetica, Arial, sans-serif;
-            background: #f5f5f7;
-        }
-
-        nav {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(20px);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 100;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-        }
-
-        .nav-container {
-            max-width: 1024px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            height: 44px;
-            padding: 0 20px;
-        }
-
-        .brand {
-            font-weight: 600;
-            font-size: 16px;
-            color: #333;
-            text-decoration: none;
-            margin-right: 40px;
-        }
-
-        .nav-items {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-            margin-left: auto;
-        }
-
-        .nav-items li a {
-            color: #333;
-            text-decoration: none;
-            font-size: 14px;
-            transition: color 0.3s ease;
-        }
-
-        .nav-items li a:hover {
-            color: #0071e3;
-        }
-
-        .main-content {
-            max-width: 1024px;
-            margin: 0 auto;
-            padding: 84px 20px 40px;
-        }
-
-        .video-container {
-            background: #000;
-            border-radius: 12px;
-            overflow: hidden;
-            margin-bottom: 24px;
-            position: relative;
-            padding-top: 56.25%;
-        }
-
-        .video-container video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        .video-info {
-            background: white;
-            border-radius: 12px;
-            padding: 24px;
-            margin-bottom: 24px;
-        }
-
-        .video-title {
-            font-size: 24px;
-            font-weight: 600;
-            color: #1d1d1f;
-            margin-bottom: 12px;
-        }
-
-        .video-meta {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 16px;
-        }
-
-        .content-warning {
-            background: #fff3cd;
-            border: 1px solid #ffeeba;
-            color: #856404;
-            padding: 12px;
-            border-radius: 6px;
-            margin-bottom: 16px;
-            font-size: 14px;
-        }
-
-        .video-description {
-            font-size: 16px;
-            line-height: 1.5;
-            color: #666;
-            position: relative;
-        }
-
-        .description-content {
-            white-space: pre-line;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .description-content.collapsed {
-            max-height: 24px;
-        }
-
-        .description-content.collapsed::after {
-            content: "...";
-            position: absolute;
-            right: 40px;
-            bottom: 0;
-            background: white;
-            padding-left: 4px;
-        }
-
-        .toggle-button {
-            color: #0071e3;
-            font-size: 14px;
-            cursor: pointer;
-            user-select: none;
-            display: inline-block;
-            margin-left: 4px;
-        }
-
-        .toggle-button:hover {
-            text-decoration: underline;
-        }
-
-        .toggle-button.expand {
-            position: absolute;
-            right: 0;
-            bottom: 0;
-            background: white;
-        }
-
-        .toggle-button.collapse {
-            display: block;
-            margin-top: 8px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>全班得了MVP！（PG16） - MMC News</title>
+  <link rel="stylesheet" href="/css/apple-style.css">
 </head>
 <body>
-    <nav>
-        <div class="nav-container">
-            <a href="/" class="brand">MMC News</a>
-            <ul class="nav-items">
-                <li><a href="/news.html">News</a></li>
-                <li><a href="/archive.html">往期内容</a></li>
-                <li><a href="/about.html">关于我们</a></li>
-            </ul>
-        </div>
-    </nav>
+  <nav>
+    <div class="nav-container">
+      <a href="/" class="brand">MMC News</a>
+      <ul class="nav-items">
+        <li><a href="/news.html">新闻</a></li>
+        <li><a href="/archive.html">往期内容</a></li>
+        <li><a href="/about.html">关于我们</a></li>
+        <li class="theme-toggle">
+          <button class="theme-toggle-button">💻</button>
+          <div class="theme-menu">
+            <div class="theme-option" data-theme="light">
+              <span class="theme-icon">☀️</span>
+              <span>浅色模式</span>
+            </div>
+            <div class="theme-option" data-theme="dark">
+              <span class="theme-icon">🌙</span>
+              <span>深色模式</span>
+            </div>
+            <div class="theme-option active" data-theme="system">
+              <span class="theme-icon">💻</span>
+              <span>跟随系统</span>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
-    <main class="main-content">
-        <div class="video-info">
-            <div class="content-warning">
-                ⚠️ PG16 - 本视频含有潜在引人不适内容
-            </div>
-            <h1 class="video-title">全班得了MVP！（PG16）</h1>
-            <div class="video-meta">
-                <span>发布于：2025年3月9日</span>
-                <span style="margin-left: 16px;">时长：0:43</span>
-            </div>
-            <div class="video-description">
-                <div class="description-content collapsed">距离单招综合素质考试不足一周，祝大家成功上岸！
+  <main class="main-content">
+    <div class="video-info">
+      <div class="content-warning">
+        ⚠️ PG16 - 本视频含有潜在引人不适内容
+      </div>
+      <h1 class="video-title">全班得了MVP！（PG16）</h1>
+      <div class="video-meta">
+        <span>发布于：2025年3月9日</span>
+        <span style="margin-left: 16px;">时长：0:43</span>
+      </div>
+      <div class="video-description">
+        <div class="description-content collapsed">距离单招综合素质考试不足一周，祝大家成功上岸！
 （推荐您通过链接气泡以观看由CloudflareR2存储桶提供动力的此视频，如果您无法访问，请轻点 <a href="https://drive.weixin.qq.com/s?k=AKkA4QeOABgY90d039" target="_blank" rel="noopener noreferrer">https://drive.weixin.qq.com/s?k=AKkA4QeOABgY90d039</a> 以观看本视频）</div>
-                <span class="toggle-button expand">展开</span>
-                <span class="toggle-button collapse" style="display: none;">收起</span>
-            </div>
-        </div>
+        <span class="toggle-button expand">展开</span>
+        <span class="toggle-button collapse" style="display: none;">收起</span>
+      </div>
+    </div>
 
-        <div class="video-container">
-            <video id="video" controls playsinline webkit-playsinline poster="https://r2.oai.works/images/video-images/%E5%85%A8%E7%8F%AD%E5%BE%97%E4%BA%86MVP%EF%BC%81%EF%BC%88PG16%EF%BC%89.png">
-                您的浏览器不支持视频播放，请更新至最新版本。
-            </video>
-        </div>
-    </main>
+    <div class="video-container">
+      <video id="video" controls playsinline webkit-playsinline poster="https://r2.oai.works/images/video-images/%E5%85%A8%E7%8F%AD%E5%BE%97%E4%BA%86MVP%EF%BC%81%EF%BC%88PG16%EF%BC%89.png">
+        您的浏览器不支持视频播放，请更新至最新版本。
+      </video>
+    </div>
+  </main>
 
-    <footer style="text-align: center; padding: 20px 0; color: #666; font-size: 14px;">
-        <a href="https://icp.gov.moe/?keyword=20250941" target="_blank" style="color: #666; text-decoration: none;">萌ICP备20250941号</a>
-    </footer>
+  <footer>
+    <div class="footer-content">
+      <p class="footer-text"><a href="https://icp.gov.moe/?keyword=20250941" target="_blank">萌ICP备20250941号</a></p>
+    </div>
+  </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const video = document.getElementById('video');
-            const videoSrc = 'https://r2.oai.works/%E5%85%A8%E7%8F%AD%E5%BE%97%E4%BA%86MVP%EF%BC%81%EF%BC%88PG16%EF%BC%89.mp4';
-            video.src = videoSrc;
-            video.load();
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const video = document.getElementById('video');
+      const videoSrc = 'https://r2.oai.works/%E5%85%A8%E7%8F%AD%E5%BE%97%E4%BA%86MVP%EF%BC%81%EF%BC%88PG16%EF%BC%89.mp4';
+      video.src = videoSrc;
+      video.load();
 
-            const content = document.querySelector('.description-content');
-            const expandBtn = document.querySelector('.toggle-button.expand');
-            const collapseBtn = document.querySelector('.toggle-button.collapse');
+      const content = document.querySelector('.description-content');
+      const expandBtn = document.querySelector('.toggle-button.expand');
+      const collapseBtn = document.querySelector('.toggle-button.collapse');
 
-            function checkOverflow() {
-                const isOverflowing = content.scrollHeight > 24;
-                expandBtn.style.display = isOverflowing && content.classList.contains('collapsed') ? 'inline-block' : 'none';
-            }
+      function checkOverflow() {
+        const isOverflowing = content.scrollHeight > 24;
+        expandBtn.style.display = isOverflowing && content.classList.contains('collapsed') ? 'inline-block' : 'none';
+      }
 
-            expandBtn.addEventListener('click', () => {
-                content.classList.remove('collapsed');
-                expandBtn.style.display = 'none';
-                collapseBtn.style.display = 'block';
-            });
+      expandBtn.addEventListener('click', () => {
+        content.classList.remove('collapsed');
+        expandBtn.style.display = 'none';
+        collapseBtn.style.display = 'block';
+      });
 
-            collapseBtn.addEventListener('click', () => {
-                content.classList.add('collapsed');
-                collapseBtn.style.display = 'none';
-                expandBtn.style.display = 'inline-block';
-            });
+      collapseBtn.addEventListener('click', () => {
+        content.classList.add('collapsed');
+        collapseBtn.style.display = 'none';
+        expandBtn.style.display = 'inline-block';
+      });
 
-            window.addEventListener('load', checkOverflow);
-            window.addEventListener('resize', checkOverflow);
-        });
-    </script>
+      window.addEventListener('load', checkOverflow);
+      window.addEventListener('resize', checkOverflow);
+    });
+  </script>
+
+  <script src="/js/apple-theme.js"></script>
 </body>
 </html>

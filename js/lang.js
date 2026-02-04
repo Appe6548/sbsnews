@@ -42,4 +42,4 @@ const translations = {
     minutes: 'Minutes',
     seconds: 'Seconds'
   }
-}; 
+};

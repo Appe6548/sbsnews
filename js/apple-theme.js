@@ -4,6 +4,7 @@
 
     const THEME_KEY = 'mmc-theme-preference';
     const DEFAULT_THEME = 'system';
+    const VALID_THEMES = new Set(['light', 'dark', 'system']);
 
     class ThemeManager {
         constructor() {
@@ -23,11 +24,21 @@
         }
 
         loadTheme() {
-            return localStorage.getItem(THEME_KEY) || DEFAULT_THEME;
+            const stored = localStorage.getItem(THEME_KEY);
+            if (stored && VALID_THEMES.has(stored)) return stored;
+
+            // Legacy key used by older pages/scripts in this repo.
+            const legacy = localStorage.getItem('theme');
+            if (legacy && VALID_THEMES.has(legacy)) return legacy;
+
+            return DEFAULT_THEME;
         }
 
         saveTheme(theme) {
+            if (!VALID_THEMES.has(theme)) return;
             localStorage.setItem(THEME_KEY, theme);
+            // Write legacy key for compatibility.
+            localStorage.setItem('theme', theme);
             this.currentTheme = theme;
         }
 
@@ -110,11 +121,15 @@
         listenForSystemThemeChanges() {
             const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
             
-            mediaQuery.addEventListener('change', (e) => {
-                if (this.currentTheme === 'system') {
-                    this.applyTheme('system');
-                }
-            });
+            const handler = () => {
+                if (this.currentTheme === 'system') this.applyTheme('system');
+            };
+
+            if (mediaQuery.addEventListener) {
+                mediaQuery.addEventListener('change', handler);
+            } else if (mediaQuery.addListener) {
+                mediaQuery.addListener(handler);
+            }
         }
     }
 
@@ -129,6 +144,45 @@
 
     // Smooth page transitions
     document.addEventListener('DOMContentLoaded', () => {
+        const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        // Liquid Glass: subtle nav compression on scroll + specular highlight tracking.
+        const root = document.documentElement;
+        const updateScrollState = () => {
+            root.classList.toggle('is-scrolled', window.scrollY > 8);
+        };
+
+        updateScrollState();
+        window.addEventListener('scroll', updateScrollState, { passive: true });
+        window.addEventListener('resize', updateScrollState, { passive: true });
+
+        const supportsFinePointer = window.matchMedia && window.matchMedia('(pointer: fine)').matches;
+        if (!prefersReducedMotion && supportsFinePointer) {
+            root.style.setProperty('--lg-pointer-x', '50%');
+            root.style.setProperty('--lg-pointer-y', '20%');
+
+            let raf = 0;
+            let lastX = 0;
+            let lastY = 0;
+
+            const commitPointer = () => {
+                raf = 0;
+                const x = Math.max(0, Math.min(100, Math.round((lastX / window.innerWidth) * 100)));
+                const y = Math.max(0, Math.min(100, Math.round((lastY / window.innerHeight) * 100)));
+                root.style.setProperty('--lg-pointer-x', `${x}%`);
+                root.style.setProperty('--lg-pointer-y', `${y}%`);
+            };
+
+            window.addEventListener('pointermove', (e) => {
+                lastX = e.clientX;
+                lastY = e.clientY;
+                if (raf) return;
+                raf = window.requestAnimationFrame(commitPointer);
+            }, { passive: true });
+        }
+
+        if (prefersReducedMotion) return;
+
         // Add smooth transitions to all internal links
         const internalLinks = document.querySelectorAll('a[href^="/"]');
         

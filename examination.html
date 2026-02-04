@@ -4,70 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>If not me, who? If not now, when?</title>
+<link rel="stylesheet" href="/css/apple-style.css">
 <script src="/js/lang.js"></script>
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-    background: #000000;
-    color: #ffffff;
-    overflow-x: hidden;
-}
-
-/* Apple风格导航栏 */
-nav {
-    background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: saturate(180%) blur(20px);
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.nav-container {
-    max-width: 1024px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    height: 44px;
-    padding: 0 22px;
-    justify-content: space-between;
-}
-
-.brand {
-    font-weight: 800;
-    font-size: 17px;
-    color: #ffffff;
-    text-decoration: none;
-    letter-spacing: -0.022em;
-}
-
-.nav-items {
-    display: flex;
-    list-style: none;
-    gap: 32px;
-}
-
-.nav-items li a {
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 400;
-    transition: color 0.3s ease;
-    letter-spacing: -0.016em;
-}
-
-.nav-items li a:hover {
-    color: #0071e3;
-}
-
-/* 主要内容区域 */
 .hero-section {
     min-height: 100vh;
     display: flex;
@@ -75,9 +14,8 @@ nav {
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 88px 40px 40px;
+    padding: calc(var(--nav-height) + 36px) 24px 48px;
     position: relative;
-    background: #000000;
 }
 
 .hero-content {
@@ -90,32 +28,32 @@ nav {
 }
 
 .hero-title {
-    font-size: 56px;
-    font-weight: 600;
-    color: #ffffff;
-    margin-bottom: 24px;
-    letter-spacing: -0.005em;
+    font-size: clamp(2.2rem, 5.8vw, 3.4rem);
+    font-weight: 750;
+    color: var(--text-primary);
+    margin-bottom: 18px;
+    letter-spacing: -0.02em;
     line-height: 1.1;
     animation: fadeInUp 1s ease-out;
 }
 
 .motivational-text {
-    font-size: 28px;
-    font-weight: 400;
-    color: rgba(255, 255, 255, 0.9);
-    margin-bottom: 16px;
-    letter-spacing: 0.011em;
+    font-size: clamp(1.2rem, 3.2vw, 1.75rem);
+    font-weight: 450;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
     line-height: 1.4762;
     animation: fadeInUp 1s ease-out 0.2s both;
     max-width: 900px;
 }
 
 .blessing-text {
-    font-size: 20px;
-    font-weight: 400;
-    color: rgba(255, 255, 255, 0.8);
-    margin-bottom: 48px;
-    letter-spacing: 0.011em;
+    font-size: clamp(1rem, 2.4vw, 1.2rem);
+    font-weight: 450;
+    color: var(--text-tertiary);
+    margin-bottom: 28px;
+    letter-spacing: -0.01em;
     line-height: 1.4762;
     animation: fadeInUp 1s ease-out 0.4s both;
     max-width: 900px;
@@ -137,9 +75,14 @@ nav {
     max-width: 100%;
     height: auto;
     max-height: 80vh;
-    border-radius: 12px;
-    box-shadow: 0 12px 42px rgba(0, 0, 0, 0.5);
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    box-shadow: var(--glass-shadow-strong);
     object-fit: contain;
+}
+
+[data-theme="dark"] .image-container img {
+    border-color: rgba(255, 255, 255, 0.12);
 }
 
 /* 背景装饰 */
@@ -161,9 +104,17 @@ nav {
 
 .floating-element {
     position: absolute;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 999px;
     animation: float 6s ease-in-out infinite;
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+}
+
+[data-theme="dark"] .floating-element {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.10);
 }
 
 .floating-element:nth-child(1) {
@@ -221,32 +172,8 @@ nav {
 
 /* 响应式设计优化 */
 @media (max-width: 768px) {
-    .hero-title {
-        font-size: 36px;
-    }
-    
-    .motivational-text {
-        font-size: 20px;
-    }
-    
-    .blessing-text {
-        font-size: 16px;
-    }
-    
-    .nav-items {
-        gap: 20px;
-    }
-    
-    .nav-items li a {
-        font-size: 12px;
-    }
-    
-    .nav-container {
-        padding: 0 16px;
-    }
-    
     .hero-section {
-        padding: 88px 20px 40px;
+        padding: calc(var(--nav-height) + 28px) 16px 44px;
     }
     
     .image-container img {
@@ -255,32 +182,9 @@ nav {
 }
 
 @media (max-width: 480px) {
-    .hero-title {
-        font-size: 28px;
-    }
-    
     .time-label {
         font-size: 12px;
     }
-}
-
-footer {
-    text-align: center;
-    padding: 32px 0;
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(10px);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-footer a {
-    color: rgba(255, 255, 255, 0.6);
-    text-decoration: none;
-    font-size: 14px;
-    transition: color 0.3s ease;
-}
-
-footer a:hover {
-    color: rgba(255, 255, 255, 0.8);
 }
 </style>
 <script>
@@ -332,6 +236,23 @@ function checkImageLoad() {
         <li><a href="/news.html" id="nav-news">News</a></li>
         <li><a href="/archive.html" id="nav-archive">往期内容</a></li>
         <li><a href="/about.html" id="nav-about">关于我们</a></li>
+        <li class="theme-toggle">
+            <button class="theme-toggle-button">💻</button>
+            <div class="theme-menu">
+                <div class="theme-option" data-theme="light">
+                    <span class="theme-icon">☀️</span>
+                    <span>浅色模式</span>
+                </div>
+                <div class="theme-option" data-theme="dark">
+                    <span class="theme-icon">🌙</span>
+                    <span>深色模式</span>
+                </div>
+                <div class="theme-option active" data-theme="system">
+                    <span class="theme-icon">💻</span>
+                    <span>跟随系统</span>
+                </div>
+            </div>
+        </li>
     </ul>
 </div>
 </nav>
@@ -358,7 +279,9 @@ function checkImageLoad() {
 </section>
 
 <footer>
-    <a href="https://icp.gov.moe/?keyword=20250941" target="_blank" id="footer-link">萌ICP备20250941号</a>
+    <div class="footer-content">
+        <p class="footer-text"><a href="https://icp.gov.moe/?keyword=20250941" target="_blank" id="footer-link">萌ICP备20250941号</a></p>
+    </div>
 </footer>
 
 <script>
@@ -391,5 +314,7 @@ function updatePageContent() {
     document.documentElement.lang = currentLang;
 }
 </script>
+
+<script src="/js/apple-theme.js"></script>
 </body>
 </html> 

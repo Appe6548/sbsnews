@@ -1,165 +1,68 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>阳光年度纪录片制作启动公告 - MMC News</title>
-<style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro SC", "SF Pro Text", "SF Pro Icons", PingFang SC, Helvetica Neue, Helvetica, Arial, sans-serif;
-}
-
-nav {
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(20px);
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 100;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.nav-container {
-  max-width: 1024px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  height: 44px;
-  padding: 0 20px;
-}
-
-.brand {
-  font-weight: 600;
-  font-size: 16px;
-  color: #333;
-  text-decoration: none;
-  margin-right: 40px;
-}
-
-.nav-items {
-  display: flex;
-  list-style: none;
-  gap: 30px;
-  margin-left: auto;
-}
-
-.nav-items li a {
-  color: #333;
-  text-decoration: none;
-  font-size: 14px;
-  transition: color 0.3s ease;
-}
-
-.nav-items li a:hover {
-  color: #0071e3;
-}
-
-.nav-items li a.active {
-  color: #0071e3;
-  font-weight: 500;
-}
-
-.main-content {
-  min-height: 100vh;
-  background: linear-gradient(135deg, #fff6e5 0%, #ffe4ba 100%);
-  padding: 84px 20px 40px;
-}
-
-.article-container {
-  max-width: 800px;
-  margin: 0 auto;
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 12px;
-  padding: 40px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-}
-
-.article-header {
-  margin-bottom: 30px;
-}
-
-.article-title {
-  font-size: 28px;
-  font-weight: 600;
-  color: #1d1d1f;
-  margin-bottom: 12px;
-}
-
-.article-meta {
-  font-size: 14px;
-  color: #666;
-}
-
-.article-content {
-  font-size: 16px;
-  line-height: 1.8;
-  color: #333;
-}
-
-.article-content p {
-  margin-bottom: 20px;
-}
-
-@media (max-width: 768px) {
-  .article-container {
-    padding: 24px;
-  }
-
-  .article-title {
-    font-size: 24px;
-  }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>阳光年度纪录片制作启动公告 - MMC News</title>
+  <link rel="stylesheet" href="/css/apple-style.css">
 </head>
 <body>
-<nav>
-  <div class="nav-container">
-    <a href="../index.html" class="brand">MMC News</a>
-    <ul class="nav-items">
-      <li><a href="../news.html" class="active">News</a></li>
-      <li><a href="../archive.html">往期内容</a></li>
-      <li><a href="../about.html">关于我们</a></li>
-    </ul>
-  </div>
-</nav>
-<main class="main-content">
-  <article class="article-container">
-    <header class="article-header">
-      <h1 class="article-title">阳光年度纪录片制作启动公告</h1>
-      <div class="article-meta">2024年4月1日</div>
-    </header>
-    <div class="article-content">
-      <p>很高兴的宣布，阳光年度纪录片已投入制作！</p>
-      
-      <p>本次纪录片将揭露阳光的恐怖统治，记录这所学校不为人知的一面。我们的摄制组已经开始收集素材，力求为大家呈现一部真实的作品。</p>
-      
-      <p>初步预计将于四月中旬左右发布预告片，并于四月晚些时候推出正片！</p>
-      
-      <p>敬请期待！</p>
-      
-      <div class="article-image" style="margin-top: 40px;">
-        <img src="https://r2.oai.works/images/%E9%98%B3%E5%85%89%E7%BA%AA%E5%BD%95%E7%89%872%E4%B8%AD%E6%96%87%E6%B5%B7%E6%8A%A5.jpg" alt="阳光纪录片宣传海报" style="width: 50%; display: block; margin: 0 auto;">
-      </div>
+  <nav>
+    <div class="nav-container">
+      <a href="/" class="brand">MMC News</a>
+      <ul class="nav-items">
+        <li><a href="/news.html" class="active">新闻</a></li>
+        <li><a href="/archive.html">往期内容</a></li>
+        <li><a href="/about.html">关于我们</a></li>
+        <li class="theme-toggle">
+          <button class="theme-toggle-button">💻</button>
+          <div class="theme-menu">
+            <div class="theme-option" data-theme="light">
+              <span class="theme-icon">☀️</span>
+              <span>浅色模式</span>
+            </div>
+            <div class="theme-option" data-theme="dark">
+              <span class="theme-icon">🌙</span>
+              <span>深色模式</span>
+            </div>
+            <div class="theme-option active" data-theme="system">
+              <span class="theme-icon">💻</span>
+              <span>跟随系统</span>
+            </div>
+          </div>
+        </li>
+      </ul>
     </div>
-  </article>
-</main>
+  </nav>
 
-<footer style="text-align: center; padding: 20px 0; color: #666; font-size: 14px;">
-    <a href="https://icp.gov.moe/?keyword=20250941" target="_blank" style="color: #666; text-decoration: none;">萌ICP备20250941号</a>
-</footer>
+  <main class="main-content">
+    <article class="article-container">
+      <header class="article-header">
+        <h1 class="article-title">阳光年度纪录片制作启动公告</h1>
+        <div class="article-meta">2024年4月1日</div>
+      </header>
+      <div class="article-content">
+        <p>很高兴的宣布，阳光年度纪录片已投入制作！</p>
 
-<style>
-@media (max-width: 768px) {
-  .article-image img {
-    width: 70% !important;
-  }
-}
-</style>
+        <p>本次纪录片将揭露阳光的恐怖统治，记录这所学校不为人知的一面。我们的摄制组已经开始收集素材，力求为大家呈现一部真实的作品。</p>
+
+        <p>初步预计将于四月中旬左右发布预告片，并于四月晚些时候推出正片！</p>
+
+        <p>敬请期待！</p>
+
+        <div class="article-image" style="margin-top: 40px;">
+          <img src="https://r2.oai.works/images/%E9%98%B3%E5%85%89%E7%BA%AA%E5%BD%95%E7%89%872%E4%B8%AD%E6%96%87%E6%B5%B7%E6%8A%A5.jpg" alt="阳光纪录片宣传海报" style="width: 50%; display: block; margin: 0 auto;">
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <p class="footer-text"><a href="https://icp.gov.moe/?keyword=20250941" target="_blank">萌ICP备20250941号</a></p>
+    </div>
+  </footer>
+
+  <script src="/js/apple-theme.js"></script>
 </body>
 </html>

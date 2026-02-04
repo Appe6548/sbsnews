@@ -1,183 +1,80 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>很高兴为大家带来「水语」的汉化版！ - MMC News</title>
-<style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro SC", "SF Pro Text", "SF Pro Icons", PingFang SC, Helvetica Neue, Helvetica, Arial, sans-serif;
-}
-
-nav {
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(20px);
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 100;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.nav-container {
-  max-width: 1024px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  height: 44px;
-  padding: 0 20px;
-}
-
-.brand {
-  font-weight: 600;
-  font-size: 16px;
-  color: #333;
-  text-decoration: none;
-  margin-right: 40px;
-}
-
-.nav-items {
-  display: flex;
-  list-style: none;
-  gap: 30px;
-  margin-left: auto;
-}
-
-.nav-items li a {
-  color: #333;
-  text-decoration: none;
-  font-size: 14px;
-  transition: color 0.3s ease;
-}
-
-.nav-items li a:hover {
-  color: #0071e3;
-}
-
-.nav-items li a.active {
-  color: #0071e3;
-  font-weight: 500;
-}
-
-.main-content {
-  min-height: 100vh;
-  background: linear-gradient(135deg, #fff6e5 0%, #ffe4ba 100%);
-  padding: 84px 20px 40px;
-}
-
-.article-container {
-  max-width: 800px;
-  margin: 0 auto;
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 12px;
-  padding: 40px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-}
-
-.article-header {
-  margin-bottom: 30px;
-}
-
-.article-title {
-  font-size: 32px;
-  font-weight: 600;
-  color: #1d1d1f;
-  margin-bottom: 16px;
-}
-
-.article-meta {
-  font-size: 14px;
-  color: #666;
-}
-
-.article-content {
-  font-size: 16px;
-  line-height: 1.8;
-  color: #333;
-}
-
-.article-content p {
-  margin-bottom: 20px;
-}
-
-@media (max-width: 768px) {
-  .article-container {
-    padding: 24px;
-  }
-
-  .article-title {
-    font-size: 24px;
-  }
-
-  .brand {
-    font-size: 14px;
-    margin-right: 20px;
-  }
-
-  .nav-items {
-    gap: 15px;
-  }
-
-  .nav-items li a {
-    font-size: 12px;
-  }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>很高兴为大家带来「水语」的汉化版！ - MMC News</title>
+  <link rel="stylesheet" href="/css/apple-style.css">
 </head>
 <body>
-<nav>
-  <div class="nav-container">
-    <a href="/" class="brand">MMC News</a>
-    <ul class="nav-items">
-      <li><a href="/news.html" class="active">News</a></li>
-      <li><a href="/archive.html">往期内容</a></li>
-      <li><a href="/about.html">关于我们</a></li>
-    </ul>
-  </div>
-</nav>
-<main class="main-content">
-  <article class="article-container">
-    <header class="article-header">
-      <h1 class="article-title">很高兴为大家带来「水语」的汉化版！</h1>
-      <div class="article-meta">发布时间：2024年8月22日</div>
-    </header>
-    <div class="article-content">
-      <p>我们很荣幸地为大家呈现「水语」的中文版本。本次中文版专注于作品的核心内容，力求传达原作精髓。感谢各位一直以来的支持。</p>
+  <nav>
+    <div class="nav-container">
+      <a href="/" class="brand">MMC News</a>
+      <ul class="nav-items">
+        <li><a href="/news.html" class="active">新闻</a></li>
+        <li><a href="/archive.html">往期内容</a></li>
+        <li><a href="/about.html">关于我们</a></li>
+        <li class="theme-toggle">
+          <button class="theme-toggle-button">💻</button>
+          <div class="theme-menu">
+            <div class="theme-option" data-theme="light">
+              <span class="theme-icon">☀️</span>
+              <span>浅色模式</span>
+            </div>
+            <div class="theme-option" data-theme="dark">
+              <span class="theme-icon">🌙</span>
+              <span>深色模式</span>
+            </div>
+            <div class="theme-option active" data-theme="system">
+              <span class="theme-icon">💻</span>
+              <span>跟随系统</span>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
-      <div class="story-images" style="margin-top: 30px;">
-        <div class="image-grid" style="display: flex; flex-direction: column; gap: 20px;">
-          <img src="https://r2.oai.works/images/%E6%B0%B4%E8%AF%AD/%E6%B1%89%E5%8C%96%E7%89%88_%E7%BA%AF%E5%9B%BE%E7%89%88/%E6%B1%89%E5%8C%96%E7%89%88_%E7%BA%AF%E5%9B%BE%E7%89%88_page-0001.jpg" alt="水语中文版 第1页" style="width: 100%; border-radius: 8px;">
-          <img src="https://r2.oai.works/images/%E6%B0%B4%E8%AF%AD/%E6%B1%89%E5%8C%96%E7%89%88_%E7%BA%AF%E5%9B%BE%E7%89%88/%E6%B1%89%E5%8C%96%E7%89%88_%E7%BA%AF%E5%9B%BE%E7%89%88_page-0002.jpg" alt="水语中文版 第2页" style="width: 100%; border-radius: 8px;">
-          <img src="https://r2.oai.works/images/%E6%B0%B4%E8%AF%AD/%E6%B1%89%E5%8C%96%E7%89%88_%E7%BA%AF%E5%9B%BE%E7%89%88/%E6%B1%89%E5%8C%96%E7%89%88_%E7%BA%AF%E5%9B%BE%E7%89%88_page-0003.jpg" alt="水语中文版 第3页" style="width: 100%; border-radius: 8px;">
-          <img src="https://r2.oai.works/images/%E6%B0%B4%E8%AF%AD/%E6%B1%89%E5%8C%96%E7%89%88_%E7%BA%AF%E5%9B%BE%E7%89%88/%E6%B1%89%E5%8C%96%E7%89%88_%E7%BA%AF%E5%9B%BE%E7%89%88_page-0004.jpg" alt="水语中文版 第4页" style="width: 100%; border-radius: 8px;">
-          <img src="https://r2.oai.works/images/%E6%B0%B4%E8%AF%AD/%E6%B1%89%E5%8C%96%E7%89%88_%E7%BA%AF%E5%9B%BE%E7%89%88/%E6%B1%89%E5%8C%96%E7%89%88_%E7%BA%AF%E5%9B%BE%E7%89%88_page-0005.jpg" alt="水语中文版 第5页" style="width: 100%; border-radius: 8px;">
-          <img src="https://r2.oai.works/images/%E6%B0%B4%E8%AF%AD/%E6%B1%89%E5%8C%96%E7%89%88_%E7%BA%AF%E5%9B%BE%E7%89%88/%E6%B1%89%E5%8C%96%E7%89%88_%E7%BA%AF%E5%9B%BE%E7%89%88_page-0006.jpg" alt="水语中文版 第6页" style="width: 100%; border-radius: 8px;">
-          <img src="https://r2.oai.works/images/%E6%B0%B4%E8%AF%AD/%E6%B1%89%E5%8C%96%E7%89%88_%E7%BA%AF%E5%9B%BE%E7%89%88/%E6%B1%89%E5%8C%96%E7%89%88_%E7%BA%AF%E5%9B%BE%E7%89%88_page-0007.jpg" alt="水语中文版 第7页" style="width: 100%; border-radius: 8px;">
-          <img src="https://r2.oai.works/images/%E6%B0%B4%E8%AF%AD/%E6%B1%89%E5%8C%96%E7%89%88_%E7%BA%AF%E5%9B%BE%E7%89%88/%E6%B1%89%E5%8C%96%E7%89%88_%E7%BA%AF%E5%9B%BE%E7%89%88_page-0008.jpg" alt="水语中文版 第8页" style="width: 100%; border-radius: 8px;">
-          <img src="https://r2.oai.works/images/%E6%B0%B4%E8%AF%AD/%E6%B1%89%E5%8C%96%E7%89%88_%E7%BA%AF%E5%9B%BE%E7%89%88/%E6%B1%89%E5%8C%96%E7%89%88_%E7%BA%AF%E5%9B%BE%E7%89%88_page-0009.jpg" alt="水语中文版 第9页" style="width: 100%; border-radius: 8px;">
-          <img src="https://r2.oai.works/images/%E6%B0%B4%E8%AF%AD/%E6%B1%89%E5%8C%96%E7%89%88_%E7%BA%AF%E5%9B%BE%E7%89%88/%E6%B1%89%E5%8C%96%E7%89%88_%E7%BA%AF%E5%9B%BE%E7%89%88_page-0010.jpg" alt="水语中文版 第10页" style="width: 100%; border-radius: 8px;">
-          <img src="https://r2.oai.works/images/%E6%B0%B4%E8%AF%AD/%E6%B1%89%E5%8C%96%E7%89%88_%E7%BA%AF%E5%9B%BE%E7%89%88/%E6%B1%89%E5%8C%96%E7%89%88_%E7%BA%AF%E5%9B%BE%E7%89%88_page-0011.jpg" alt="水语中文版 第11页" style="width: 100%; border-radius: 8px;">
-          <img src="https://r2.oai.works/images/%E6%B0%B4%E8%AF%AD/%E6%B1%89%E5%8C%96%E7%89%88_%E7%BA%AF%E5%9B%BE%E7%89%88/%E6%B1%89%E5%8C%96%E7%89%88_%E7%BA%AF%E5%9B%BE%E7%89%88_page-0012.jpg" alt="水语中文版 第12页" style="width: 100%; border-radius: 8px;">
-          <img src="https://r2.oai.works/images/%E6%B0%B4%E8%AF%AD/%E6%B1%89%E5%8C%96%E7%89%88_%E7%BA%AF%E5%9B%BE%E7%89%88/%E6%B1%89%E5%8C%96%E7%89%88_%E7%BA%AF%E5%9B%BE%E7%89%88_page-0013.jpg" alt="水语中文版 第13页" style="width: 100%; border-radius: 8px;">
+  <main class="main-content">
+    <article class="article-container">
+      <header class="article-header">
+        <h1 class="article-title">很高兴为大家带来「水语」的汉化版！</h1>
+        <div class="article-meta">发布时间：2024年8月22日</div>
+      </header>
+      <div class="article-content">
+        <p>我们很荣幸地为大家呈现「水语」的中文版本。本次中文版专注于作品的核心内容，力求传达原作精髓。感谢各位一直以来的支持。</p>
+
+        <div class="story-images" style="margin-top: 30px;">
+          <div class="image-grid" style="display: flex; flex-direction: column; gap: 20px;">
+            <img src="https://r2.oai.works/images/%E6%B0%B4%E8%AF%AD/%E6%B1%89%E5%8C%96%E7%89%88_%E7%BA%AF%E5%9B%BE%E7%89%88/%E6%B1%89%E5%8C%96%E7%89%88_%E7%BA%AF%E5%9B%BE%E7%89%88_page-0001.jpg" alt="水语中文版 第1页" style="width: 100%; border-radius: 8px;">
+            <img src="https://r2.oai.works/images/%E6%B0%B4%E8%AF%AD/%E6%B1%89%E5%8C%96%E7%89%88_%E7%BA%AF%E5%9B%BE%E7%89%88/%E6%B1%89%E5%8C%96%E7%89%88_%E7%BA%AF%E5%9B%BE%E7%89%88_page-0002.jpg" alt="水语中文版 第2页" style="width: 100%; border-radius: 8px;">
+            <img src="https://r2.oai.works/images/%E6%B0%B4%E8%AF%AD/%E6%B1%89%E5%8C%96%E7%89%88_%E7%BA%AF%E5%9B%BE%E7%89%88/%E6%B1%89%E5%8C%96%E7%89%88_%E7%BA%AF%E5%9B%BE%E7%89%88_page-0003.jpg" alt="水语中文版 第3页" style="width: 100%; border-radius: 8px;">
+            <img src="https://r2.oai.works/images/%E6%B0%B4%E8%AF%AD/%E6%B1%89%E5%8C%96%E7%89%88_%E7%BA%AF%E5%9B%BE%E7%89%88/%E6%B1%89%E5%8C%96%E7%89%88_%E7%BA%AF%E5%9B%BE%E7%89%88_page-0004.jpg" alt="水语中文版 第4页" style="width: 100%; border-radius: 8px;">
+            <img src="https://r2.oai.works/images/%E6%B0%B4%E8%AF%AD/%E6%B1%89%E5%8C%96%E7%89%88_%E7%BA%AF%E5%9B%BE%E7%89%88/%E6%B1%89%E5%8C%96%E7%89%88_%E7%BA%AF%E5%9B%BE%E7%89%88_page-0005.jpg" alt="水语中文版 第5页" style="width: 100%; border-radius: 8px;">
+            <img src="https://r2.oai.works/images/%E6%B0%B4%E8%AF%AD/%E6%B1%89%E5%8C%96%E7%89%88_%E7%BA%AF%E5%9B%BE%E7%89%88/%E6%B1%89%E5%8C%96%E7%89%88_%E7%BA%AF%E5%9B%BE%E7%89%88_page-0006.jpg" alt="水语中文版 第6页" style="width: 100%; border-radius: 8px;">
+            <img src="https://r2.oai.works/images/%E6%B0%B4%E8%AF%AD/%E6%B1%89%E5%8C%96%E7%89%88_%E7%BA%AF%E5%9B%BE%E7%89%88/%E6%B1%89%E5%8C%96%E7%89%88_%E7%BA%AF%E5%9B%BE%E7%89%88_page-0007.jpg" alt="水语中文版 第7页" style="width: 100%; border-radius: 8px;">
+            <img src="https://r2.oai.works/images/%E6%B0%B4%E8%AF%AD/%E6%B1%89%E5%8C%96%E7%89%88_%E7%BA%AF%E5%9B%BE%E7%89%88/%E6%B1%89%E5%8C%96%E7%89%88_%E7%BA%AF%E5%9B%BE%E7%89%88_page-0008.jpg" alt="水语中文版 第8页" style="width: 100%; border-radius: 8px;">
+            <img src="https://r2.oai.works/images/%E6%B0%B4%E8%AF%AD/%E6%B1%89%E5%8C%96%E7%89%88_%E7%BA%AF%E5%9B%BE%E7%89%88/%E6%B1%89%E5%8C%96%E7%89%88_%E7%BA%AF%E5%9B%BE%E7%89%88_page-0009.jpg" alt="水语中文版 第9页" style="width: 100%; border-radius: 8px;">
+            <img src="https://r2.oai.works/images/%E6%B0%B4%E8%AF%AD/%E6%B1%89%E5%8C%96%E7%89%88_%E7%BA%AF%E5%9B%BE%E7%89%88/%E6%B1%89%E5%8C%96%E7%89%88_%E7%BA%AF%E5%9B%BE%E7%89%88_page-0010.jpg" alt="水语中文版 第10页" style="width: 100%; border-radius: 8px;">
+            <img src="https://r2.oai.works/images/%E6%B0%B4%E8%AF%AD/%E6%B1%89%E5%8C%96%E7%89%88_%E7%BA%AF%E5%9B%BE%E7%89%88/%E6%B1%89%E5%8C%96%E7%89%88_%E7%BA%AF%E5%9B%BE%E7%89%88_page-0011.jpg" alt="水语中文版 第11页" style="width: 100%; border-radius: 8px;">
+            <img src="https://r2.oai.works/images/%E6%B0%B4%E8%AF%AD/%E6%B1%89%E5%8C%96%E7%89%88_%E7%BA%AF%E5%9B%BE%E7%89%88/%E6%B1%89%E5%8C%96%E7%89%88_%E7%BA%AF%E5%9B%BE%E7%89%88_page-0012.jpg" alt="水语中文版 第12页" style="width: 100%; border-radius: 8px;">
+            <img src="https://r2.oai.works/images/%E6%B0%B4%E8%AF%AD/%E6%B1%89%E5%8C%96%E7%89%88_%E7%BA%AF%E5%9B%BE%E7%89%88/%E6%B1%89%E5%8C%96%E7%89%88_%E7%BA%AF%E5%9B%BE%E7%89%88_page-0013.jpg" alt="水语中文版 第13页" style="width: 100%; border-radius: 8px;">
+          </div>
+        </div>
+
+        <div class="download-section" style="margin-top: 40px; text-align: center;">
+          <a href="https://www.123865.com/s/j3h1Td-Yz7ud" target="_blank" class="button">点击下载PDF</a>
         </div>
       </div>
+    </article>
+  </main>
 
-      <div class="download-section" style="margin-top: 40px; text-align: center;">
-        <a href="https://www.123865.com/s/j3h1Td-Yz7ud" target="_blank" style="display: inline-block; background: #0071e3; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 500; transition: background 0.3s ease;">
-          点击下载PDF
-        </a>
-      </div>
+  <footer>
+    <div class="footer-content">
+      <p class="footer-text"><a href="https://icp.gov.moe/?keyword=20250941" target="_blank">萌ICP备20250941号</a></p>
     </div>
-  </article>
-</main>
-<footer style="text-align: center; padding: 20px 0; color: #666; font-size: 14px;">
-    <a href="https://icp.gov.moe/?keyword=20250941" target="_blank" style="color: #666; text-decoration: none;">萌ICP备20250941号</a>
-</footer>
+  </footer>
+
+  <script src="/js/apple-theme.js"></script>
 </body>
 </html>
