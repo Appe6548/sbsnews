@@ -563,6 +563,14 @@ main {
   box-shadow: var(--glass-shadow-strong);
 }
 
+.button-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
 /* Glass surfaces */
 .card,
 .glass-card,
