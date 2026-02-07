@@ -26,7 +26,7 @@
   const prevButton = document.getElementById('prev-chapter');
   const nextButton = document.getElementById('next-chapter');
   const layoutEl = document.getElementById('novel-layout');
-  const tocShellEl = document.getElementById('novel-toc-shell');
+  const tocPanelEl = document.getElementById('novel-toc-panel');
   const tocToggleButton = document.getElementById('toc-toggle');
   const tocLabelEl = tocToggleButton ? tocToggleButton.querySelector('.novel-toc-toggle-label') : null;
   const panelEl = document.querySelector('.novel-panel');
@@ -329,10 +329,10 @@
   }
 
   document.addEventListener('click', function (event) {
-    if (!isTocOpen() || !tocShellEl) {
+    if (!isTocOpen() || !tocPanelEl) {
       return;
     }
-    if (tocShellEl.contains(event.target)) {
+    if (tocPanelEl.contains(event.target)) {
       return;
     }
     setTocState(false);

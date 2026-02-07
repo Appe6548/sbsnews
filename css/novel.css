@@ -51,14 +51,24 @@
   padding: clamp(20px, 3vw, 36px);
 }
 
-.novel-toc-shell {
+.novel-toc-panel {
   position: fixed;
-  top: calc(var(--nav-height) + 16px);
-  right: clamp(10px, 3vw, 26px);
+  top: calc(var(--nav-height) + 14px);
+  right: clamp(10px, 3vw, 24px);
   z-index: 120;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+  width: 96px;
+  padding: 10px;
+  overflow: hidden;
+  transform: none !important;
+  transition:
+    width 460ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 260ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 320ms cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 280ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.novel-layout.is-toc-open .novel-toc-panel {
+  width: min(330px, calc(100vw - 28px));
 }
 
 .novel-toc-toggle {
@@ -66,6 +76,7 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
+  width: 100%;
   border: 1px solid var(--glass-border);
   background: var(--glass-bg-strong);
   color: var(--text-primary);
@@ -74,9 +85,6 @@
   min-height: 38px;
   cursor: pointer;
   white-space: nowrap;
-  box-shadow: var(--glass-shadow);
-  backdrop-filter: saturate(var(--glass-saturate)) blur(calc(var(--glass-blur) - 8px));
-  -webkit-backdrop-filter: saturate(var(--glass-saturate)) blur(calc(var(--glass-blur) - 8px));
   transition:
     transform 320ms cubic-bezier(0.16, 1, 0.3, 1),
     background-color 240ms cubic-bezier(0.16, 1, 0.3, 1),
@@ -93,7 +101,6 @@
 .novel-layout.is-toc-open .novel-toc-toggle {
   background: rgba(10, 132, 255, 0.14);
   border-color: rgba(10, 132, 255, 0.32);
-  box-shadow: var(--glass-shadow-strong);
 }
 
 .novel-toc-toggle-icon {
@@ -116,32 +123,28 @@
   font-weight: 620;
 }
 
-.novel-sidebar {
-  width: min(320px, calc(100vw - 28px));
-  margin-top: 10px;
-  padding: var(--spacing-lg);
-  max-height: min(68vh, 620px);
-  overflow: auto;
+.novel-toc-body {
+  margin-top: 0;
+  max-height: 0;
   opacity: 0;
-  visibility: hidden;
+  overflow: hidden;
   pointer-events: none;
-  transform: translateY(-10px) scale(0.96);
+  transform: translateY(-10px) scale(0.98);
   transform-origin: top right;
   transition:
-    opacity 300ms cubic-bezier(0.16, 1, 0.3, 1),
-    transform 460ms cubic-bezier(0.22, 1, 0.36, 1),
-    visibility 0s linear 460ms;
+    max-height 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 240ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    margin-top 320ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.novel-layout.is-toc-open .novel-sidebar {
+.novel-layout.is-toc-open .novel-toc-body {
+  margin-top: 10px;
+  max-height: min(70vh, 620px);
   opacity: 1;
-  visibility: visible;
+  overflow: auto;
   pointer-events: auto;
   transform: translateY(0) scale(1);
-  transition:
-    opacity 280ms cubic-bezier(0.16, 1, 0.3, 1),
-    transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
-    visibility 0s;
 }
 
 .novel-sidebar-head {
@@ -328,15 +331,22 @@
     line-height: 1.9;
   }
 
-  .novel-toc-shell {
+  .novel-toc-panel {
     top: calc(var(--nav-height) + 10px);
     right: 12px;
-    bottom: auto;
+    width: 48px;
+    border-radius: 999px;
+    padding: 0;
+    overflow: visible;
+  }
+
+  .novel-layout.is-toc-open .novel-toc-panel {
+    width: 48px;
   }
 
   .novel-toc-toggle {
-    width: 44px;
-    height: 44px;
+    width: 48px;
+    height: 48px;
     border-radius: 999px;
     padding: 0;
     gap: 0;
@@ -352,11 +362,26 @@
     height: 18px;
   }
 
-  .novel-sidebar {
+  .novel-toc-body {
+    position: absolute;
+    top: 56px;
+    right: 0;
     width: min(330px, calc(100vw - 22px));
-    max-height: min(64vh, 520px);
+    margin-top: 0;
+    max-height: 0;
+    padding: 0;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg-strong);
+    box-shadow: var(--glass-shadow-strong);
+    backdrop-filter: saturate(var(--glass-saturate)) blur(var(--glass-blur));
+    -webkit-backdrop-filter: saturate(var(--glass-saturate)) blur(var(--glass-blur));
     transform-origin: top right;
-    margin-top: 8px;
+  }
+
+  .novel-layout.is-toc-open .novel-toc-body {
+    max-height: min(62vh, 520px);
+    padding: 12px;
   }
 
   .novel-controls {
