@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Prime Time News - MMC News</title>
-  <link rel="stylesheet" href="/css/apple-style.css">
+  <link rel="stylesheet" href="/css/apple-style.css?v=20260207-4">
 </head>
 <body>
   <nav>
@@ -16,18 +16,18 @@
             <li><a href="/novel.html">小说</a></li>
         <li><a href="/about.html">关于我们</a></li>
         <li class="theme-toggle">
-          <button class="theme-toggle-button">💻</button>
+          <button class="theme-toggle-button" type="button" aria-label="主题切换"></button>
           <div class="theme-menu">
             <div class="theme-option" data-theme="light">
-              <span class="theme-icon">☀️</span>
+              <span class="theme-icon" aria-hidden="true"></span>
               <span>浅色模式</span>
             </div>
             <div class="theme-option" data-theme="dark">
-              <span class="theme-icon">🌙</span>
+              <span class="theme-icon" aria-hidden="true"></span>
               <span>深色模式</span>
             </div>
             <div class="theme-option active" data-theme="system">
-              <span class="theme-icon">💻</span>
+              <span class="theme-icon" aria-hidden="true"></span>
               <span>跟随系统</span>
             </div>
           </div>
@@ -91,6 +91,6 @@
     });
   </script>
 
-  <script src="/js/apple-theme.js"></script>
+  <script src="/js/apple-theme.js?v=20260207-4"></script>
 </body>
 </html>

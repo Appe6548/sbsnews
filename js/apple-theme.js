@@ -13,11 +13,11 @@
         }
 
         init() {
-            // Apply initial theme
-            this.applyTheme(this.currentTheme);
-
             // Setup theme toggle
             this.setupThemeToggle();
+
+            // Apply initial theme
+            this.applyTheme(this.currentTheme);
 
             // Listen for system theme changes
             this.listenForSystemThemeChanges();
@@ -54,24 +54,36 @@
 
             // Update active state in menu
             this.updateActiveMenuItem(theme);
+            this.updateToggleButtonIcon(theme);
         }
 
         setupThemeToggle() {
-            const toggleButton = document.querySelector('.theme-toggle-button');
-            const themeMenu = document.querySelector('.theme-menu');
-            const themeOptions = document.querySelectorAll('.theme-option');
+            const toggleButton = document.querySelector('.theme-toggle-button, .theme-toggle-btn');
+            const themeRoot = toggleButton ? toggleButton.closest('.theme-toggle') : null;
+            const themeMenu = (themeRoot && themeRoot.querySelector('.theme-menu')) || document.querySelector('.theme-menu');
+            const themeOptions = themeMenu ? themeMenu.querySelectorAll('.theme-option') : [];
 
-            if (!toggleButton || !themeMenu) return;
+            if (!toggleButton || !themeMenu || !themeOptions.length) return;
+
+            toggleButton.setAttribute('type', 'button');
+            if (!toggleButton.hasAttribute('aria-label')) {
+                toggleButton.setAttribute('aria-label', '主题切换');
+            }
+            toggleButton.setAttribute('aria-haspopup', 'true');
+            toggleButton.setAttribute('aria-expanded', 'false');
+            this.renderThemeOptionIcons(themeOptions);
 
             // Toggle menu on button click
             toggleButton.addEventListener('click', (e) => {
                 e.stopPropagation();
                 themeMenu.classList.toggle('active');
+                toggleButton.setAttribute('aria-expanded', themeMenu.classList.contains('active') ? 'true' : 'false');
             });
 
             // Close menu when clicking outside
             document.addEventListener('click', () => {
                 themeMenu.classList.remove('active');
+                toggleButton.setAttribute('aria-expanded', 'false');
             });
 
             // Prevent menu from closing when clicking inside
@@ -86,12 +98,12 @@
                     this.saveTheme(selectedTheme);
                     this.applyTheme(selectedTheme);
                     themeMenu.classList.remove('active');
-                    this.updateToggleButtonText(selectedTheme);
+                    toggleButton.setAttribute('aria-expanded', 'false');
                 });
             });
 
-            // Set initial button text
-            this.updateToggleButtonText(this.currentTheme);
+            // Set initial button icon
+            this.updateToggleButtonIcon(this.currentTheme);
         }
 
         updateActiveMenuItem(theme) {
@@ -105,17 +117,41 @@
             });
         }
 
-        updateToggleButtonText(theme) {
-            const toggleButton = document.querySelector('.theme-toggle-button');
+        getThemeIconSvg(theme, size = 16) {
+            const common = `width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"`;
+
+            if (theme === 'light') {
+                return `<svg ${common}><circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.8"/><path d="M12 2.7v2.1M12 19.2v2.1M4.7 4.7l1.5 1.5M17.8 17.8l1.5 1.5M2.7 12h2.1M19.2 12h2.1M4.7 19.3l1.5-1.5M17.8 6.2l1.5-1.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>`;
+            }
+
+            if (theme === 'dark') {
+                return `<svg ${common}><path d="M15.6 3.4a8.8 8.8 0 1 0 5 15.8 9.1 9.1 0 0 1-5.8-8.6c0-2.7 1.2-5.1 3.1-6.8a8.8 8.8 0 0 0-2.3-.4z" fill="currentColor"/></svg>`;
+            }
+
+            return `<svg ${common}><rect x="3.2" y="4.5" width="17.6" height="12" rx="2.2" stroke="currentColor" stroke-width="1.8"/><path d="M9.5 19.5h5M12 16.6v2.9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>`;
+        }
+
+        renderThemeOptionIcons(themeOptions) {
+            themeOptions.forEach(option => {
+                const iconHolder = option.querySelector('.theme-icon');
+                const theme = option.getAttribute('data-theme');
+                if (!iconHolder || !theme) return;
+                iconHolder.innerHTML = this.getThemeIconSvg(theme, 16);
+            });
+        }
+
+        updateToggleButtonIcon(theme) {
+            const toggleButton = document.querySelector('.theme-toggle-button, .theme-toggle-btn');
             if (!toggleButton) return;
 
-            const themeIcons = {
-                'light': '☀️',
-                'dark': '🌙',
-                'system': '💻'
+            const labels = {
+                light: '主题切换：浅色模式',
+                dark: '主题切换：深色模式',
+                system: '主题切换：跟随系统'
             };
-
-            toggleButton.textContent = themeIcons[theme] || '💻';
+            toggleButton.innerHTML = this.getThemeIconSvg(theme, 16);
+            toggleButton.setAttribute('aria-label', labels[theme] || labels.system);
+            toggleButton.setAttribute('title', labels[theme] || labels.system);
         }
 
         listenForSystemThemeChanges() {

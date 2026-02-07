@@ -12,9 +12,9 @@ document.addEventListener('DOMContentLoaded', function() {
   class ThemeManager {
     constructor() {
       this.themes = {
-        light: { name: '白天模式', icon: '☀️' },
-        dark: { name: '夜间模式', icon: '🌙' },
-        system: { name: '根据系统选择', icon: '💻' }
+        light: { name: '白天模式', icon: '' },
+        dark: { name: '夜间模式', icon: '' },
+        system: { name: '根据系统选择', icon: '' }
       };
       
       this.currentTheme = this.getStoredTheme();
@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const toggleBtn = document.querySelector('.theme-toggle-btn');
       
       if (toggleBtn && currentThemeData) {
-        toggleBtn.innerHTML = `${currentThemeData.icon} ${currentThemeData.name}`;
+        toggleBtn.textContent = currentThemeData.icon ? `${currentThemeData.icon} ${currentThemeData.name}` : currentThemeData.name;
       }
 
       // Update active state in dropdown
