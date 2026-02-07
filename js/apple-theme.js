@@ -62,6 +62,7 @@
             const themeRoot = toggleButton ? toggleButton.closest('.theme-toggle') : null;
             const themeMenu = (themeRoot && themeRoot.querySelector('.theme-menu')) || document.querySelector('.theme-menu');
             const themeOptions = themeMenu ? themeMenu.querySelectorAll('.theme-option') : [];
+            let lastTouchAt = 0;
 
             if (!toggleButton || !themeMenu || !themeOptions.length) return;
 
@@ -73,17 +74,32 @@
             toggleButton.setAttribute('aria-expanded', 'false');
             this.renderThemeOptionIcons(themeOptions);
 
+            const setMenuOpen = (isOpen) => {
+                themeMenu.classList.toggle('active', isOpen);
+                toggleButton.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            };
+
+            const toggleMenu = () => {
+                setMenuOpen(!themeMenu.classList.contains('active'));
+            };
+
             // Toggle menu on button click
             toggleButton.addEventListener('click', (e) => {
+                if (Date.now() - lastTouchAt < 500) return;
                 e.stopPropagation();
-                themeMenu.classList.toggle('active');
-                toggleButton.setAttribute('aria-expanded', themeMenu.classList.contains('active') ? 'true' : 'false');
+                toggleMenu();
+            });
+
+            toggleButton.addEventListener('touchend', (e) => {
+                lastTouchAt = Date.now();
+                e.preventDefault();
+                e.stopPropagation();
+                toggleMenu();
             });
 
             // Close menu when clicking outside
             document.addEventListener('click', () => {
-                themeMenu.classList.remove('active');
-                toggleButton.setAttribute('aria-expanded', 'false');
+                setMenuOpen(false);
             });
 
             // Prevent menu from closing when clicking inside
@@ -92,13 +108,23 @@
             });
 
             // Handle theme selection
+            const applyThemeSelection = (selectedTheme) => {
+                this.saveTheme(selectedTheme);
+                this.applyTheme(selectedTheme);
+                setMenuOpen(false);
+            };
+
             themeOptions.forEach(option => {
                 option.addEventListener('click', () => {
                     const selectedTheme = option.getAttribute('data-theme');
-                    this.saveTheme(selectedTheme);
-                    this.applyTheme(selectedTheme);
-                    themeMenu.classList.remove('active');
-                    toggleButton.setAttribute('aria-expanded', 'false');
+                    applyThemeSelection(selectedTheme);
+                });
+
+                option.addEventListener('touchend', (e) => {
+                    lastTouchAt = Date.now();
+                    e.preventDefault();
+                    const selectedTheme = option.getAttribute('data-theme');
+                    applyThemeSelection(selectedTheme);
                 });
             });
 

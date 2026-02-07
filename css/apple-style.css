@@ -361,6 +361,7 @@ nav::before,
   min-width: 36px;
   height: 34px;
   line-height: 1;
+  touch-action: manipulation;
   overflow: hidden;
   backdrop-filter: saturate(var(--glass-saturate)) blur(calc(var(--glass-blur) - 6px));
   -webkit-backdrop-filter: saturate(var(--glass-saturate)) blur(calc(var(--glass-blur) - 6px));
@@ -430,6 +431,7 @@ nav::before,
   padding: 10px 12px;
   border-radius: var(--radius-md);
   cursor: pointer;
+  touch-action: manipulation;
   transition: background var(--transition-fast), transform var(--transition-fast), color var(--transition-fast);
   font-size: 0.9rem;
   color: var(--text-primary);
@@ -1331,7 +1333,10 @@ footer a:hover {
   }
 
   .theme-menu {
-    right: 0;
+    position: fixed;
+    top: calc(var(--nav-height) + 8px);
+    right: 10px;
+    margin-top: 0;
     min-width: 150px;
   }
 }
@@ -1345,6 +1350,11 @@ footer a:hover {
   .nav-menu,
   .nav-items {
     gap: 4px;
+  }
+
+  .nav-menu li:nth-last-child(2),
+  .nav-items li:nth-last-child(2) {
+    display: none;
   }
 
   .nav-link,
@@ -1377,16 +1387,8 @@ footer a:hover {
 }
 
 @media (max-width: 420px) {
-  .nav-menu,
-  .nav-items {
-    overflow-x: auto;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-
-  .nav-menu::-webkit-scrollbar,
-  .nav-items::-webkit-scrollbar {
+  .nav-menu li:nth-child(2),
+  .nav-items li:nth-child(2) {
     display: none;
   }
 

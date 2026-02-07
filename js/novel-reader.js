@@ -26,7 +26,9 @@
   const prevButton = document.getElementById('prev-chapter');
   const nextButton = document.getElementById('next-chapter');
   const layoutEl = document.getElementById('novel-layout');
+  const tocShellEl = document.getElementById('novel-toc-shell');
   const tocToggleButton = document.getElementById('toc-toggle');
+  const tocLabelEl = tocToggleButton ? tocToggleButton.querySelector('.novel-toc-toggle-label') : null;
   const panelEl = document.querySelector('.novel-panel');
 
   if (!chapterListEl || !chapterTitleEl || !chapterContentEl || !chapterIndexEl || !chapterFileEl || !prevButton || !nextButton) {
@@ -49,7 +51,10 @@
     }
     layoutEl.classList.toggle('is-toc-open', isOpen);
     tocToggleButton.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    tocToggleButton.textContent = isOpen ? '收起目录' : '展开目录';
+    tocToggleButton.setAttribute('aria-label', isOpen ? '收起章节目录' : '展开章节目录');
+    if (tocLabelEl) {
+      tocLabelEl.textContent = isOpen ? '收起' : '目录';
+    }
   }
 
   function isTocOpen() {
@@ -290,9 +295,7 @@
 
       button.addEventListener('click', function () {
         loadChapter(index, false);
-        if (isCompactViewport()) {
-          setTocState(false);
-        }
+        setTocState(false);
       });
 
       chapterButtons.push(button);
@@ -324,6 +327,22 @@
       setTocState(!isTocOpen());
     });
   }
+
+  document.addEventListener('click', function (event) {
+    if (!isTocOpen() || !tocShellEl) {
+      return;
+    }
+    if (tocShellEl.contains(event.target)) {
+      return;
+    }
+    setTocState(false);
+  });
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape' && isTocOpen()) {
+      setTocState(false);
+    }
+  });
 
   setTocState(false);
 
