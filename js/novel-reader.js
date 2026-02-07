@@ -25,7 +25,7 @@
   const chapterFileEl = document.getElementById('chapter-file');
   const prevButton = document.getElementById('prev-chapter');
   const nextButton = document.getElementById('next-chapter');
-  const sidebarEl = document.querySelector('.novel-sidebar');
+  const layoutEl = document.getElementById('novel-layout');
   const tocToggleButton = document.getElementById('toc-toggle');
   const panelEl = document.querySelector('.novel-panel');
 
@@ -37,31 +37,23 @@
   let currentIndex = 0;
 
   function isCompactViewport() {
-    return window.matchMedia('(max-width: 980px)').matches;
+    if (typeof window.matchMedia === 'function') {
+      return window.matchMedia('(max-width: 980px)').matches;
+    }
+    return window.innerWidth <= 980;
   }
 
   function setTocState(isOpen) {
-    if (!sidebarEl || !tocToggleButton) {
+    if (!layoutEl || !tocToggleButton) {
       return;
     }
-    sidebarEl.classList.toggle('is-open', isOpen);
+    layoutEl.classList.toggle('is-toc-open', isOpen);
     tocToggleButton.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     tocToggleButton.textContent = isOpen ? '收起目录' : '展开目录';
   }
 
-  function syncTocByViewport() {
-    if (!sidebarEl || !tocToggleButton) {
-      return;
-    }
-    if (isCompactViewport()) {
-      if (!sidebarEl.classList.contains('is-open')) {
-        setTocState(false);
-      }
-      return;
-    }
-    sidebarEl.classList.remove('is-open');
-    tocToggleButton.setAttribute('aria-expanded', 'false');
-    tocToggleButton.textContent = '展开目录';
+  function isTocOpen() {
+    return !!(layoutEl && layoutEl.classList.contains('is-toc-open'));
   }
 
   function scrollToReaderTop() {
@@ -69,10 +61,15 @@
       return;
     }
     const top = panelEl.getBoundingClientRect().top + window.scrollY - 72;
-    window.scrollTo({
-      top: Math.max(top, 0),
-      behavior: 'smooth'
-    });
+    const targetTop = Math.max(top, 0);
+    try {
+      window.scrollTo({
+        top: targetTop,
+        behavior: 'smooth'
+      });
+    } catch (error) {
+      window.scrollTo(0, targetTop);
+    }
   }
 
   function escapeHtml(value) {
@@ -135,7 +132,8 @@
         flushList();
         const level = heading[1].length;
         const headingText = heading[2].trim();
-        const className = /^下章预告(?:\s|$)/.test(headingText) ? ' class="novel-preview-heading"' : '';
+        const normalizedHeading = normalizeHeading(headingText);
+        const className = normalizedHeading === '下章预告' ? ' class="novel-preview-heading"' : '';
         html.push('<h' + level + className + '>' + renderInline(headingText) + '</h' + level + '>');
         continue;
       }
@@ -160,55 +158,45 @@
     return text.trim().replace(/[：:]\s*$/, '');
   }
 
-  function filterChapterSections(markdown) {
-    const lines = markdown.replace(/\r\n/g, '\n').split('\n');
-    const output = [];
-    let skipping = false;
-    let skipLevel = 0;
-    let skipSectionName = '';
-    let nextChapterPreview = '';
-
-    for (const rawLine of lines) {
-      const trimmed = rawLine.trim();
-      const heading = trimmed.match(/^(#{1,6})\s+(.*)$/);
-
-      if (heading) {
-        const level = heading[1].length;
-        const headingText = normalizeHeading(heading[2]);
-
-        if (skipping && level <= skipLevel) {
-          skipping = false;
-          skipLevel = 0;
-          skipSectionName = '';
-        }
-
-        if (!skipping && (headingText === '本章概要' || headingText === '章节备注')) {
-          skipping = true;
-          skipLevel = level;
-          skipSectionName = headingText;
-          continue;
-        }
+  function extractNextChapterPreview(markdown) {
+    const directHeadingMatch = markdown.match(/(?:^|\n)#{2,6}\s*下章预告(?:\s|：|:|$)[^\n]*\n+([\s\S]*?)(?=\n#{1,6}\s+|$)/);
+    if (directHeadingMatch && directHeadingMatch[1]) {
+      const directText = directHeadingMatch[1].trim();
+      if (directText) {
+        return directText;
       }
-
-      if (skipping) {
-        if (!nextChapterPreview && skipSectionName === '章节备注') {
-          const previewMatch = trimmed.match(/^-\s*(?:\*\*)?下章预告(?:\*\*)?[：:]\s*(.+)$/);
-          if (previewMatch && previewMatch[1]) {
-            nextChapterPreview = previewMatch[1].trim();
-          }
-        }
-        continue;
-      }
-
-      output.push(rawLine);
     }
 
-    let cleaned = output.join('\n');
+    const bulletMatch = markdown.match(/^\s*-\s*(?:\*\*)?下章预告(?:\*\*)?[：:]\s*(.+)$/m);
+    if (bulletMatch && bulletMatch[1]) {
+      return bulletMatch[1].trim();
+    }
+
+    return '';
+  }
+
+  function removeSectionByHeading(markdown, headingName) {
+    const escapedName = headingName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const regex = new RegExp('(?:^|\\n)#{2,6}\\s*' + escapedName + '\\s*[：: ]*\\n[\\s\\S]*?(?=\\n#{1,6}\\s+|$)', 'g');
+    return markdown.replace(regex, '\n');
+  }
+
+  function filterChapterSections(markdown) {
+    const normalized = markdown.replace(/\r\n/g, '\n');
+    const nextChapterPreview = extractNextChapterPreview(normalized);
+
+    let cleaned = normalized;
+    cleaned = removeSectionByHeading(cleaned, '本章概要');
+    cleaned = removeSectionByHeading(cleaned, '章节备注');
+    cleaned = removeSectionByHeading(cleaned, '章节注释');
+    cleaned = removeSectionByHeading(cleaned, '章节说明');
+
     cleaned = cleaned.replace(/^\s*---\s*\n+/, '');
     cleaned = cleaned.replace(/\n+\s*---\s*$/, '');
+    cleaned = cleaned.replace(/\n{2,}\s*---\s*\n{2,}/g, '\n\n');
     cleaned = cleaned.replace(/\n{3,}/g, '\n\n').trim();
 
-    if (nextChapterPreview && !/(^|\n)##\s*下章预告(?:\s|$)/.test(cleaned)) {
+    if (nextChapterPreview && !/(^|\n)#{2,6}\s*下章预告(?:\s|：|:|$)/.test(cleaned)) {
       cleaned += '\n\n## 下章预告\n\n' + nextChapterPreview;
     }
 
@@ -331,16 +319,13 @@
 
   if (tocToggleButton) {
     tocToggleButton.setAttribute('aria-controls', 'chapter-list');
+    tocToggleButton.setAttribute('aria-expanded', 'false');
     tocToggleButton.addEventListener('click', function () {
-      if (!sidebarEl) {
-        return;
-      }
-      setTocState(!sidebarEl.classList.contains('is-open'));
+      setTocState(!isTocOpen());
     });
   }
 
-  syncTocByViewport();
-  window.addEventListener('resize', syncTocByViewport, { passive: true });
+  setTocState(false);
 
   renderChapterList();
   loadChapter(chapterFromHash(), true);
