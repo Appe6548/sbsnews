@@ -357,43 +357,43 @@
   .novel-toc-panel {
     top: calc(var(--nav-height) + 10px);
     right: 12px;
-    width: 48px;
-    border-radius: 999px;
-    padding: 0;
-    overflow: visible;
+    width: 96px;
+    border-radius: var(--radius-lg);
+    padding: 10px;
+    overflow: hidden;
   }
 
   .novel-layout.is-toc-open .novel-toc-panel {
-    width: 48px;
+    width: min(330px, calc(100vw - 22px));
   }
 
   .novel-toc-toggle {
-    width: 48px;
-    height: 48px;
-    border-radius: 999px;
-    padding: 0;
-    gap: 0;
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-pill);
+    padding: 9px 12px;
+    gap: 8px;
   }
 
   .novel-toc-toggle-label {
-    display: none;
+    display: inline;
   }
 
   .novel-toc-toggle-icon,
   .novel-toc-toggle-icon svg {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
   }
 
   .novel-toc-body {
-    position: absolute;
-    top: 56px;
-    right: 0;
-    width: min(330px, calc(100vw - 22px));
+    position: static;
+    top: auto;
+    right: auto;
+    width: auto;
     margin-top: 0;
     max-height: 0;
     padding: 0;
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-md);
     border: 1px solid rgba(255, 255, 255, 0.62);
     background: rgba(255, 255, 255, 0.95);
     box-shadow: var(--glass-shadow-strong);
