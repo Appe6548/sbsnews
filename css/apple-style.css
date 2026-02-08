@@ -419,7 +419,7 @@ nav::before,
   border-radius: inherit;
   pointer-events: none;
   background: var(--glass-noise);
-  opacity: 0.22;
+  opacity: 0.14;
   mix-blend-mode: overlay;
 }
 
@@ -430,6 +430,8 @@ nav::before,
 }
 
 .theme-option {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -439,7 +441,17 @@ nav::before,
   touch-action: manipulation;
   transition: background var(--transition-fast), transform var(--transition-fast), color var(--transition-fast);
   font-size: 0.9rem;
-  color: var(--text-primary);
+  font-weight: 560;
+  color: #101318;
+}
+
+[data-theme="dark"] .theme-option {
+  color: #f5f5f7;
+}
+
+.theme-option span:last-child {
+  position: relative;
+  z-index: 1;
 }
 
 .theme-option:hover {
@@ -464,6 +476,8 @@ nav::before,
   justify-content: center;
   font-size: 0;
   line-height: 0;
+  color: currentColor;
+  opacity: 0.94;
 }
 
 .theme-icon svg {
