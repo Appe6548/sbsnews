@@ -1349,42 +1349,42 @@ footer a:hover {
 @media (max-width: 560px) {
   .nav-container {
     padding: 0 8px;
-    gap: 6px;
-  }
-
-  .nav-menu,
-  .nav-items {
     gap: 4px;
-    overflow-x: auto;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    max-width: calc(100vw - 96px);
-    padding-bottom: 1px;
-  }
-
-  .nav-menu::-webkit-scrollbar,
-  .nav-items::-webkit-scrollbar {
-    display: none;
-  }
-
-  .nav-link,
-  .nav-items li a {
-    font-size: 0.66rem;
-    padding: 5px 6px;
   }
 
   .nav-brand,
   .brand {
-    font-size: 0.8rem;
-    padding: 4px 5px;
+    display: none;
+  }
+
+  .nav-menu,
+  .nav-items {
+    margin-left: 0;
+    width: 100%;
+    max-width: none;
+    gap: 2px;
+    justify-content: space-between;
+    overflow: visible;
+    padding-bottom: 0;
+  }
+
+  .nav-menu li,
+  .nav-items li {
+    flex: 0 1 auto;
+    min-width: 0;
+  }
+
+  .nav-link,
+  .nav-items li a {
+    font-size: 0.64rem;
+    padding: 5px 4px;
   }
 
   .theme-toggle-button,
   .theme-toggle-btn {
-    min-width: 30px;
+    min-width: 28px;
     height: 28px;
-    padding: 5px 7px;
+    padding: 4px 6px;
   }
 
   .theme-menu {
@@ -1400,19 +1400,13 @@ footer a:hover {
 @media (max-width: 420px) {
   .nav-menu,
   .nav-items {
-    max-width: calc(100vw - 88px);
+    width: 100%;
   }
 
   .nav-link,
   .nav-items li a {
     font-size: 0.62rem;
-    padding: 5px;
-  }
-
-  .nav-brand,
-  .brand {
-    font-size: 0.76rem;
-    padding: 4px;
+    padding: 4px 3px;
   }
 
   .container,

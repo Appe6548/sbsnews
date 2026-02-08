@@ -62,7 +62,7 @@
             const themeRoot = toggleButton ? toggleButton.closest('.theme-toggle') : null;
             const themeMenu = (themeRoot && themeRoot.querySelector('.theme-menu')) || document.querySelector('.theme-menu');
             const themeOptions = themeMenu ? themeMenu.querySelectorAll('.theme-option') : [];
-            let lastTouchAt = 0;
+            let suppressClickUntil = 0;
 
             if (!toggleButton || !themeMenu || !themeOptions.length) return;
 
@@ -83,22 +83,30 @@
                 setMenuOpen(!themeMenu.classList.contains('active'));
             };
 
-            // Toggle menu on button click
+            const markPointerInteraction = () => {
+                suppressClickUntil = Date.now() + 450;
+            };
+
+            const isSuppressedClick = () => Date.now() < suppressClickUntil;
+
+            // Toggle menu on button click / touch
             toggleButton.addEventListener('click', (e) => {
-                if (Date.now() - lastTouchAt < 500) return;
+                if (isSuppressedClick()) return;
                 e.stopPropagation();
                 toggleMenu();
             });
 
-            toggleButton.addEventListener('touchend', (e) => {
-                lastTouchAt = Date.now();
+            toggleButton.addEventListener('pointerup', (e) => {
+                if (e.pointerType !== 'touch' && e.pointerType !== 'pen') return;
+                markPointerInteraction();
                 e.preventDefault();
                 e.stopPropagation();
                 toggleMenu();
             });
 
             // Close menu when clicking outside
-            document.addEventListener('click', () => {
+            document.addEventListener('click', (e) => {
+                if (themeRoot && themeRoot.contains(e.target)) return;
                 setMenuOpen(false);
             });
 
@@ -116,13 +124,16 @@
 
             themeOptions.forEach(option => {
                 option.addEventListener('click', () => {
+                    if (isSuppressedClick()) return;
                     const selectedTheme = option.getAttribute('data-theme');
                     applyThemeSelection(selectedTheme);
                 });
 
-                option.addEventListener('touchend', (e) => {
-                    lastTouchAt = Date.now();
+                option.addEventListener('pointerup', (e) => {
+                    if (e.pointerType !== 'touch' && e.pointerType !== 'pen') return;
+                    markPointerInteraction();
                     e.preventDefault();
+                    e.stopPropagation();
                     const selectedTheme = option.getAttribute('data-theme');
                     applyThemeSelection(selectedTheme);
                 });
