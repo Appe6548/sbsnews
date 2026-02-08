@@ -59,6 +59,8 @@
   width: 96px;
   padding: 10px;
   overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-color: rgba(255, 255, 255, 0.58);
   transform: none !important;
   transition:
     width 460ms cubic-bezier(0.22, 1, 0.36, 1),
@@ -69,6 +71,18 @@
 
 .novel-layout.is-toc-open .novel-toc-panel {
   width: min(330px, calc(100vw - 28px));
+  background-color: rgba(255, 255, 255, 0.95);
+  border-color: rgba(255, 255, 255, 0.68);
+}
+
+[data-theme="dark"] .novel-toc-panel {
+  background-color: rgba(18, 20, 26, 0.9);
+  border-color: rgba(255, 255, 255, 0.24);
+}
+
+[data-theme="dark"] .novel-layout.is-toc-open .novel-toc-panel {
+  background-color: rgba(18, 20, 26, 0.94);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 .novel-toc-toggle {
@@ -129,6 +143,9 @@
   opacity: 0;
   overflow: hidden;
   pointer-events: none;
+  background: rgba(255, 255, 255, 0.36);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.56);
   transform: translateY(-10px) scale(0.98);
   transform-origin: top right;
   transition:
@@ -144,7 +161,13 @@
   opacity: 1;
   overflow: auto;
   pointer-events: auto;
+  padding: 12px;
   transform: translateY(0) scale(1);
+}
+
+[data-theme="dark"] .novel-toc-body {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.24);
 }
 
 .novel-sidebar-head {
@@ -170,7 +193,7 @@
 .chapter-button {
   text-align: left;
   border: 1px solid var(--glass-border);
-  background: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.3);
   color: var(--text-secondary);
   border-radius: var(--radius-md);
   padding: 10px 12px;
@@ -179,7 +202,7 @@
 }
 
 [data-theme="dark"] .chapter-button {
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.12);
 }
 
 .chapter-button:hover {
@@ -371,8 +394,8 @@
     max-height: 0;
     padding: 0;
     border-radius: var(--radius-lg);
-    border: 1px solid var(--glass-border);
-    background: var(--glass-bg-strong);
+    border: 1px solid rgba(255, 255, 255, 0.62);
+    background: rgba(255, 255, 255, 0.95);
     box-shadow: var(--glass-shadow-strong);
     backdrop-filter: saturate(var(--glass-saturate)) blur(var(--glass-blur));
     -webkit-backdrop-filter: saturate(var(--glass-saturate)) blur(var(--glass-blur));
@@ -382,6 +405,11 @@
   .novel-layout.is-toc-open .novel-toc-body {
     max-height: min(62vh, 520px);
     padding: 12px;
+  }
+
+  [data-theme="dark"] .novel-toc-body {
+    border-color: rgba(255, 255, 255, 0.24);
+    background: rgba(18, 20, 26, 0.94);
   }
 
   .novel-controls {
