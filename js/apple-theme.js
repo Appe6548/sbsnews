@@ -215,7 +215,7 @@
         new ThemeManager();
     }
 
-    // Smooth page transitions
+    // UI interactions
     document.addEventListener('DOMContentLoaded', () => {
         const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -254,6 +254,60 @@
             }, { passive: true });
         }
 
+        // Mobile hamburger menu
+        const hamburger = document.querySelector('.nav-hamburger');
+        const navMenu = document.querySelector('.nav-menu, .nav-items');
+        const overlay = document.querySelector('.nav-overlay');
+
+        if (hamburger && navMenu) {
+            const closeMenu = () => {
+                navMenu.classList.remove('open');
+                hamburger.classList.remove('open');
+                hamburger.setAttribute('aria-expanded', 'false');
+                if (overlay) overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            };
+
+            const openMenu = () => {
+                navMenu.classList.add('open');
+                hamburger.classList.add('open');
+                hamburger.setAttribute('aria-expanded', 'true');
+                if (overlay) overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            };
+
+            const toggleMenu = () => {
+                if (navMenu.classList.contains('open')) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            };
+
+            hamburger.addEventListener('click', (e) => {
+                e.stopPropagation();
+                toggleMenu();
+            });
+
+            if (overlay) {
+                overlay.addEventListener('click', closeMenu);
+            }
+
+            navMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', closeMenu);
+            });
+
+            const mq = window.matchMedia('(min-width: 769px)');
+            const onMediaChange = () => {
+                if (mq.matches) closeMenu();
+            };
+            if (mq.addEventListener) {
+                mq.addEventListener('change', onMediaChange);
+            } else if (mq.addListener) {
+                mq.addListener(onMediaChange);
+            }
+        }
+
         if (prefersReducedMotion) return;
 
         // Add smooth transitions to all internal links
@@ -263,12 +317,10 @@
             link.addEventListener('click', function(e) {
                 const href = this.getAttribute('href');
                 
-                // Skip if it's an anchor link or external link
                 if (href.startsWith('#') || this.target === '_blank') {
                     return;
                 }
                 
-                // Add fade-out effect before navigation
                 e.preventDefault();
                 document.body.style.opacity = '0';
                 
