@@ -278,23 +278,31 @@ nav::before,
 
 .nav-brand,
 .brand {
-  font-size: 1rem;
-  font-weight: 650;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   color: var(--text-primary);
-  padding: 8px 10px;
+  padding: 6px;
   border-radius: var(--radius-sm);
-  transition: background var(--transition-fast), opacity var(--transition-fast);
+  transition: background var(--transition-fast), opacity var(--transition-fast), transform var(--transition-fast);
   flex: 0 0 auto;
 }
 
 .nav-brand:hover,
 .brand:hover {
   background: rgba(255, 255, 255, 0.22);
+  transform: scale(1.05);
 }
 
 [data-theme="dark"] .nav-brand:hover,
 [data-theme="dark"] .brand:hover {
   background: rgba(255, 255, 255, 0.08);
+}
+
+.nav-logo {
+  display: block;
+  width: 28px;
+  height: 28px;
 }
 
 .nav-menu,
@@ -1395,8 +1403,12 @@ footer a:hover {
 
   .nav-brand,
   .brand {
-    font-size: 0.92rem;
-    padding: 6px 8px;
+    padding: 4px;
+  }
+
+  .nav-logo {
+    width: 30px;
+    height: 30px;
   }
 
   .nav-menu,
