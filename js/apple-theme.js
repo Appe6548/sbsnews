@@ -308,6 +308,22 @@
             }
         }
 
+        // Scroll-reveal: observe .reveal elements
+        if (!prefersReducedMotion && typeof IntersectionObserver !== 'undefined') {
+            const revealObserver = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+
+            document.querySelectorAll('.reveal').forEach(el => {
+                revealObserver.observe(el);
+            });
+        }
+
         if (prefersReducedMotion) return;
 
         // Add smooth transitions to all internal links

@@ -1364,6 +1364,53 @@ footer a:hover {
   }
 }
 
+/* Scroll-reveal animations (Apple-style) */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.25, 0.1, 0.25, 1),
+              transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-scale {
+  transform: translateY(30px) scale(0.97);
+}
+
+.reveal-scale.is-visible {
+  transform: translateY(0) scale(1);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* Hero entrance (fires on page load, not scroll) */
+@keyframes hero-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-enter {
+  opacity: 0;
+  animation: hero-fade-up 0.9s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
+
+.hero-enter-d1 { animation-delay: 0.15s; }
+.hero-enter-d2 { animation-delay: 0.3s; }
+
 /* Accessibility: reduced motion */
 @media (prefers-reduced-motion: reduce) {
   * {
