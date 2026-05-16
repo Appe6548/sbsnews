@@ -1,25 +1,32 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>恭喜 - 青春的旅程</title>
-<link rel="stylesheet" href="/css/apple-style.css?v=20260324-1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>恭喜 — 青春的旅程</title>
+  <link rel="stylesheet" href="/css/claude-style.css?v=20260516-1">
 </head>
+
 <body>
-  <nav>
+  <nav class="nav-global">
     <div class="nav-container">
-      <a href="/" class="brand" aria-label="MMC News 首页"><svg class="nav-logo" width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="32" height="32" rx="8" fill="currentColor" opacity="0.12"/><path d="M7 23V9l5.5 8L16 11.5l3.5 5.5L25 9v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a href="/" class="nav-brand" aria-label="MMC News 首页">
+        <svg class="nav-logo" width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M12 1.5 L13.1 10.9 L22.5 12 L13.1 13.1 L12 22.5 L10.9 13.1 L1.5 12 L10.9 10.9 Z" fill="currentColor"/>
+        </svg>
+        <span class="nav-wordmark">MMC News</span>
+      </a>
       <button class="nav-hamburger" type="button" aria-label="菜单" aria-expanded="false">
         <span class="nav-hamburger-line"></span>
         <span class="nav-hamburger-line"></span>
         <span class="nav-hamburger-line"></span>
       </button>
-      <ul class="nav-items">
-        <li><a href="/news.html">动态</a></li>
-        <li><a href="/archive.html">作品</a></li>
-        <li><a href="/novel.html">小说</a></li>
-        <li><a href="/about.html">关于</a></li>
+      <ul class="nav-menu">
+        <li><a href="/news.html" class="nav-link">动态</a></li>
+        <li><a href="/archive.html" class="nav-link">作品</a></li>
+        <li><a href="/novel.html" class="nav-link">小说</a></li>
+        <li><a href="/about.html" class="nav-link">关于</a></li>
       </ul>
       <div class="theme-toggle">
         <button class="theme-toggle-button" type="button" aria-label="主题切换"></button>
@@ -42,25 +49,36 @@
   </nav>
   <div class="nav-overlay"></div>
 
-<main>
-    <section class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">恭喜</h1>
-            <p class="hero-description">
-                干得漂亮，你实现了这个伟大壮举。<br>
-                愿你心怀梦想，步履不停，青春的旅程才刚刚开始。<br>
-                我们很快就会在前方的道路上再次相遇。
-            </p>
+  <main>
+    <section class="hero" style="padding-top:120px;">
+      <div class="hero-content" style="text-align:center;">
+        <div style="margin:0 auto;">
+          <p class="hero-eyebrow hero-enter" style="display:inline-flex; margin:0 auto var(--space-md);">2025 · 高考</p>
+          <h1 class="hero-title hero-enter hero-enter-d1" style="font-family:var(--font-display); font-size:clamp(3rem, 7vw, 5.5rem); line-height:1; margin-bottom:24px;">恭喜</h1>
+          <p class="hero-description hero-enter hero-enter-d2" style="margin-left:auto; margin-right:auto;">
+            干得漂亮，你实现了这个伟大壮举。<br>
+            愿你心怀梦想，步履不停 — 青春的旅程才刚刚开始。<br>
+            我们很快就会在前方的道路上，再次相遇。
+          </p>
         </div>
+      </div>
     </section>
-</main>
+  </main>
 
-<footer>
+  <footer>
     <div class="footer-content">
-        <p class="footer-text"><a href="https://icp.gov.moe/?keyword=20250941" target="_blank">萌ICP备20250941号</a></p>
+      <div class="footer-brand">
+        <svg class="nav-logo" width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M12 1.5 L13.1 10.9 L22.5 12 L13.1 13.1 L12 22.5 L10.9 13.1 L1.5 12 L10.9 10.9 Z" fill="currentColor"/>
+        </svg>
+        <span>MMC News</span>
+      </div>
+      <p class="footer-text">© 2026 MMC News · 专注报道，传递价值</p>
+      <p class="footer-text"><a href="https://icp.gov.moe/?keyword=20250941" target="_blank" rel="noopener">萌ICP备20250941号</a></p>
     </div>
-</footer>
+  </footer>
 
-<script src="/js/apple-theme.js?v=20260324-1"></script>
+  <script src="/js/apple-theme.js?v=20260516-1"></script>
 </body>
+
 </html>

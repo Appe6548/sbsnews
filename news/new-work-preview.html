@@ -3,39 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>水王新作品预告 - MMC News</title>
-  <link rel="stylesheet" href="/css/apple-style.css?v=20260324-1">
+  <title>「新作速递」水王新作品预告 — MMC News</title>
+  <link rel="stylesheet" href="/css/claude-style.css?v=20260516-1">
 </head>
 <body>
-  <nav>
+  <nav class="nav-global">
     <div class="nav-container">
-      <a href="/" class="brand" aria-label="MMC News 首页"><svg class="nav-logo" width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="32" height="32" rx="8" fill="currentColor" opacity="0.12"/><path d="M7 23V9l5.5 8L16 11.5l3.5 5.5L25 9v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a href="/" class="nav-brand" aria-label="MMC News 首页">
+        <svg class="nav-logo" width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M12 1.5 L13.1 10.9 L22.5 12 L13.1 13.1 L12 22.5 L10.9 13.1 L1.5 12 L10.9 10.9 Z" fill="currentColor"/>
+        </svg>
+        <span class="nav-wordmark">MMC News</span>
+      </a>
       <button class="nav-hamburger" type="button" aria-label="菜单" aria-expanded="false">
         <span class="nav-hamburger-line"></span>
         <span class="nav-hamburger-line"></span>
         <span class="nav-hamburger-line"></span>
       </button>
-      <ul class="nav-items">
-        <li><a href="/news.html">动态</a></li>
-        <li><a href="/archive.html">作品</a></li>
-        <li><a href="/novel.html">小说</a></li>
-        <li><a href="/about.html">关于</a></li>
+      <ul class="nav-menu">
+        <li><a href="/news.html" class="nav-link active">动态</a></li>
+        <li><a href="/archive.html" class="nav-link">作品</a></li>
+        <li><a href="/novel.html" class="nav-link">小说</a></li>
+        <li><a href="/about.html" class="nav-link">关于</a></li>
       </ul>
       <div class="theme-toggle">
         <button class="theme-toggle-button" type="button" aria-label="主题切换"></button>
         <div class="theme-menu">
-          <div class="theme-option" data-theme="light">
-            <span class="theme-icon" aria-hidden="true"></span>
-            <span>浅色模式</span>
-          </div>
-          <div class="theme-option" data-theme="dark">
-            <span class="theme-icon" aria-hidden="true"></span>
-            <span>深色模式</span>
-          </div>
-          <div class="theme-option active" data-theme="system">
-            <span class="theme-icon" aria-hidden="true"></span>
-            <span>跟随系统</span>
-          </div>
+          <div class="theme-option" data-theme="light"><span class="theme-icon"></span><span>浅色模式</span></div>
+          <div class="theme-option" data-theme="dark"><span class="theme-icon"></span><span>深色模式</span></div>
+          <div class="theme-option active" data-theme="system"><span class="theme-icon"></span><span>跟随系统</span></div>
         </div>
       </div>
     </div>
@@ -44,47 +40,56 @@
 
   <main class="main-content">
     <article class="article-container">
+      <a href="/news.html" class="article-back">返回动态</a>
       <header class="article-header">
+        <span class="article-eyebrow">新作预告</span>
         <h1 class="article-title">「新作速递」水王新作品预告</h1>
-        <div class="article-meta">2024年8月15日</div>
+        <div class="article-meta">2024 年 8 月 15 日 · 预告</div>
       </header>
       <div class="article-content">
-        <p>我们怀着无比激动的心情，向大家预告一部突破性的新作品！这部作品将巧妙地将水王与英语元素完美融合，创造出前所未有的全新体验。</p>
+        <p>我们怀着无比激动的心情，向大家预告一部突破性的新作品！这部作品将巧妙地把"水王"与英语元素完美融合，创造出前所未有的全新体验。</p>
 
-        <p>为了让大家提前感受这部作品的魅力，我们已发布了超前预览版本。中文版将会在晚些时候发布。</p>
+        <p>为了让大家提前感受这部作品的魅力，我们已发布了超前预览版本——中文版将会在晚些时候发布。</p>
 
         <div class="preview-images">
-          <div class="preview-image">
-            <img src="https://r2.oai.works/images/%E6%B0%B4%E8%AF%AD/%E6%B0%B4%E8%AF%AD%E9%A2%84%E8%A7%881.jpg" alt="水语预览（英文）" style="width: 100%;">
-            <p class="image-caption">水语预览（英文）</p>
-          </div>
-          <div class="preview-image">
-            <img src="https://r2.oai.works/images/%E6%B0%B4%E8%AF%AD/%E6%B0%B4%E8%AF%AD%E9%A2%84%E8%A7%882.jpg" alt="水语预览（中文）" style="width: 100%;">
-            <p class="image-caption">水语预览（中文）</p>
-          </div>
+          <figure>
+            <img src="https://r2.oai.works/images/%E6%B0%B4%E8%AF%AD/%E6%B0%B4%E8%AF%AD%E9%A2%84%E8%A7%881.jpg" alt="水语预览（英文）">
+            <figcaption class="image-caption">水语预览（英文）</figcaption>
+          </figure>
+          <figure>
+            <img src="https://r2.oai.works/images/%E6%B0%B4%E8%AF%AD/%E6%B0%B4%E8%AF%AD%E9%A2%84%E8%A7%882.jpg" alt="水语预览（中文）">
+            <figcaption class="image-caption">水语预览（中文）</figcaption>
+          </figure>
         </div>
 
         <p>值得注意的是，除了大家熟悉的水王外，本作品还将引入令人期待的全新角色，为故事注入更多精彩元素。</p>
 
-        <p class="highlight-callout">
-          <strong>【有奖竞猜活动】</strong><br>
-          根据我们提供的图片线索，猜出本次新作品中的神秘新角色！猜中者将获得精美奖品一份。获奖名单将在作品发布前一天公布，敬请关注！
-        </p>
-
-        <div class="hint-image">
-          <img src="https://r2.oai.works/images/%E7%AB%9E%E7%8C%9C%E6%8F%90%E7%A4%BA%E5%9B%BE.jpg" alt="竞猜提示图" style="width: 100%; max-width: 600px; display: block; margin: 0 auto;">
-          <p class="image-caption">竞猜提示图</p>
+        <div class="highlight-callout">
+          <strong>有奖竞猜活动</strong><br>
+          根据我们提供的图片线索，猜出本次新作品中的神秘新角色！猜中者将获得精美奖品一份。获奖名单将在作品发布前一天公布，敬请关注。
         </div>
+
+        <figure class="article-image" style="margin: 32px 0;">
+          <img src="https://r2.oai.works/images/%E7%AB%9E%E7%8C%9C%E6%8F%90%E7%A4%BA%E5%9B%BE.jpg" alt="竞猜提示图" style="width: 80%;">
+          <figcaption class="image-caption">竞猜提示图</figcaption>
+        </figure>
       </div>
     </article>
   </main>
 
   <footer>
     <div class="footer-content">
-      <p class="footer-text"><a href="https://icp.gov.moe/?keyword=20250941" target="_blank">萌ICP备20250941号</a></p>
+      <div class="footer-brand">
+        <svg class="nav-logo" width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M12 1.5 L13.1 10.9 L22.5 12 L13.1 13.1 L12 22.5 L10.9 13.1 L1.5 12 L10.9 10.9 Z" fill="currentColor"/>
+        </svg>
+        <span>MMC News</span>
+      </div>
+      <p class="footer-text">© 2026 MMC News · 专注报道，传递价值</p>
+      <p class="footer-text"><a href="https://icp.gov.moe/?keyword=20250941" target="_blank" rel="noopener">萌ICP备20250941号</a></p>
     </div>
   </footer>
 
-  <script src="/js/apple-theme.js?v=20260324-1"></script>
+  <script src="/js/apple-theme.js?v=20260516-1"></script>
 </body>
 </html>

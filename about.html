@@ -4,14 +4,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>关于我们 - MMC News</title>
-  <link rel="stylesheet" href="/css/apple-style.css?v=20260324-1">
+  <title>关于我们 — MMC News</title>
+  <meta name="description" content="MMC News 起源于对真实的追求，专注报道，传递价值。">
+  <link rel="stylesheet" href="/css/claude-style.css?v=20260516-1">
 </head>
 
 <body>
   <nav class="nav-global">
     <div class="nav-container">
-      <a href="/" class="nav-brand" aria-label="MMC News 首页"><svg class="nav-logo" width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="32" height="32" rx="8" fill="currentColor" opacity="0.12"/><path d="M7 23V9l5.5 8L16 11.5l3.5 5.5L25 9v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a href="/" class="nav-brand" aria-label="MMC News 首页">
+        <svg class="nav-logo" width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M12 1.5 L13.1 10.9 L22.5 12 L13.1 13.1 L12 22.5 L10.9 13.1 L1.5 12 L10.9 10.9 Z" fill="currentColor"/>
+        </svg>
+        <span class="nav-wordmark">MMC News</span>
+      </a>
       <button class="nav-hamburger" type="button" aria-label="菜单" aria-expanded="false">
         <span class="nav-hamburger-line"></span>
         <span class="nav-hamburger-line"></span>
@@ -21,7 +27,7 @@
         <li><a href="/news.html" class="nav-link">动态</a></li>
         <li><a href="/archive.html" class="nav-link">作品</a></li>
         <li><a href="/novel.html" class="nav-link">小说</a></li>
-        <li><a href="/about.html" class="nav-link">关于</a></li>
+        <li><a href="/about.html" class="nav-link active">关于</a></li>
       </ul>
       <div class="theme-toggle">
         <button class="theme-toggle-button" type="button" aria-label="主题切换"></button>
@@ -43,19 +49,26 @@
     </div>
   </nav>
   <div class="nav-overlay"></div>
-  <main>
-    <section class="section">
-      <div class="container">
-        <div class="section-header">
-          <h1 class="section-title">关于 MMC News</h1>
-          <p class="section-description">专注报道，传递价值</p>
-        </div>
 
-        <div class="about-section">
-          <h2 class="section-title">我们的故事</h2>
+  <main>
+    <!-- Editorial intro -->
+    <section class="section section--tight" style="padding-top:96px; padding-bottom:32px;">
+      <div class="container">
+        <p class="hero-eyebrow">关于 · About</p>
+        <h1 class="hero-title" style="font-size:clamp(2.4rem, 5vw, 3.6rem); margin-bottom:16px;">专注报道，<br>传递价值。</h1>
+        <p class="section-description" style="margin:0; font-size:1.15rem;">MMC News 起源于对真实的追求，是阳光博思高级中学的官方新闻平台。</p>
+      </div>
+    </section>
+
+    <!-- Body sections -->
+    <section class="section" style="padding-top:32px;">
+      <div class="container">
+        <div class="about-section reveal">
+          <h2>我们的故事</h2>
           <p>MMC News 诞生于对真实的追求。作为阳光博思高级中学的官方新闻平台，我们用独特的视角，记录每一个值得被铭记的瞬间。在这里，新闻不仅仅是信息的传递，更是故事的讲述，是成长的见证。</p>
         </div>
-        <div class="about-section">
+
+        <div class="about-section reveal">
           <h2>我们的信念</h2>
           <p>我们相信新闻的力量。每一篇报道，都是一次对真相的探寻；每一个故事，都是一段值得分享的历程。在这里，我们：</p>
           <ul>
@@ -64,35 +77,59 @@
             <li>永远保持对新闻的热爱与敬畏</li>
           </ul>
         </div>
-        <div class="about-section">
-          <h2 class="section-title">创新与突破</h2>
+
+        <div class="about-section reveal">
+          <h2>创新与突破</h2>
           <p>新闻，应该是一场美好的体验。我们不断探索新的可能，让每一篇报道都成为一次心灵的对话。在这里，创新不只是一个词，更是对我们的承诺。</p>
         </div>
-        <div class="about-section">
-          <h2 class="section-title">加入我们</h2>
+
+        <div class="about-section reveal">
+          <h2>加入我们</h2>
           <p>如果你也相信新闻的力量，如果你也对真实怀有热爱，如果你也想用文字和影像讲述精彩的故事，那么，这里就是你的舞台。</p>
         </div>
-        <div class="about-section">
-          <h2 class="section-title">联系方式</h2>
-          <p>让我们一起创造精彩: contact@mmc.edu.kg</p>
-        </div>
-        <div class="about-section" style="border-top: 1px solid rgba(0, 0, 0, 0.1); padding-top: 40px;">
-          <h2 class="section-title">致谢</h2>
-          <p style="margin-bottom: 30px;">感谢所有帮助 MMC News 成长的伙伴们。正是你们的支持，才让我们能够不断前行。</p>
 
-          <div class="acknowledgment-group">
+        <div class="about-section reveal">
+          <h2>联系方式</h2>
+          <p>让我们一起创造精彩 — <a href="mailto:contact@mmc.edu.kg" class="text-link">contact@mmc.edu.kg</a></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Acknowledgments — cream band -->
+    <section class="section section--cream-card">
+      <div class="container">
+        <div class="reveal">
+          <p class="eyebrow">致谢 · Acknowledgments</p>
+          <h2 class="section-title" style="margin-top:8px; margin-bottom:16px;">感谢同行的伙伴</h2>
+          <p style="margin-bottom:32px; max-width:680px; color:var(--color-body-strong); font-size:1.05rem;">感谢所有帮助 MMC News 成长的伙伴们。正是你们的支持，才让我们能够不断前行。</p>
+        </div>
+
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:24px;">
+          <div class="acknowledgment-group reveal">
             <h3>创意与内容支持</h3>
             <p>OpenAI · Claude · Runway · PiKa · 海螺 · 可灵 · Adobe · Spotify · CapCut</p>
           </div>
-
-          <div class="acknowledgment-group">
+          <div class="acknowledgment-group reveal reveal-delay-1">
             <h3>技术与灵感之源</h3>
             <p>Microsoft · Apple · Google · GitHub · Cloudflare · DigitalPlat · Cursor · Trae · jsDelivr</p>
           </div>
+        </div>
 
-          <p
-            style="font-size: 0.875rem; color: var(--color-text-secondary); margin-top: var(--spacing-xl); font-style: italic;">
-            感谢有以上以及所有关心、支持 MMC News 的你们，此项目得以完成。<br>感谢123云盘，没有你，此项目将更快完成。</p>
+        <p style="margin-top:32px; font-size:0.875rem; color:var(--color-muted); font-style:italic; max-width:680px;">
+          感谢有以上以及所有关心、支持 MMC News 的你们，此项目得以完成。<br>
+          感谢123云盘——没有你，此项目将更快完成。
+        </p>
+      </div>
+    </section>
+
+    <!-- Coral CTA -->
+    <section class="section">
+      <div class="container">
+        <div class="cta-coral reveal reveal-scale">
+          <p class="eyebrow" style="color:rgba(255,255,255,0.78); margin-bottom:12px;">加入我们</p>
+          <h2 class="section-title">让我们一起讲述故事。</h2>
+          <p>如果你也对真实怀有热爱，欢迎与我们联系。</p>
+          <a href="mailto:contact@mmc.edu.kg" class="button button-on-dark">contact@mmc.edu.kg</a>
         </div>
       </div>
     </section>
@@ -100,11 +137,18 @@
 
   <footer>
     <div class="footer-content">
-      <p class="footer-text"><a href="https://icp.gov.moe/?keyword=20250941" target="_blank">萌ICP备20250941号</a></p>
+      <div class="footer-brand">
+        <svg class="nav-logo" width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M12 1.5 L13.1 10.9 L22.5 12 L13.1 13.1 L12 22.5 L10.9 13.1 L1.5 12 L10.9 10.9 Z" fill="currentColor"/>
+        </svg>
+        <span>MMC News</span>
+      </div>
+      <p class="footer-text">© 2026 MMC News · 专注报道，传递价值</p>
+      <p class="footer-text"><a href="https://icp.gov.moe/?keyword=20250941" target="_blank" rel="noopener">萌ICP备20250941号</a></p>
     </div>
   </footer>
 
-  <script src="/js/apple-theme.js?v=20260324-1"></script>
+  <script src="/js/apple-theme.js?v=20260516-1"></script>
 </body>
 
 </html>

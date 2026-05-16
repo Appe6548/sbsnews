@@ -1,247 +1,172 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>If not me, who? If not now, when?</title>
-<link rel="stylesheet" href="/css/apple-style.css?v=20260324-1">
+<link rel="stylesheet" href="/css/claude-style.css?v=20260516-1">
 <script src="/js/lang.js"></script>
 <style>
-.hero-section {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: calc(var(--nav-height) + 36px) 24px 48px;
-    position: relative;
+.exam-hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: calc(var(--nav-height) + 48px) 24px 80px;
+  position: relative;
+  background:
+    radial-gradient(900px circle at 50% 0%, var(--color-surface-soft), transparent 70%),
+    var(--color-canvas);
 }
 
-.hero-content {
-    max-width: 1200px;
-    width: 100%;
-    z-index: 10;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.exam-hero-content {
+  max-width: 1100px;
+  width: 100%;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.hero-title {
-    font-size: clamp(2.2rem, 5.8vw, 3.4rem);
-    font-weight: 750;
-    color: var(--text-primary);
-    margin-bottom: 18px;
-    letter-spacing: -0.02em;
-    line-height: 1.1;
-    animation: fadeInUp 1s ease-out;
+.exam-hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-bottom: 24px;
+  animation: fadeInUp 0.85s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+  opacity: 0;
+}
+.exam-hero-eyebrow::before,
+.exam-hero-eyebrow::after {
+  content: "";
+  width: 22px;
+  height: 1px;
+  background: var(--color-primary);
 }
 
-.motivational-text {
-    font-size: clamp(1.2rem, 3.2vw, 1.75rem);
-    font-weight: 450;
-    color: var(--text-secondary);
-    margin-bottom: 10px;
-    letter-spacing: -0.01em;
-    line-height: 1.4762;
-    animation: fadeInUp 1s ease-out 0.2s both;
-    max-width: 900px;
+.exam-hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 6.4vw, 4.4rem);
+  font-weight: 500;
+  color: var(--color-ink);
+  margin-bottom: 28px;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+  animation: fadeInUp 0.85s cubic-bezier(0.25, 0.1, 0.25, 1) 0.12s forwards;
+  opacity: 0;
 }
 
-.blessing-text {
-    font-size: clamp(1rem, 2.4vw, 1.2rem);
-    font-weight: 450;
-    color: var(--text-tertiary);
-    margin-bottom: 28px;
-    letter-spacing: -0.01em;
-    line-height: 1.4762;
-    animation: fadeInUp 1s ease-out 0.4s both;
-    max-width: 900px;
+.exam-motivational {
+  font-family: var(--font-body);
+  font-size: clamp(1.1rem, 2.6vw, 1.5rem);
+  font-weight: 400;
+  color: var(--color-body-strong);
+  margin-bottom: 8px;
+  line-height: 1.5;
+  animation: fadeInUp 0.85s cubic-bezier(0.25, 0.1, 0.25, 1) 0.24s forwards;
+  opacity: 0;
+  max-width: 760px;
 }
 
-.image-container {
-    margin-top: 40px;
-    width: 100%;
-    max-width: 100%;
-    animation: fadeInUp 1s ease-out 0.6s both;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
+.exam-blessing {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 2.2vw, 1.2rem);
+  font-weight: 400;
+  color: var(--color-muted);
+  margin-bottom: 40px;
+  line-height: 1.5;
+  animation: fadeInUp 0.85s cubic-bezier(0.25, 0.1, 0.25, 1) 0.36s forwards;
+  opacity: 0;
+  max-width: 760px;
 }
 
-.image-container img {
-    width: auto;
-    max-width: 100%;
-    height: auto;
-    max-height: 80vh;
-    border-radius: var(--radius-md);
-    border: 1px solid rgba(255, 255, 255, 0.22);
-    box-shadow: var(--glass-shadow-strong);
-    object-fit: contain;
+.exam-image-container {
+  margin-top: 32px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  animation: fadeInUp 0.85s cubic-bezier(0.25, 0.1, 0.25, 1) 0.5s forwards;
+  opacity: 0;
 }
 
-[data-theme="dark"] .image-container img {
-    border-color: rgba(255, 255, 255, 0.12);
+.exam-image-container img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 78vh;
+  border-radius: var(--r-xl);
+  border: 1px solid var(--color-hairline);
+  object-fit: contain;
+  background: var(--color-surface-card);
 }
 
-/* 背景装饰 */
-.background-decoration {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    overflow: hidden;
-    z-index: 1;
-}
-
-.floating-elements {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-}
-
-.floating-element {
-    position: absolute;
-    background: rgba(255, 255, 255, 0.12);
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    border-radius: 999px;
-    animation: float 6s ease-in-out infinite;
-    backdrop-filter: blur(12px) saturate(180%);
-    -webkit-backdrop-filter: blur(12px) saturate(180%);
-}
-
-[data-theme="dark"] .floating-element {
-    background: rgba(255, 255, 255, 0.06);
-    border-color: rgba(255, 255, 255, 0.10);
-}
-
-.floating-element:nth-child(1) {
-    width: 60px;
-    height: 60px;
-    top: 20%;
-    left: 10%;
-    animation-delay: 0s;
-}
-
-.floating-element:nth-child(2) {
-    width: 100px;
-    height: 80px;
-    top: 60%;
-    right: 15%;
-    animation-delay: 2s;
-}
-
-.floating-element:nth-child(3) {
-    width: 40px;
-    height: 40px;
-    top: 80%;
-    left: 20%;
-    animation-delay: 4s;
-}
-
-.floating-element:nth-child(4) {
-    width: 100px;
-    height: 100px;
-    top: 30%;
-    right: 10%;
-    animation-delay: 1s;
-}
-
-/* 动画效果 */
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0) rotate(0deg);
-    }
-    50% {
-        transform: translateY(-20px) rotate(180deg);
-    }
-}
-
-/* 响应式设计优化 */
 @media (max-width: 768px) {
-    .hero-section {
-        padding: calc(var(--nav-height) + 28px) 16px 44px;
-    }
-    
-    .image-container img {
-        min-width: 95vw;
-    }
-}
-
-@media (max-width: 480px) {
-    .time-label {
-        font-size: 12px;
-    }
+  .exam-hero {
+    padding: calc(var(--nav-height) + 32px) 16px 56px;
+  }
 }
 </style>
 <script>
-// 页面加载完成后执行
 window.addEventListener('DOMContentLoaded', () => {
-    checkExamTime();
-    updatePageContent();
-    checkImageLoad();
+  checkExamTime();
+  checkImageLoad();
 });
 
-// 检查是否已到高考时间
 function checkExamTime() {
-    const examDate = new Date('2025-06-07T00:00:00+08:00'); // 2025年6月7日0点
-    const now = new Date();
-    
-    // 如果当前时间早于高考时间，则重定向到首页
-    if (now < examDate) {
-        window.location.href = '/'; // 重定向到首页
-    }
+  const examDate = new Date('2025-06-07T00:00:00+08:00');
+  const now = new Date();
+  if (now < examDate) {
+    window.location.href = '/';
+  }
 }
 
-// 检查图片加载状态
 function checkImageLoad() {
-    const img = document.querySelector('.image-container img');
-    
-    // 添加图片加载成功的事件处理
-    img.addEventListener('load', function() {
-        console.log('图片加载成功');
-    });
-    
-    // 添加图片加载失败的备用处理
-    img.addEventListener('error', function() {
-        console.error('图片加载失败');
-        // 尝试其他格式
-        if (this.src.endsWith('.png')) {
-            this.src = 'skmtopus_top_release.webp';
-        } else if (this.src.endsWith('.webp')) {
-            this.src = 'skmt.jpg';
-        }
-    });
+  const img = document.querySelector('.exam-image-container img');
+  if (!img) return;
+  img.addEventListener('error', function () {
+    if (this.src.endsWith('.png')) {
+      this.src = 'skmtopus_top_release.webp';
+    } else if (this.src.endsWith('.webp')) {
+      this.src = 'skmt.jpg';
+    }
+  });
 }
 </script>
 </head>
 <body>
-  <nav>
+  <nav class="nav-global">
     <div class="nav-container">
-      <a href="/" class="brand" aria-label="MMC News 首页"><svg class="nav-logo" width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="32" height="32" rx="8" fill="currentColor" opacity="0.12"/><path d="M7 23V9l5.5 8L16 11.5l3.5 5.5L25 9v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a href="/" class="nav-brand" aria-label="MMC News 首页">
+        <svg class="nav-logo" width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M12 1.5 L13.1 10.9 L22.5 12 L13.1 13.1 L12 22.5 L10.9 13.1 L1.5 12 L10.9 10.9 Z" fill="currentColor"/>
+        </svg>
+        <span class="nav-wordmark">MMC News</span>
+      </a>
       <button class="nav-hamburger" type="button" aria-label="菜单" aria-expanded="false">
         <span class="nav-hamburger-line"></span>
         <span class="nav-hamburger-line"></span>
         <span class="nav-hamburger-line"></span>
       </button>
-      <ul class="nav-items">
-        <li><a href="/news.html">动态</a></li>
-        <li><a href="/archive.html">作品</a></li>
-        <li><a href="/novel.html">小说</a></li>
-        <li><a href="/about.html">关于</a></li>
+      <ul class="nav-menu">
+        <li><a href="/news.html" class="nav-link">动态</a></li>
+        <li><a href="/archive.html" class="nav-link">作品</a></li>
+        <li><a href="/novel.html" class="nav-link">小说</a></li>
+        <li><a href="/about.html" class="nav-link">关于</a></li>
       </ul>
       <div class="theme-toggle">
         <button class="theme-toggle-button" type="button" aria-label="主题切换"></button>
@@ -264,64 +189,32 @@ function checkImageLoad() {
   </nav>
   <div class="nav-overlay"></div>
 
-<section class="hero-section">
-    <div class="background-decoration">
-        <div class="floating-elements">
-            <div class="floating-element"></div>
-            <div class="floating-element"></div>
-            <div class="floating-element"></div>
-            <div class="floating-element"></div>
-        </div>
-    </div>
-    
-    <div class="hero-content">
-        <h1 class="hero-title">If not me, who?<br>If not now, when?</h1>
-        <p class="motivational-text">十载寒窗为今朝，舍我其谁敢争锋？</p>
-        <p class="blessing-text">青春无悔赴考场，此时不搏更何时？</p>
-        
-        <div class="image-container">
-            <img src="skmtopus_top_release.png" alt="Liberation and Freedom" loading="lazy" onerror="this.onerror=null; this.src='skmt.jpg';">
-        </div>
-    </div>
-</section>
+  <section class="exam-hero">
+    <div class="exam-hero-content">
+      <p class="exam-hero-eyebrow">2025 · 高考</p>
+      <h1 class="exam-hero-title">If not me, who?<br>If not now, when?</h1>
+      <p class="exam-motivational">十载寒窗为今朝，舍我其谁敢争锋？</p>
+      <p class="exam-blessing">青春无悔赴考场，此时不搏更何时？</p>
 
-<footer>
+      <div class="exam-image-container">
+        <img src="skmtopus_top_release.png" alt="Liberation and Freedom" loading="lazy" onerror="this.onerror=null; this.src='skmt.jpg';">
+      </div>
+    </div>
+  </section>
+
+  <footer>
     <div class="footer-content">
-        <p class="footer-text"><a href="https://icp.gov.moe/?keyword=20250941" target="_blank" id="footer-link">萌ICP备20250941号</a></p>
+      <div class="footer-brand">
+        <svg class="nav-logo" width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M12 1.5 L13.1 10.9 L22.5 12 L13.1 13.1 L12 22.5 L10.9 13.1 L1.5 12 L10.9 10.9 Z" fill="currentColor"/>
+        </svg>
+        <span>MMC News</span>
+      </div>
+      <p class="footer-text">© 2026 MMC News · 专注报道，传递价值</p>
+      <p class="footer-text"><a href="https://icp.gov.moe/?keyword=20250941" target="_blank" rel="noopener" id="footer-link">萌ICP备20250941号</a></p>
     </div>
-</footer>
+  </footer>
 
-<script>
-// 获取浏览器语言
-function getBrowserLanguage() {
-    let language = navigator.language || navigator.userLanguage;
-    if (language.startsWith('zh')) {
-        return 'zh-CN';
-    } else {
-        return 'en';
-    }
-}
-
-// 获取当前语言
-const currentLang = getBrowserLanguage();
-
-// 更新页面内容
-function updatePageContent() {
-    const lang = translations[currentLang] || translations['zh-CN'];
-    
-    // 更新导航栏
-    document.getElementById('nav-news').textContent = lang.navNews;
-    document.getElementById('nav-archive').textContent = lang.navArchive;
-    document.getElementById('nav-about').textContent = lang.navAbout;
-    
-    // 更新页脚
-    document.getElementById('footer-link').textContent = lang.footer;
-    
-    // 设置HTML语言属性
-    document.documentElement.lang = currentLang;
-}
-</script>
-
-<script src="/js/apple-theme.js?v=20260324-1"></script>
+  <script src="/js/apple-theme.js?v=20260516-1"></script>
 </body>
-</html> 
+</html>

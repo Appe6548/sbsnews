@@ -4,14 +4,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>作品 - MMC News</title>
-  <link rel="stylesheet" href="/css/apple-style.css?v=20260324-1">
+  <title>作品 — MMC News</title>
+  <meta name="description" content="浏览 MMC News 的精彩视频合集与年度纪录片系列。">
+  <link rel="stylesheet" href="/css/claude-style.css?v=20260516-1">
 </head>
 
 <body>
   <nav class="nav-global">
     <div class="nav-container">
-      <a href="/" class="nav-brand" aria-label="MMC News 首页"><svg class="nav-logo" width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="32" height="32" rx="8" fill="currentColor" opacity="0.12"/><path d="M7 23V9l5.5 8L16 11.5l3.5 5.5L25 9v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a href="/" class="nav-brand" aria-label="MMC News 首页">
+        <svg class="nav-logo" width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M12 1.5 L13.1 10.9 L22.5 12 L13.1 13.1 L12 22.5 L10.9 13.1 L1.5 12 L10.9 10.9 Z" fill="currentColor"/>
+        </svg>
+        <span class="nav-wordmark">MMC News</span>
+      </a>
       <button class="nav-hamburger" type="button" aria-label="菜单" aria-expanded="false">
         <span class="nav-hamburger-line"></span>
         <span class="nav-hamburger-line"></span>
@@ -19,7 +25,7 @@
       </button>
       <ul class="nav-menu">
         <li><a href="/news.html" class="nav-link">动态</a></li>
-        <li><a href="/archive.html" class="nav-link">作品</a></li>
+        <li><a href="/archive.html" class="nav-link active">作品</a></li>
         <li><a href="/novel.html" class="nav-link">小说</a></li>
         <li><a href="/about.html" class="nav-link">关于</a></li>
       </ul>
@@ -45,25 +51,26 @@
   <div class="nav-overlay"></div>
 
   <main>
-    <section class="section">
+    <section class="section section--tight" style="padding-top:96px; padding-bottom:32px;">
       <div class="container">
-        <div class="section-header">
-          <h1 class="section-title">作品</h1>
-          <p class="section-description">浏览我们的精彩视频合集</p>
-        </div>
+        <p class="hero-eyebrow">作品集 · Archive</p>
+        <h1 class="hero-title" style="font-size:clamp(2.4rem, 5vw, 3.6rem); margin-bottom:16px;">每一帧都值得被记住</h1>
+        <p class="section-description" style="margin:0;">浏览 MMC News 的纪录片、校园生活与新闻特辑——共 20 部作品。</p>
       </div>
     </section>
 
-    <section class="section">
+    <!-- 编辑推荐 -->
+    <section class="section" style="padding-top:32px;">
       <div class="container-wide">
-        <h2 class="section-title">编辑推荐</h2>
+        <div class="category-header reveal">
+          <h2 class="category-title">编辑推荐</h2>
+          <span class="badge-pill">3 部</span>
+        </div>
         <div class="video-grid">
-          <article class="card video-card">
+          <article class="video-card reveal">
             <a href="./video/run-against-the-wind.html">
               <div class="video-thumbnail">
-                <img
-                  src="https://r2.oai.works/images/video-images/%E9%80%86%E9%A2%A8%E3%82%92%E8%B5%B0%E3%82%8C%E3%80%81%E9%9B%B2%E3%81%AE%E5%BD%BC%E6%96%B9%E3%81%B8.png"
-                  alt="逆風を走れ、雲の彼方へ">
+                <img src="https://r2.oai.works/images/video-images/%E9%80%86%E9%A2%A8%E3%82%92%E8%B5%B0%E3%82%8C%E3%80%81%E9%9B%B2%E3%81%AE%E5%BD%BC%E6%96%B9%E3%81%B8.png" alt="逆風を走れ、雲の彼方へ">
                 <span class="video-badge video-badge--featured">编辑推荐</span>
                 <span class="video-duration">1:04</span>
               </div>
@@ -71,7 +78,7 @@
               <p class="card-description">2026年1月1日</p>
             </a>
           </article>
-          <article class="card video-card">
+          <article class="video-card reveal reveal-delay-1">
             <a href="./video/dream.html">
               <div class="video-thumbnail">
                 <img src="https://r2.oai.works/images/video-images/Dream.png" alt="Dream">
@@ -82,12 +89,10 @@
               <p class="card-description">2025年4月14日</p>
             </a>
           </article>
-          <article class="card video-card">
+          <article class="video-card reveal reveal-delay-2">
             <a href="./video/escape-sunshine.html">
               <div class="video-thumbnail">
-                <img
-                  src="https://r2.oai.works/images/video-images/%E6%8C%89F%E9%94%AE%E9%80%83%E7%A6%BB%E9%98%B3%E5%85%89.png"
-                  alt="按F键逃离阳光">
+                <img src="https://r2.oai.works/images/video-images/%E6%8C%89F%E9%94%AE%E9%80%83%E7%A6%BB%E9%98%B3%E5%85%89.png" alt="按F键逃离阳光">
                 <span class="video-badge video-badge--featured">编辑推荐</span>
                 <span class="video-duration">0:43</span>
               </div>
@@ -99,26 +104,28 @@
       </div>
     </section>
 
-    <section class="section">
+    <!-- 阳光纪录片系列 — cream band -->
+    <section class="section section--cream-card">
       <div class="container-wide">
-        <h2 class="section-title">阳光纪录片系列</h2>
+        <div class="category-header reveal">
+          <h2 class="category-title">阳光纪录片系列</h2>
+          <span class="badge-pill">2 部</span>
+        </div>
         <div class="video-grid">
-          <article class="card video-card">
+          <article class="video-card reveal">
             <a href="./video/sunshine-documentary-2.html">
               <div class="video-thumbnail">
-                <img src="https://r2.oai.works/images/video-images/%E9%98%B3%E5%85%89%E7%BA%AA%E5%BD%95%E7%89%872.png"
-                  alt="阳光纪录片2">
+                <img src="https://r2.oai.works/images/video-images/%E9%98%B3%E5%85%89%E7%BA%AA%E5%BD%95%E7%89%872.png" alt="阳光纪录片2">
                 <span class="video-duration">2:47</span>
               </div>
               <h3 class="card-title">阳光纪录片2</h3>
               <p class="card-description">2024年2月26日</p>
             </a>
           </article>
-          <article class="card video-card">
+          <article class="video-card reveal reveal-delay-1">
             <a href="./video/sunshine-documentary.html">
               <div class="video-thumbnail">
-                <img src="https://r2.oai.works/images/video-images/%E9%98%B3%E5%85%89%E7%BA%AA%E5%BD%95%E7%89%87.png"
-                  alt="阳光纪录片">
+                <img src="https://r2.oai.works/images/video-images/%E9%98%B3%E5%85%89%E7%BA%AA%E5%BD%95%E7%89%87.png" alt="阳光纪录片">
                 <span class="video-duration">2:02</span>
               </div>
               <h3 class="card-title">阳光纪录片</h3>
@@ -129,47 +136,45 @@
       </div>
     </section>
 
+    <!-- 校园生活系列 -->
     <section class="section">
       <div class="container-wide">
-        <h2 class="section-title">校园生活系列</h2>
+        <div class="category-header reveal">
+          <h2 class="category-title">校园生活系列</h2>
+          <span class="badge-pill">4 部</span>
+        </div>
         <div class="video-grid">
-          <article class="card video-card">
+          <article class="video-card reveal">
             <a href="./video/sunshine-money.html">
               <div class="video-thumbnail">
-                <img
-                  src="https://r2.oai.works/images/video-images/%E9%98%B3%E5%85%89%E5%8F%91%E8%B4%A2%E8%AE%B0%E2%80%94%E5%A6%82%E4%BD%95%E4%BB%8E%E7%A0%94%E5%AD%A6%E4%B8%AD%E7%89%9F%E5%8F%96%E6%9A%B4%E5%88%A9.png"
-                  alt="阳光发财记">
+                <img src="https://r2.oai.works/images/video-images/%E9%98%B3%E5%85%89%E5%8F%91%E8%B4%A2%E8%AE%B0%E2%80%94%E5%A6%82%E4%BD%95%E4%BB%8E%E7%A0%94%E5%AD%A6%E4%B8%AD%E7%89%9F%E5%8F%96%E6%9A%B4%E5%88%A9.png" alt="阳光发财记">
                 <span class="video-duration">0:54</span>
               </div>
               <h3 class="card-title">阳光发财记—如何从研学中牟取暴利</h3>
               <p class="card-description">2024年2月27日</p>
             </a>
           </article>
-          <article class="card video-card">
+          <article class="video-card reveal reveal-delay-1">
             <a href="./video/school-warning.html">
               <div class="video-thumbnail">
-                <img
-                  src="https://r2.oai.works/images/video-images/%E7%AD%89%E4%B8%80%E4%B8%8B%EF%BC%8C%E8%BF%99%E4%BD%8D%E5%90%8C%E5%AD%A6.png"
-                  alt="等一下，这位同学">
+                <img src="https://r2.oai.works/images/video-images/%E7%AD%89%E4%B8%80%E4%B8%8B%EF%BC%8C%E8%BF%99%E4%BD%8D%E5%90%8C%E5%AD%A6.png" alt="等一下，这位同学">
                 <span class="video-duration">0:14</span>
               </div>
               <h3 class="card-title">等一下，这位同学</h3>
               <p class="card-description">2024年2月24日</p>
             </a>
           </article>
-          <article class="card video-card">
+          <article class="video-card reveal reveal-delay-2">
             <a href="./video/make-choice.html">
               <div class="video-thumbnail">
-                <img
-                  src="https://r2.oai.works/images/video-images/%E9%80%89%E6%8B%A9%E4%BD%A0%E7%9A%84%E9%9B%B6%E6%A8%A1%E9%85%8D%E7%BD%AE.png"
-                  alt="选择你的零模配置">
+                <img src="https://r2.oai.works/images/video-images/%E9%80%89%E6%8B%A9%E4%BD%A0%E7%9A%84%E9%9B%B6%E6%A8%A1%E9%85%8D%E7%BD%AE.png" alt="选择你的零模配置">
                 <span class="video-duration">0:29</span>
               </div>
               <h3 class="card-title">选择你的零模配置</h3>
               <p class="card-description">2024年2月22日</p>
             </a>
           </article>
-          <article class="card video-card">
+          <article class="video-card reveal reveal-delay-3">
             <a href="./video/water-dance.html">
               <div class="video-thumbnail">
                 <img src="https://r2.oai.works/images/video-images/%E6%B0%B4%E7%8E%8B%E3%81%AE%E8%88%9E.png" alt="水王の舞">
@@ -183,11 +188,15 @@
       </div>
     </section>
 
-    <section class="section">
+    <!-- 新闻与特别节目 — cream band -->
+    <section class="section section--cream-card">
       <div class="container-wide">
-        <h2 class="section-title">新闻与特别节目</h2>
+        <div class="category-header reveal">
+          <h2 class="category-title">新闻与特别节目</h2>
+          <span class="badge-pill">7 部</span>
+        </div>
         <div class="video-grid">
-          <article class="card video-card">
+          <article class="video-card reveal">
             <a href="./video/water-kiss.html">
               <div class="video-thumbnail">
                 <img src="https://r2.oai.works/images/video-images/%E6%B0%B4%E7%8E%8B%E3%81%AE%E5%90%BB.png" alt="水王の吻">
@@ -197,7 +206,7 @@
               <p class="card-description">2024年7月5日</p>
             </a>
           </article>
-          <article class="card video-card">
+          <article class="video-card reveal reveal-delay-1">
             <a href="./video/prison.html">
               <div class="video-thumbnail">
                 <img src="https://r2.oai.works/images/video-images/%E9%98%B3%E5%85%89%E7%9B%91%E7%8B%B1.png" alt="阳光监狱">
@@ -207,30 +216,27 @@
               <p class="card-description">2024年3月2日</p>
             </a>
           </article>
-          <article class="card video-card">
+          <article class="video-card reveal reveal-delay-2">
             <a href="./video/changjing-dance.html">
               <div class="video-thumbnail">
-                <img src="https://r2.oai.works/images/video-images/%E6%98%8C%E6%99%AF%E9%BB%84%E3%81%AE%E8%88%9E.png"
-                  alt="昌景黄の舞">
+                <img src="https://r2.oai.works/images/video-images/%E6%98%8C%E6%99%AF%E9%BB%84%E3%81%AE%E8%88%9E.png" alt="昌景黄の舞">
                 <span class="video-duration">0:38</span>
               </div>
               <h3 class="card-title">昌景黄の舞</h3>
               <p class="card-description">2024年2月20日</p>
             </a>
           </article>
-          <article class="card video-card">
+          <article class="video-card reveal reveal-delay-3">
             <a href="./video/ten-years-later.html">
               <div class="video-thumbnail">
-                <img
-                  src="https://r2.oai.works/images/video-images/%E5%BD%93%E5%8D%81%E5%B9%B4%E5%90%8E%E4%BD%A0%E7%9A%84%E5%AD%A9%E5%AD%90%E9%97%AE%E4%BD%A0%E7%9A%84%E9%AB%98%E4%B8%AD%E6%98%AF%E6%80%8E%E6%A0%B7%E5%BA%A6%E8%BF%87%E7%9A%84.png"
-                  alt="当十年后">
+                <img src="https://r2.oai.works/images/video-images/%E5%BD%93%E5%8D%81%E5%B9%B4%E5%90%8E%E4%BD%A0%E7%9A%84%E5%AD%A9%E5%AD%90%E9%97%AE%E4%BD%A0%E7%9A%84%E9%AB%98%E4%B8%AD%E6%98%AF%E6%80%8E%E6%A0%B7%E5%BA%A6%E8%BF%87%E7%9A%84.png" alt="当十年后">
                 <span class="video-duration">1:09</span>
               </div>
               <h3 class="card-title">当十年后你的孩子问你的高中是怎样度过的</h3>
               <p class="card-description">2024年2月10日</p>
             </a>
           </article>
-          <article class="card video-card">
+          <article class="video-card reveal">
             <a href="./video/prime-time-news.html">
               <div class="video-thumbnail">
                 <img src="https://r2.oai.works/images/video-images/Prime%20Time%20News.png" alt="Prime Time News">
@@ -240,23 +246,20 @@
               <p class="card-description">2024年2月5日</p>
             </a>
           </article>
-          <article class="card video-card">
+          <article class="video-card reveal reveal-delay-1">
             <a href="./video/special-news.html">
               <div class="video-thumbnail">
-                <img
-                  src="https://r2.oai.works/images/video-images/%E7%89%B9%E5%88%AB%E6%96%B0%E9%97%BB%E6%8A%A5%E9%81%93.png"
-                  alt="特别新闻报道">
+                <img src="https://r2.oai.works/images/video-images/%E7%89%B9%E5%88%AB%E6%96%B0%E9%97%BB%E6%8A%A5%E9%81%93.png" alt="特别新闻报道">
                 <span class="video-duration">1:35</span>
               </div>
               <h3 class="card-title">特别新闻报道</h3>
               <p class="card-description">2024年1月1日</p>
             </a>
           </article>
-          <article class="card video-card">
+          <article class="video-card reveal reveal-delay-2">
             <a href="./video/water-not-sleep.html">
               <div class="video-thumbnail">
-                <img src="https://r2.oai.works/images/video-images/%E6%B0%B4%E7%8E%8B%E7%9D%A1%E8%A7%89.png"
-                  alt="水王不让你睡觉你睡不睡">
+                <img src="https://r2.oai.works/images/video-images/%E6%B0%B4%E7%8E%8B%E7%9D%A1%E8%A7%89.png" alt="水王不让你睡觉你睡不睡">
                 <span class="video-duration">2:25</span>
               </div>
               <h3 class="card-title">水王不让你睡觉你睡不睡</h3>
@@ -267,40 +270,38 @@
       </div>
     </section>
 
+    <!-- 更多视频 -->
     <section class="section">
       <div class="container-wide">
-        <h2 class="section-title">更多视频</h2>
+        <div class="category-header reveal">
+          <h2 class="category-title">更多视频</h2>
+          <span class="badge-pill">4 部</span>
+        </div>
         <div class="video-grid">
-          <article class="card video-card">
+          <article class="video-card reveal">
             <a href="./video/sunshine-admissions.html">
               <div class="video-thumbnail">
-                <img
-                  src="https://r2.oai.works/images/video-images/%E9%98%B3%E5%85%89%E6%8B%9B%E7%94%9F%E7%AE%80%E7%AB%A0.png"
-                  alt="阳光招生简章">
+                <img src="https://r2.oai.works/images/video-images/%E9%98%B3%E5%85%89%E6%8B%9B%E7%94%9F%E7%AE%80%E7%AB%A0.png" alt="阳光招生简章">
                 <span class="video-duration">0:20</span>
               </div>
               <h3 class="card-title">阳光招生简章</h3>
               <p class="card-description">2025年6月25日</p>
             </a>
           </article>
-          <article class="card video-card">
+          <article class="video-card reveal reveal-delay-1">
             <a href="./video/politics-teacher-doodle.html">
               <div class="video-thumbnail">
-                <img
-                  src="https://r2.oai.works/images/video-images/%E6%94%BF%E6%B2%BB%E8%80%81%E5%B8%88%E4%B9%9F%E8%A6%81doodle%E6%91%87.png"
-                  alt="政治老师也要doodle摇">
+                <img src="https://r2.oai.works/images/video-images/%E6%94%BF%E6%B2%BB%E8%80%81%E5%B8%88%E4%B9%9F%E8%A6%81doodle%E6%91%87.png" alt="政治老师也要doodle摇">
                 <span class="video-duration">0:14</span>
               </div>
               <h3 class="card-title">政治老师也要doodle摇</h3>
               <p class="card-description">2025年5月2日</p>
             </a>
           </article>
-          <article class="card video-card is-low-quality">
+          <article class="video-card is-low-quality reveal reveal-delay-2">
             <a href="./video/bombing-sunshine-plan.html">
               <div class="video-thumbnail">
-                <img
-                  src="https://r2.oai.works/images/video-images/%E8%BD%B0%E7%82%B8%E9%98%B3%E5%85%89%E8%AE%A1%E5%88%92.png"
-                  alt="轰炸阳光计划">
+                <img src="https://r2.oai.works/images/video-images/%E8%BD%B0%E7%82%B8%E9%98%B3%E5%85%89%E8%AE%A1%E5%88%92.png" alt="轰炸阳光计划">
                 <span class="video-badge video-badge--low-quality">低质量</span>
                 <span class="video-duration">0:58</span>
               </div>
@@ -308,12 +309,10 @@
               <p class="card-description">2025年4月7日</p>
             </a>
           </article>
-          <article class="card video-card is-low-quality">
+          <article class="video-card is-low-quality reveal reveal-delay-3">
             <a href="./video/class-mvp.html">
               <div class="video-thumbnail">
-                <img
-                  src="https://r2.oai.works/images/video-images/%E5%85%A8%E7%8F%AD%E5%BE%97%E4%BA%86MVP%EF%BC%81%EF%BC%88PG16%EF%BC%89.png"
-                  alt="全班得了MVP！（PG16）">
+                <img src="https://r2.oai.works/images/video-images/%E5%85%A8%E7%8F%AD%E5%BE%97%E4%BA%86MVP%EF%BC%81%EF%BC%88PG16%EF%BC%89.png" alt="全班得了MVP！（PG16）">
                 <span class="video-badge video-badge--low-quality">低质量</span>
                 <span class="video-duration">0:43</span>
               </div>
@@ -328,11 +327,18 @@
 
   <footer>
     <div class="footer-content">
-      <p class="footer-text"><a href="https://icp.gov.moe/?keyword=20250941" target="__blank">萌ICP备20250941号</a></p>
+      <div class="footer-brand">
+        <svg class="nav-logo" width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M12 1.5 L13.1 10.9 L22.5 12 L13.1 13.1 L12 22.5 L10.9 13.1 L1.5 12 L10.9 10.9 Z" fill="currentColor"/>
+        </svg>
+        <span>MMC News</span>
+      </div>
+      <p class="footer-text">© 2026 MMC News · 专注报道，传递价值</p>
+      <p class="footer-text"><a href="https://icp.gov.moe/?keyword=20250941" target="_blank" rel="noopener">萌ICP备20250941号</a></p>
     </div>
   </footer>
 
-  <script src="/js/apple-theme.js?v=20260324-1"></script>
+  <script src="/js/apple-theme.js?v=20260516-1"></script>
 </body>
 
 </html>
