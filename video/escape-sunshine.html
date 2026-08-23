@@ -7,7 +7,7 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon.ico" sizes="32x32">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/claude-style.css?v=20260823-1">
+  <link rel="stylesheet" href="/css/claude-style.css?v=20260823-2">
 </head>
 <body>
   <nav>
@@ -52,10 +52,10 @@
         <span>发布于：2025年1月28日</span>
         <span style="margin-left: 16px;">时长：43秒</span>
       </div>
-      <div class="video-description has-expand-toggle">
+      <div class="video-description">
         <div class="description-content">除夕快乐！
 在这除旧迎新的日子，祝大家除去阳光的晦气，以崭新的面貌迎接新年！</div>
-        <span class="description-toggle">展开</span>
+        <button type="button" class="description-toggle" aria-expanded="false">展开</button>
       </div>
     </div>
 
@@ -83,31 +83,10 @@
       const videoSrc = 'https://r2.oai.works/%E6%8C%89F%E9%94%AE%E9%80%83%E7%A6%BB%E9%98%B3%E5%85%89.mp4';
       video.src = videoSrc;
       video.load();
-
-      // 简介展开/收起功能
-      const description = document.querySelector('.video-description');
-      const content = document.querySelector('.description-content');
-      const toggle = document.querySelector('.description-toggle');
-
-      // 检查内容是否需要展开按钮
-      function checkOverflow() {
-        const isOverflowing = content.offsetHeight > 72;
-        toggle.style.display = isOverflowing ? 'inline-block' : 'none';
-      }
-
-      // 切换展开/收起状态
-      toggle.addEventListener('click', () => {
-        description.classList.toggle('expanded');
-        toggle.textContent = description.classList.contains('expanded') ? '收起' : '展开';
-      });
-
-      // 页面加载后检查是否需要展开按钮
-      window.addEventListener('load', checkOverflow);
-      // 窗口大小改变时重新检查
-      window.addEventListener('resize', checkOverflow);
     });
   </script>
 
   <script src="/js/apple-theme.js?v=20260516-1"></script>
+  <script src="/js/video-description.js?v=20260823-1"></script>
 </body>
 </html>

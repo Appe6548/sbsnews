@@ -7,7 +7,7 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon.ico" sizes="32x32">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/claude-style.css?v=20260823-1">
+  <link rel="stylesheet" href="/css/claude-style.css?v=20260823-2">
 </head>
 <body>
   <nav>
@@ -53,9 +53,8 @@
         <span style="margin-left: 16px;">时长：0:58</span>
       </div>
       <div class="video-description">
-        <div class="description-content collapsed">无</div>
-        <span class="toggle-button expand">展开</span>
-        <span class="toggle-button collapse" style="display: none;">收起</span>
+        <div class="description-content">无</div>
+        <button type="button" class="description-toggle" aria-expanded="false">展开</button>
       </div>
     </div>
 
@@ -85,33 +84,10 @@
       const videoSrc = 'https://r2.oai.works/%E8%BD%B0%E7%82%B8%E9%98%B3%E5%85%89%E8%AE%A1%E5%88%92.mp4';
       video.src = videoSrc;
       video.load();
-
-      const content = document.querySelector('.description-content');
-      const expandBtn = document.querySelector('.toggle-button.expand');
-      const collapseBtn = document.querySelector('.toggle-button.collapse');
-
-      function checkOverflow() {
-        const isOverflowing = content.scrollHeight > 24;
-        expandBtn.style.display = isOverflowing && content.classList.contains('collapsed') ? 'inline-block' : 'none';
-      }
-
-      expandBtn.addEventListener('click', () => {
-        content.classList.remove('collapsed');
-        expandBtn.style.display = 'none';
-        collapseBtn.style.display = 'block';
-      });
-
-      collapseBtn.addEventListener('click', () => {
-        content.classList.add('collapsed');
-        collapseBtn.style.display = 'none';
-        expandBtn.style.display = 'inline-block';
-      });
-
-      window.addEventListener('load', checkOverflow);
-      window.addEventListener('resize', checkOverflow);
     });
   </script>
 
   <script src="/js/apple-theme.js?v=20260516-1"></script>
+  <script src="/js/video-description.js?v=20260823-1"></script>
 </body>
 </html>

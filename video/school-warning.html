@@ -7,7 +7,7 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon.ico" sizes="32x32">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/claude-style.css?v=20260823-1">
+  <link rel="stylesheet" href="/css/claude-style.css?v=20260823-2">
 </head>
 <body>
   <nav>
@@ -53,11 +53,10 @@
         <span style="margin-left: 16px;">时长：0:14</span>
       </div>
       <div class="video-description">
-        <div class="description-content collapsed">MMC News温馨提示
+        <div class="description-content">MMC News温馨提示
 
 距离开学不足24H！水王威胁近在咫尺！</div>
-        <span class="toggle-button expand">展开</span>
-        <span class="toggle-button collapse" style="display: none;">收起</span>
+        <button type="button" class="description-toggle" aria-expanded="false">展开</button>
       </div>
     </div>
 
@@ -85,39 +84,10 @@
       const videoSrc = 'https://r2.oai.works/%E7%AD%89%E4%B8%80%E4%B8%8B%20%E8%BF%99%E4%BD%8D%E5%90%8C%E5%AD%A6.mp4';
       video.src = videoSrc;
       video.load();
-
-      // 简介展开/收起功能
-      const content = document.querySelector('.description-content');
-      const expandBtn = document.querySelector('.toggle-button.expand');
-      const collapseBtn = document.querySelector('.toggle-button.collapse');
-
-      // 检查内容是否需要展开按钮
-      function checkOverflow() {
-        const isOverflowing = content.scrollHeight > 24;
-        expandBtn.style.display = isOverflowing && content.classList.contains('collapsed') ? 'inline-block' : 'none';
-      }
-
-      // 展开内容
-      expandBtn.addEventListener('click', () => {
-        content.classList.remove('collapsed');
-        expandBtn.style.display = 'none';
-        collapseBtn.style.display = 'block';
-      });
-
-      // 收起内容
-      collapseBtn.addEventListener('click', () => {
-        content.classList.add('collapsed');
-        collapseBtn.style.display = 'none';
-        expandBtn.style.display = 'inline-block';
-      });
-
-      // 页面加载后检查是否需要展开按钮
-      window.addEventListener('load', checkOverflow);
-      // 窗口大小改变时重新检查
-      window.addEventListener('resize', checkOverflow);
     });
   </script>
 
   <script src="/js/apple-theme.js?v=20260516-1"></script>
+  <script src="/js/video-description.js?v=20260823-1"></script>
 </body>
 </html>

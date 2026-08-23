@@ -512,9 +512,11 @@ nav,
   z-index: 9990;
   background: rgba(20, 20, 19, 0.4);
   opacity: 0;
+  /* 移动端遮罩常驻渲染，关闭态必须放行点击，否则透明层会挡住页面内容 */
+  pointer-events: none;
   transition: opacity var(--t-med);
 }
-.nav-overlay.active { opacity: 1; }
+.nav-overlay.active { opacity: 1; pointer-events: auto; }
 
 /* ============================================================
    Main layout
@@ -1250,29 +1252,24 @@ main {
 }
 
 .main-content .video-description {
+  position: relative;
   font-family: var(--font-body);
   font-size: 1rem;
   line-height: 1.6;
   color: var(--color-body-strong);
 }
 
-.main-content .video-description.has-expand-toggle {
-  max-height: 72px;
-  overflow: hidden;
-  transition: max-height var(--t-med);
-}
-.main-content .video-description.has-expand-toggle.expanded {
-  max-height: 1000px;
-}
-
+/* 收起态钳制行数：内容确实超出 --desc-clamp-lines 行时，
+   由 video-description.js 添加 collapsed 并显示按钮（含 "..." 渐变） */
 .main-content .description-content {
+  --desc-clamp-lines: 2;
   position: relative;
   overflow: hidden;
-  padding-right: 56px;
   white-space: pre-wrap;
 }
 .main-content .description-content.collapsed {
-  max-height: 24px;
+  max-height: calc(var(--desc-clamp-lines) * 1.6em);
+  padding-right: 56px;
 }
 .main-content .description-content.collapsed::after {
   content: "...";
@@ -1283,49 +1280,43 @@ main {
   color: var(--color-body);
 }
 
-.main-content .description-wrapper {
-  position: relative;
-  display: inline;
-}
-.main-content .description-wrapper .description-content {
-  padding-right: 0;
-  white-space: pre-line;
-}
-.main-content .description-wrapper .description-content.collapsed {
-  display: inline-block;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: calc(100% - 56px);
-  vertical-align: bottom;
-}
-.main-content .description-wrapper .description-content.collapsed::after { display: none; }
-
-.main-content .toggle-button,
+/* 默认隐藏，JS 检测到溢出后添加 .visible 显示 */
 .main-content .description-toggle {
+  display: none;
   font-family: var(--font-body);
   font-size: 0.875rem;
   font-weight: 500;
   color: var(--color-primary);
   cursor: pointer;
   user-select: none;
-  display: inline-block;
   margin-left: 6px;
+  margin-top: 8px;
   padding: 4px 8px;
+  border: none;
+  background: transparent;
   border-radius: var(--r-sm);
   transition: background var(--t-fast), color var(--t-fast);
 }
-.main-content .toggle-button:hover,
-.main-content .description-toggle:hover {
+.main-content .description-toggle.visible {
+  display: inline-block;
+}
+.main-content .description-toggle.visible:hover,
+.main-content .description-toggle.visible:focus-visible {
   background: var(--color-surface-card);
   color: var(--color-primary-active);
 }
-.main-content .video-description .description-content + .toggle-button.expand {
+.main-content .description-toggle.visible:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+/* 收起态：展开按钮钉在简介末行右下角（.video-description 为定位祖先）；
+   展开态：按钮取消绝对定位，独立成行位于全文下方 */
+.main-content .video-description .description-content.collapsed + .description-toggle.visible {
   position: absolute;
   right: 0;
   bottom: 0;
+  margin-top: 0;
 }
-.main-content .toggle-button.collapse { display: block; margin-top: 8px; }
 
 .main-content .video-description a {
   color: var(--color-primary);

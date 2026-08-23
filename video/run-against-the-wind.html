@@ -7,7 +7,7 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon.ico" sizes="32x32">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/claude-style.css?v=20260823-1">
+  <link rel="stylesheet" href="/css/claude-style.css?v=20260823-2">
 </head>
 <body>
   <nav>
@@ -53,10 +53,9 @@
         <span style="margin-left: 16px;">时长：1:04</span>
       </div>
       <div class="video-description">
-        <div class="description-content collapsed">元旦快樂！
+        <div class="description-content">元旦快樂！
 請期待更多驚喜</div>
-        <span class="toggle-button expand">展开</span>
-        <span class="toggle-button collapse" style="display: none;">收起</span>
+        <button type="button" class="description-toggle" aria-expanded="false">展开</button>
       </div>
     </div>
 
@@ -86,33 +85,10 @@
       const videoSrc = 'https://r2.oai.works/%E9%80%86%E9%A2%A8%E3%82%92%E8%B5%B0%E3%82%8C%E3%80%81%E9%9B%B2%E3%81%AE%E5%BD%BC%E6%96%B9%E3%81%B8.mp4';
       video.src = videoSrc;
       video.load();
-
-      const content = document.querySelector('.description-content');
-      const expandBtn = document.querySelector('.toggle-button.expand');
-      const collapseBtn = document.querySelector('.toggle-button.collapse');
-
-      function checkOverflow() {
-        const isOverflowing = content.scrollHeight > 24;
-        expandBtn.style.display = isOverflowing && content.classList.contains('collapsed') ? 'inline-block' : 'none';
-      }
-
-      expandBtn.addEventListener('click', () => {
-        content.classList.remove('collapsed');
-        expandBtn.style.display = 'none';
-        collapseBtn.style.display = 'block';
-      });
-
-      collapseBtn.addEventListener('click', () => {
-        content.classList.add('collapsed');
-        collapseBtn.style.display = 'none';
-        expandBtn.style.display = 'inline-block';
-      });
-
-      window.addEventListener('load', checkOverflow);
-      window.addEventListener('resize', checkOverflow);
     });
   </script>
 
   <script src="/js/apple-theme.js?v=20260516-1"></script>
+  <script src="/js/video-description.js?v=20260823-1"></script>
 </body>
 </html>
