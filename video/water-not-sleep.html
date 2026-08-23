@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>水王不让你睡觉你睡不睡 - MMC News</title>
-  <link rel="stylesheet" href="/css/claude-style.css?v=20260516-1">
+  <link rel="stylesheet" href="/css/claude-style.css?v=20260823-1">
 </head>
 <body>
   <nav>
     <div class="nav-container">
-      <a href="/" class="nav-brand" aria-label="MMC News 首页"><svg class="nav-logo" width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 1.5 L13.1 10.9 L22.5 12 L13.1 13.1 L12 22.5 L10.9 13.1 L1.5 12 L10.9 10.9 Z" fill="currentColor"/></svg><span class="nav-wordmark">MMC News</span></a>
+      <a href="/" class="nav-brand" aria-label="MMC News 首页"><svg class="nav-logo" width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="32" height="32" rx="8" fill="currentColor" opacity="0.12"/><path d="M7 23V9l5.5 8L16 11.5l3.5 5.5L25 9v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-wordmark">MMC News</span></a>
       <button class="nav-hamburger" type="button" aria-label="菜单" aria-expanded="false">
         <span class="nav-hamburger-line"></span>
         <span class="nav-hamburger-line"></span>
@@ -50,11 +50,7 @@
         <span style="margin-left: 16px;">时长：2:25</span>
       </div>
       <div class="video-description">
-        <span class="always-show">温馨提示：寒假已不足120H！水王威胁步步逼近！</span><br>
-        <span class="expandable collapsed">为保证您在阳光的生存，请观看以下阳光小技巧。</span>
-        <span class="toggle-button expand">展开</span>
-        <span class="toggle-button collapse" style="display: none;">收起</span>
-        <br>
+        <span>温馨提示：寒假已不足120H！水王威胁步步逼近！为保证您在阳光的生存，请观看以下阳光小技巧。</span><br>
         <span>如果您的设备无法正常播放，请点击 <a href="https://drive.weixin.qq.com/s?k=AKkA4QeOABgJDrTvtP" target="_blank">此处</a> 再试一次。</span>
       </div>
     </div>
@@ -69,8 +65,8 @@
   <footer>
     <div class="footer-content">
       <div class="footer-brand">
-        <svg class="nav-logo" width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M12 1.5 L13.1 10.9 L22.5 12 L13.1 13.1 L12 22.5 L10.9 13.1 L1.5 12 L10.9 10.9 Z" fill="currentColor"/>
+        <svg class="nav-logo" width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect width="32" height="32" rx="8" fill="currentColor" opacity="0.12"/><path d="M7 23V9l5.5 8L16 11.5l3.5 5.5L25 9v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
         <span>MMC News</span>
       </div>
@@ -85,33 +81,6 @@
       const videoSrc = 'https://r2.oai.works/%E6%B0%B4%E7%8E%8B%E4%B8%8D%E8%AE%A9%E4%BD%A0%E7%9D%A1%E8%A7%89%E4%BD%A0%E7%9D%A1%E4%B8%8D%E7%9D%A1.mp4';
       video.src = videoSrc;
       video.load();
-
-      const expandable = document.querySelector('.expandable');
-      const expandBtn = document.querySelector('.toggle-button.expand');
-      const collapseBtn = document.querySelector('.toggle-button.collapse');
-
-      function checkExpandable() {
-        if (expandable.scrollHeight > 0) {
-          expandBtn.style.display = expandable.classList.contains('collapsed') ? 'inline-block' : 'none';
-        } else {
-          expandBtn.style.display = 'none';
-        }
-      }
-
-      expandBtn.addEventListener('click', () => {
-        expandable.classList.remove('collapsed');
-        expandBtn.style.display = 'none';
-        collapseBtn.style.display = 'inline-block';
-      });
-
-      collapseBtn.addEventListener('click', () => {
-        expandable.classList.add('collapsed');
-        collapseBtn.style.display = 'none';
-        expandBtn.style.display = 'inline-block';
-      });
-
-      window.addEventListener('load', checkExpandable);
-      window.addEventListener('resize', checkExpandable);
     });
   </script>
 
